@@ -1,0 +1,146 @@
+mss in binary >>> xwr16xx_canfd_mss.xer4f
+eth008 Board details:
+IP address: 10.218.113.66
+Port: 17494
+
+connecting...
+Relay states 8->1 : 01000001
+1 off
+2 off
+3 off
+4 off
+5 off
+6 off
+7 off
+8 off
+Relay states 8->1 : 00000000
+1 on
+Relay states 8->1 : 00000001
+exit
+Disconnected
+Pre-Script returned: Success
+**************************************************
+Copying test case files from the Build server
+**************************************************Call to copy_testcase_binary:
+TCP: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/xwr16xx; /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr16xx_sdk03.04.00_CAN/CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-04-58-52_2020_03_17_02_58_52
+
+Copying testcase binary file from http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/xwr16xx/xwr16xx_canfd_mss.xer4f to /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr16xx_sdk03.04.00_CAN/CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-04-58-52_2020_03_17_02_58_52 using command: 
+wget -e robots=off --no-proxy -N -T 30 -t 2 -P /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr16xx_sdk03.04.00_CAN/CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-04-58-52_2020_03_17_02_58_52 http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/xwr16xx/xwr16xx_canfd_mss.xer4f
+**************************************************
+Executing Testcase:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr16xx_sdk03.04.00_CAN/CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-04-58-52_2020_03_17_02_58_52/xwr16xx_canfd_mss.xer4f
+**************************************************
+Queue PCAN TX to send message sequence.
+
+Loading R4, load params, run async.
+
+/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/config/iwr16_v9.ccxml
+Checking if Py4J Gateway server has started...
+Py4J Gateway Server is Started
+a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/DEBUGSSM_0
+a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/CS_DAP_0
+a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/Cortex_R4_0
+Loading binary to the DUT:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr16xx_sdk03.04.00_CAN/CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-04-58-52_2020_03_17_02_58_52/xwr16xx_canfd_mss.xer4f
+
+**************************************************
+ Parameters found in the Binary arguments : 
+{'testSelection(32)': '8', 'gDisplayStats(32)': '0'}
+**************************************************
+Reading address of symbol: testSelection
+Address of symbol obtained: 0x80078f4
+Write value 8 to address 0x80078f4 
+Value updated successfully
+Reading address of symbol: gDisplayStats
+Address of symbol obtained: 0x8006e70
+Write value 0 to address 0x8006e70 
+Value updated successfully
+wait to stop logging.
+
+continue. Now stop CIO log.
+
+Update gDisplayStats = 1
+
+Reading address of symbol: gDisplayStats
+Address of symbol obtained: 0x8006e70
+Write value 1 to address 0x8006e70 
+Value updated successfully
+PCAN TX to send 1 message.
+
+Done Loading R4, load params, run async.
+
+
+**************************************************
+CIO Log captured for the testcase
+**************************************************
+*******************************************************
+CANFD Unit Test Menu                        
+Please select the type of test to execute:  
+1. MCAN Internal loopback test              
+2. MCAN External loopback test              
+3. MCAN Multiple Tx test                    
+4. MCAN External Tx/Rx test                 
+5. MCAN EVM-EVM test                        
+6. MCAN Tx Cancel test                      
+7. MCAN Power down test                     
+8. MCAN Message Id Range test               
+*******************************************************
+> Enter your selection: Debug: Message Id Range testing
+Debug: Single Message Identifier
+Debug: Start Message Identifier          : 0xc1
+Debug: End Message Identifier            : 0xc1
+Debug: Direction                         : Receive
+Debug: Number of interrupts received     : 3
+Debug: Number of messages processed      : 3
+
+
+Debug: Range Message Identifier
+Debug: 0 Start Message Identifier          : 0xc2
+Debug: 0 End Message Identifier            : 0xc4
+Debug: 0 Direction                         : Receive
+Debug: 0 Number of interrupts received     : 7
+Debug: 0 Number of messages processed      : 7
+
+
+Debug: Range Message Identifier
+Debug: 1 Start Message Identifier          : 0xcc
+Debug: 1 End Message Identifier            : 0xce
+Debug: 1 Direction                         : Receive
+Debug: 1 Number of interrupts received     : 7
+Debug: 1 Number of messages processed      : 7
+
+
+Debug: Range Message Identifier
+Debug: 2 Start Message Identifier          : 0xd6
+Debug: 2 End Message Identifier            : 0xd8
+Debug: 2 Direction                         : Receive
+Debug: 2 Number of interrupts received     : 7
+Debug: 2 Number of messages processed      : 7
+
+
+Debug: Number of Frame mismatch            : 0
+Debug: Number of Get_Data errors           : 7
+Debug: Error Status Interrupt              : 0
+now check LOG: /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr16xx_sdk03.04.00_CAN/CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-04-58-52_2020_03_17_02_58_52/xwr16_R4_CANFD_Range_ID_2020-03-17-05-16-26.log
+
+shutting down py4j gw server.
+
+
+**************************************************
+Terminating the debug session and Shutting down gateway.
+**************************************************
+
+**************************************************
+Test case execution completed
+**************************************************
+Debug: Number of messages processed      : 3
+Debug: 0 Number of messages processed      : 7
+Debug: 1 Number of messages processed      : 7
+Debug: 2 Number of messages processed      : 7
+nMessage Identifier 0xc1 check : PASS.
+Message Identifier 0xc2/c4 check : PASS.
+Message Identifier 0xcc/ce check : PASS.
+Message Identifier 0xd6/d8 check : PASS.
+Message Identifier out-of-Range check : PASS.
+
+**************************************************
+Testcase Result : PASS
+**************************************************

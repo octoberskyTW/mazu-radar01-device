@@ -1,0 +1,140 @@
+mss in binary >>> xwr68xx_canfd_mss.xer4f
+eth008 Board details:
+IP address: 10.218.113.66
+
+Port: 17494
+
+connecting...
+Relay states 8->1 : 00010000
+1 off
+2 off
+3 off
+4 off
+5 off
+6 off
+7 off
+8 off
+Relay states 8->1 : 00000000
+5 off
+5 off
+6 off
+Relay states 8->1 : 00000000
+5 on
+Relay states 8->1 : 00010000
+exit
+Disconnected
+Pre-Script returned: Success
+**************************************************
+Testcase mods & parameters invoked:
+**************************************************
+Two core test case: None (this is not a two core testcase)
+
+**************************************************
+Copying test case files from the Build server
+**************************************************
+Testdata possible location 1: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/testdata
+
+
+Testdata directory was not found on Testdata possible location 1
+
+
+Testdata possible location 2: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/xwr68xx/testdata
+
+
+Testdata directory was not found on Testdata possible location 2
+
+Call to copy_testcase_binary:
+TCP: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/xwr68xx; /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49
+
+Copying testcase binary file from http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/xwr68xx/xwr68xx_canfd_mss.xer4f to /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49 using command: 
+wget -e robots=off --no-proxy -N -T 30 -t 2 -P /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49 http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/xwr68xx/xwr68xx_canfd_mss.xer4f
+**************************************************
+Executing Testcase:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49/xwr68xx_canfd_mss.xer4f
+**************************************************
+Checking if Py4J Gateway server has started...
+Py4J Gateway Server is Started
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/DEBUGSSM_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/CS_DAP_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/Cortex_R4_0
+DSS test case opening debug session.
+
+cr4ctl = 0xadad00
+
+Loading binary to the DUT:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49/xwr68xx_canfd_mss.xer4f
+
+**************************************************
+ Parameters found in the Binary arguments : 
+{'testSelection(32)': '2'}
+**************************************************
+Reading address of symbol: testSelection
+Address of symbol obtained: 0x80078f8
+Write value 2 to address 0x80078f8 
+Value updated successfully
+binary path = /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49/xwr68xx_canfd_mss.xer4f
+
+total CCS time = 73
+
+
+**************************************************
+CIO Log captured for the testcase
+**************************************************
+*******************************************************
+CANFD Unit Test Menu                        
+Please select the type of test to execute:  
+1. MCAN Internal loopback test              
+2. MCAN External loopback test              
+3. MCAN Multiple Tx test                    
+4. MCAN External Tx/Rx test                 
+5. MCAN EVM-EVM test                        
+6. MCAN Tx Cancel test                      
+7. MCAN Power down test                     
+8. MCAN Message Id Range test               
+*******************************************************
+> Enter your selection: Debug: External loopback testing [Instance: 0]
+Debug: Number of iterations              : 100
+Debug: Number of messages transmitted    : 100
+Debug: Number of messages received       : 100
+Debug: Number of messages lost           : 0
+Debug: Number of data mismatch           : 0
+Debug: Number of Frame mismatch          : 0
+Debug: Number of Get_Data errors         : 0
+Debug: Error Status Interrupt            : 0
+
+
+Debug: Message Identifier                : 0x29e
+Debug: Direction                         : Transmit
+Debug: Number of interrupts received     : 100
+Debug: Number of messages processed      : 100
+
+
+Debug: Message Identifier                : 0x29e
+Debug: Direction                         : Receive
+Debug: Number of interrupts received     : 100
+Debug: Number of messages processed      : 100
+Debug: Receive & Transmit Measurements
+Debug: Rx Min:297 Max: 350 Average:305 ticks
+Debug: Tx Min:1107 Max: 1995 Average:1127 ticks
+
+
+Debug: External loopback testing for 100 iterations Passed
+Feature: External loopback testing: Passed
+Value read from Global variable (MCPI_Result): 0
+Test Failure Signature: 0
+Test Log Messages: 
+Feature tested: External loopback testing: Passed
+
+
+shutting down py4j gw server.
+
+
+**************************************************
+Terminating the debug session and Shutting down gateway.
+**************************************************
+
+**************************************************
+Test case execution completed
+**************************************************
+
+**************************************************
+Testcase Result : PASS
+**************************************************

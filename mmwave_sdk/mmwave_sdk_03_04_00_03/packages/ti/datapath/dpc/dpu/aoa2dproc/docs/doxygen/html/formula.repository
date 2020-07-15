@@ -1,0 +1,45 @@
+\form#0:$N_{TxAnt}*N_{RxAnt}*N_{DopplerChirps}*sizeof(cmplx16ImRe\_t) \leq 16\;KB$
+\form#1:$N_{TxAnt}*N_{RxAnt}*N_{DopplerBins}*sizeof(cmplx16ImRe\_t) \leq 32\;KB$
+\form#2:$ \lambda/2 $
+\form#3:$w_x$
+\form#4:$w_z$
+\form#5:$\delta=0$
+\form#6:$AB = \frac{\lambda}{2} \sin (\phi)$
+\form#7:$W_z = \frac{2\pi}{\lambda} \cdot AB$
+\form#8:$W_z = \pi \sin (\phi)$
+\form#9:$CD = \frac{\lambda}{2} \sin (\theta) \cos (\phi)$
+\form#10:$w_x = \frac{2\pi}{\lambda} \cdot CD$
+\form#11:$w_x = \pi \sin (\theta) \cos (\phi)$
+\form#12:$k_{azim},k_{elev}$
+\form#13:$N{\times}N$
+\form#14:$[-\frac{N}{2}, \frac{N}{2}-1]$
+\form#15:$ w_x $
+\form#16:\[ w_x = \frac{2\pi}{N}k_{azim} \]
+\form#17:\[ w_z= \frac{2\pi}{N}k_{elev} \]
+\form#18:\[ R=k_r\frac{c \cdot F_{SAMP}}{2 \cdot S \cdot N_{FFT}} \]
+\form#19:$c$
+\form#20:$k_r$
+\form#21:$F_{SAMP}$
+\form#22:$S$
+\form#23:$N_{FFT}$
+\form#24:$R$
+\form#25:$(x,y,z)$
+\form#26:\[ x = R\cos(\phi)\sin(\theta) = R\frac{w_x}{\pi}, \;\;\;\;\; z = R\sin(\phi) = R\frac{w_z}{\pi},\;\;\;\;\; y = \sqrt{R^2-x^2-z^2} \]
+\form#27:$\theta$
+\form#28:$\phi$
+\form#29:$\phi_{min},\;\phi_{max},$
+\form#30:$\theta_{min},\;\theta_{max}$
+\form#31:$W_z$
+\form#32:$W_x$
+\form#33:$W_z = w_z/\pi$
+\form#34:$W_x = w_x/\pi$
+\form#35:$W_z = \sin(\phi)$
+\form#36:$W_x = \cos(\phi) \sin(\theta)$
+\form#37:\[ \sin(\phi_{min}) \leq W_z \leq \sin(\phi_{max}) \]
+\form#38:$\cos(\phi)$
+\form#39:\[ \cos(\phi)\sin(\theta_{min}) \leq W_x \leq \cos(\phi) \sin(\theta_{max}) \]
+\form#40:$\cos(\phi) = \sqrt{1 - \sin(\phi)^2} = \sqrt{1 - W_z^2}$
+\form#41:$\sin(\phi_{min})$
+\form#42:$\sin(\phi_{max})$
+\form#43:$\sin(\theta_{min})$
+\form#44:$\sin(\theta_{max})$

@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.family.arm.msp432e4.init.Boot</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/*
+</span>     2    <span class="comment"> * Copyright (c) 2017-2018, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> * */</span>
+    32    
+    33    <span class="comment">/*
+</span>    34    <span class="comment"> *  ======== Boot.xdc ========
+</span>    35    <span class="comment"> */</span>
+    36    
+    37    <span class=key>package</span> ti.sysbios.family.arm.msp432e4.init;
+    38    
+    39    import xdc.rov.ViewInfo;
+    40    
+    41    <span class="xdoc">/*!
+</span>    42    <span class="xdoc"> *  ======== Boot ========
+</span>    43    <span class="xdoc"> *  MSP432E Boot Support.
+</span>    44    <span class="xdoc"> *
+</span>    45    <span class="xdoc"> *  The Boot module supports boot initialization for the MSP432E devices.
+</span>    46    <span class="xdoc"> *  A special boot init function is created based on the configuration
+</span>    47    <span class="xdoc"> *  settings for this module.  This function is hooked into the
+</span>    48    <span class="xdoc"> *  xdc.runtime.Reset.fxns[] array and called very early at boot time (prior
+</span>    49    <span class="xdoc"> *  to cinit processing).
+</span>    50    <span class="xdoc"> *
+</span>    51    <span class="xdoc"> *  The code to support the boot module is placed in a separate section
+</span>    52    <span class="xdoc"> *  named `".text:.bootCodeSection"` to allow placement of this section in
+</span>    53    <span class="xdoc"> *  the linker .cmd file if necessary. This section is a subsection of the
+</span>    54    <span class="xdoc"> *  `".text"` section so this code will be placed into the .text section unless
+</span>    55    <span class="xdoc"> *  explicitly placed, either through
+</span>    56    <span class="xdoc"> *  `{<b>@link</b> xdc.cfg.Program#sectMap Program.sectMap}` or through a linker
+</span>    57    <span class="xdoc"> *  command file.
+</span>    58    <span class="xdoc"> */</span>
+    59    @Template(<span class="string">"./Boot.xdt"</span>)
+    60    <span class=key>module</span> Boot
+    61    {
+    62        <span class=key>metaonly</span> <span class=key>struct</span> ModuleView {
+    63            Bool    configureClock;
+    64            String  xtal;
+    65            String  oscSrc;
+    66            Bool    pllBypass;
+    67            Bool    ioscDisable;
+    68            Bool    moscDisable;
+    69        }
+    70    
+    71        @Facet
+    72        <span class=key>metaonly</span> <span class=key>config</span> ViewInfo.Instance rovViewInfo =
+    73            ViewInfo.create({
+    74                viewMap: [
+    75                [
+    76                    <span class="string">'Module'</span>,
+    77                    {
+    78                        type: ViewInfo.MODULE,
+    79                        viewInitFxn: <span class="string">'viewInitModule'</span>,
+    80                        structName: <span class="string">'ModuleView'</span>
+    81                    }
+    82                ],
+    83                ]
+    84            });
+    85    
+    86        <span class=key>metaonly</span> <span class=key>enum</span> XtalFreq {
+    87            XTAL_5MHZ  = 0x00000000,  <span class="xdoc">/*! 5 MHz */</span>
+    88            XTAL_6MHZ  = 0x00000040,  <span class="xdoc">/*! 6 MHz */</span>
+    89            XTAL_8MHZ  = 0x00000080,  <span class="xdoc">/*! 8 MHz */</span>
+    90            XTAL_10MHZ = 0x000000C0,  <span class="xdoc">/*! 10 MHz */</span>
+    91            XTAL_12MHZ = 0x00000100,  <span class="xdoc">/*! 12 MHz */</span>
+    92            XTAL_16MHZ = 0x00000140,  <span class="xdoc">/*! 16 MHz */</span>
+    93            XTAL_18MHZ = 0x00000180,  <span class="xdoc">/*! 18 MHz */</span>
+    94            XTAL_20MHZ = 0x000001C0,  <span class="xdoc">/*! 20 MHz */</span>
+    95            XTAL_24MHZ = 0x00000200,  <span class="xdoc">/*! 24 MHz */</span>
+    96            XTAL_25MHZ = 0x00000240   <span class="xdoc">/*! 25 MHz */</span>
+    97        }
+    98    
+    99        <span class=key>metaonly</span> <span class=key>enum</span> OscSrc {
+   100            OSCSRC_MAIN     = 0x00000000,  <span class="xdoc">/*! Main oscillator */</span>
+   101            OSCSRC_INT      = 0x00000010,  <span class="xdoc">/*! Internal oscillator */</span>
+   102            OSCSRC_INT4     = 0x00000020,  <span class="xdoc">/*! Internal oscillator / 4 */</span>
+   103            OSCSRC_INT30    = 0x00000030,  <span class="xdoc">/*! Internal 30 KHz oscillator */</span>
+   104            OSCSRC_EXT4_19  = 0x80000028,  <span class="xdoc">/*! External 4.19 MHz */</span>
+   105            OSCSRC_EXT32    = 0x80000038   <span class="xdoc">/*! External 32 KHz */</span>
+   106        }
+   107    
+   108        <span class=key>metaonly</span> <span class=key>enum</span> VcoFreq {
+   109            VCO_480          = 0xF1000000,  <span class="xdoc">/*! VCO is 480 MHz */</span>
+   110            VCO_320          = 0xF0000000   <span class="xdoc">/*! VCO is 320 MHz */</span>
+   111        }
+   112    
+   113        <span class="xdoc">/*!
+</span>   114    <span class="xdoc">     *  Clock configuration flag, default is true.
+</span>   115    <span class="xdoc">     */</span>
+   116        <span class=key>metaonly</span> <span class=key>config</span> Bool configureClock = <span class=key>true</span>;
+   117    
+   118        <span class="xdoc">/*! Crystal Value */</span>
+   119        <span class=key>metaonly</span> <span class=key>config</span> XtalFreq xtal = XTAL_25MHZ;
+   120    
+   121        <span class="xdoc">/*! Oscillator Source */</span>
+   122        <span class=key>metaonly</span> <span class=key>config</span> OscSrc oscSrc = OSCSRC_MAIN;
+   123    
+   124        <span class="xdoc">/*! VCO frequency */</span>
+   125        <span class=key>metaonly</span> <span class=key>config</span> VcoFreq vcoFreq = VCO_480;
+   126    
+   127        <span class="xdoc">/*! PLL Bypass flag */</span>
+   128        <span class=key>metaonly</span> <span class=key>config</span> Bool pllBypass = <span class=key>false</span>;
+   129    
+   130        <span class="xdoc">/*! Internal Oscillator Disable flag */</span>
+   131        <span class=key>metaonly</span> <span class=key>config</span> Bool ioscDisable = <span class=key>false</span>;
+   132    
+   133        <span class="xdoc">/*! Main Oscillator Disable flag */</span>
+   134        <span class=key>metaonly</span> <span class=key>config</span> Bool moscDisable = <span class=key>false</span>;
+   135    
+   136        <span class="xdoc">/*!
+</span>   137    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   138    <span class="xdoc">     *  Enhanced Clocking Mode.
+</span>   139    <span class="xdoc">     *  This config parameter has been deprecated.
+</span>   140    <span class="xdoc">     */</span>
+   141        <span class=key>metaonly</span> <span class=key>config</span> Bool enhancedClockMode = <span class=key>true</span>;
+   142    
+   143        <span class="xdoc">/*!
+</span>   144    <span class="xdoc">     *  Desired CPU Clock Frequency in Hz.
+</span>   145    <span class="xdoc">     */</span>
+   146        <span class=key>metaonly</span> <span class=key>config</span> UInt cpuFrequency = 120000000;
+   147    
+   148        <span class="comment">/*
+</span>   149    <span class="comment">     *  @_nodoc
+</span>   150    <span class="comment">     *  ======== sysCtlClockFreqSet ========
+</span>   151    <span class="comment">     *  Configures the system clock.
+</span>   152    <span class="comment">     *
+</span>   153    <span class="comment">     *  wrapper for Boot_sysCtlClockFreqSetI()
+</span>   154    <span class="comment">     *
+</span>   155    <span class="comment">     *  @param ulConfig is the required configuration of the device clocking.
+</span>   156    <span class="comment">     *  @param ulSysClock is the requested processor frequency.
+</span>   157    <span class="comment">     *
+</span>   158    <span class="comment">     *  @return The actual configured system clock frequency in Hz or zero if
+</span>   159    <span class="comment">     *  the value could not be changed due to a parameter error or PLL lock
+</span>   160    <span class="comment">     *  failure.
+</span>   161    <span class="comment">     */</span>
+   162        @DirectCall
+   163        ULong sysCtlClockFreqSet(ULong ulConfig, ULong ulSysClock);
+   164    
+   165        <span class="xdoc">/*!
+</span>   166    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   167    <span class="xdoc">     *  ======== registerFreqListener ========
+</span>   168    <span class="xdoc">     *  Register a module to be notified whenever the frequency changes.
+</span>   169    <span class="xdoc">     *
+</span>   170    <span class="xdoc">     *  The registered module must have a function named 'fireFrequencyUpdate'
+</span>   171    <span class="xdoc">     *  which takes the new frequency as an argument.
+</span>   172    <span class="xdoc">     */</span>
+   173        <span class=key>function</span> registerFreqListener();
+   174    
+   175    <span class=key>internal</span>:
+   176    
+   177        <span class="comment">/*
+</span>   178    <span class="comment">     *  ======== sysCtlClockFreqSetI ========
+</span>   179    <span class="comment">     *  Configures the system clock.
+</span>   180    <span class="comment">     *
+</span>   181    <span class="comment">     *  @param ulConfig is the required configuration of the device clocking.
+</span>   182    <span class="comment">     *  @param ulSysClock is the requested processor frequency.
+</span>   183    <span class="comment">     *
+</span>   184    <span class="comment">     *  @return The actual configured system clock frequency in Hz or zero if
+</span>   185    <span class="comment">     *  the value could not be changed due to a parameter error or PLL lock
+</span>   186    <span class="comment">     *  failure.
+</span>   187    <span class="comment">     */</span>
+   188        ULong sysCtlClockFreqSetI(ULong ulConfig, ULong ulSysClock);
+   189    
+   190        <span class="comment">/*
+</span>   191    <span class="comment">     *  ======== init ========
+</span>   192    <span class="comment">     *  Generated entry point into clock initialization function.
+</span>   193    <span class="comment">     *
+</span>   194    <span class="comment">     *  Installed as a Startup.firstFxn.
+</span>   195    <span class="comment">     *  Calls Boot_sysCtlClockFreqSet().
+</span>   196    <span class="comment">     */</span>
+   197        Void init();
+   198    
+   199        <span class="xdoc">/*!
+</span>   200    <span class="xdoc">     *  computed RCC value based on settings
+</span>   201    <span class="xdoc">     */</span>
+   202        <span class=key>metaonly</span> <span class=key>config</span> UInt ulConfig;
+   203    
+   204        <span class="xdoc">/*!
+</span>   205    <span class="xdoc">     *  computed cpu frequency based on clock settings
+</span>   206    <span class="xdoc">     */</span>
+   207        <span class=key>metaonly</span> <span class=key>config</span> UInt computedCpuFrequency;
+   208    
+   209    };
+</pre>
+</body></html>

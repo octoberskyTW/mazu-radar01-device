@@ -1,0 +1,742 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.sysbios.family.arm.v7r.keystone3.Hwi</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/*
+</span>     2    <span class="comment"> * Copyright (c) 2016-2018, Texas Instruments Incorporated
+</span>     3    <span class="comment"> * All rights reserved.
+</span>     4    <span class="comment"> *
+</span>     5    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>     6    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>     7    <span class="comment"> * are met:
+</span>     8    <span class="comment"> *
+</span>     9    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    10    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    11    <span class="comment"> *
+</span>    12    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    13    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    14    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    15    <span class="comment"> *
+</span>    16    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    17    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    18    <span class="comment"> *    from this software without specific prior written permission.
+</span>    19    <span class="comment"> *
+</span>    20    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    21    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    22    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    23    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    24    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    25    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    26    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    27    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    28    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    29    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    30    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    31    <span class="comment"> */</span>
+    32    <span class="comment">/*
+</span>    33    <span class="comment"> *  ======== Hwi.xdc ========
+</span>    34    <span class="comment"> */</span>
+    35    <span class=key>package</span> ti.sysbios.family.arm.v7r.keystone3;
+    36    
+    37    import xdc.runtime.Diags;
+    38    import xdc.runtime.Error;
+    39    import xdc.runtime.Log;
+    40    import xdc.rov.ViewInfo;
+    41    
+    42    import ti.sysbios.interfaces.IHwi;
+    43    
+    44    <span class="xdoc">/*!
+</span>    45    <span class="xdoc"> *  ======== Hwi ========
+</span>    46    <span class="xdoc"> *  Hardware Interrupt Support Module.
+</span>    47    <span class="xdoc"> *
+</span>    48    <span class="xdoc"> *  //TODO Note: FIQ interrupt handler must save FIQ context before using FPU
+</span>    49    <span class="xdoc"> *
+</span>    50    <span class="xdoc"> *  This Hwi module provides Keystone3 Vectored Interrupt Manager (VIM)
+</span>    51    <span class="xdoc"> *  specific implementations of the APIs defined in
+</span>    52    <span class="xdoc"> *  {<b>@link</b> ti.sysbios.interfaces.IHwi IHwi}.
+</span>    53    <span class="xdoc"> *
+</span>    54    <span class="xdoc"> *  Additional device-specific APIs are also provided.
+</span>    55    <span class="xdoc"> *
+</span>    56    <span class="xdoc"> *  <b>@a(Minimal Latency Interrupts)</b>
+</span>    57    <span class="xdoc"> *  For applications requiring extremely low interrupt latency, this Hwi module
+</span>    58    <span class="xdoc"> *  allows the user to create FIQ interrupts that have a light weight interrupt
+</span>    59    <span class="xdoc"> *  dispatcher. Though not a precisely correct classification, these interrupts
+</span>    60    <span class="xdoc"> *  are referred to as "Zero latency" interrupts.
+</span>    61    <span class="xdoc"> *
+</span>    62    <span class="xdoc"> *  "FIQ" aka "Zero latency" interrupts can be created by setting the Hwi_Param
+</span>    63    <span class="xdoc"> *  {<b>@link</b> #type} to Hwi_Type_FIQ. FIQ interrupts offer low interrupt latency
+</span>    64    <span class="xdoc"> *  as they do not have to pass through the regular SYS/BIOS interrupt
+</span>    65    <span class="xdoc"> *  dispatcher and are always enabled. When auto nesting is enabled, all
+</span>    66    <span class="xdoc"> *  VIM interrupts of equal or lower priority will be disabled while the
+</span>    67    <span class="xdoc"> *  interrupt is being serviced. However, none of the "Zero latency" interrupts
+</span>    68    <span class="xdoc"> *  are disabled (masked).
+</span>    69    <span class="xdoc"> *
+</span>    70    <span class="xdoc"> *  Unlike regular IRQ interrupts, FIQ interrupts do not run on the System stack
+</span>    71    <span class="xdoc"> *  but on their own FIQ stack. The stack pointer, size and section name for the
+</span>    72    <span class="xdoc"> *  FIQ stack can be set using the {<b>@link</b> #fiqStack}, {<b>@link</b> #fiqStackSize}
+</span>    73    <span class="xdoc"> *  and {<b>@link</b> #fiqStackSection} module wide configuration params.
+</span>    74    <span class="xdoc"> *
+</span>    75    <span class="xdoc"> *  <b>@a(Constraints of using FIQ aka Zero latency interrupts)</b>
+</span>    76    <span class="xdoc"> *  FIQ Interrupts bypass the regular SYS/BIOS interrupt dispatcher and are
+</span>    77    <span class="xdoc"> *  therefore not allowed to call ANY SYS/BIOS APIs that affect thread
+</span>    78    <span class="xdoc"> *  scheduling. Examples of API that should not be invoked are:
+</span>    79    <span class="xdoc"> *
+</span>    80    <span class="xdoc"> *  <b>@p(dlist)</b>
+</span>    81    <span class="xdoc"> *    - Swi_post(),
+</span>    82    <span class="xdoc"> *    - Semaphore_post(),
+</span>    83    <span class="xdoc"> *    - Event_post(),
+</span>    84    <span class="xdoc"> *    - Task_yield()
+</span>    85    <span class="xdoc"> *  <b>@p</b>
+</span>    86    <span class="xdoc"> *
+</span>    87    <span class="xdoc"> *  Here's an example showing how to create a Hwi of FIQ type:
+</span>    88    <span class="xdoc"> *
+</span>    89    <span class="xdoc"> *  <b>@p(code)</b>
+</span>    90    <span class="xdoc"> *  *.cfg:
+</span>    91    <span class="xdoc"> *  var Hwi = xdc.useModule('ti.sysbios.family.arm.v7r.keystone3.Hwi');
+</span>    92    <span class="xdoc"> *  Hwi.fiqStackSize = 2048;
+</span>    93    <span class="xdoc"> *  Hwi.fiqStackSection = ".myFiqStack"
+</span>    94    <span class="xdoc"> *  Program.sectMap[".myFiqStack"] = "RAM";
+</span>    95    <span class="xdoc"> *
+</span>    96    <span class="xdoc"> *  *.c:
+</span>    97    <span class="xdoc"> *  #include &lt;xdc/std.h&gt;
+</span>    98    <span class="xdoc"> *  #include &lt;xdc/runtime/System.h&gt;
+</span>    99    <span class="xdoc"> *
+</span>   100    <span class="xdoc"> *  #include &lt;ti/sysbios/BIOS.h&gt;
+</span>   101    <span class="xdoc"> *  #include &lt;ti/sysbios/family/arm/v7r/keystone3/Hwi.h&gt;
+</span>   102    <span class="xdoc"> *
+</span>   103    <span class="xdoc"> *  #include &lt;xdc/cfg/global.h&gt;
+</span>   104    <span class="xdoc"> *
+</span>   105    <span class="xdoc"> *  Void myIsrFIQ(UArg arg)
+</span>   106    <span class="xdoc"> *  {
+</span>   107    <span class="xdoc"> *      ...
+</span>   108    <span class="xdoc"> *  }
+</span>   109    <span class="xdoc"> *
+</span>   110    <span class="xdoc"> *  Void main(Void)
+</span>   111    <span class="xdoc"> *  {
+</span>   112    <span class="xdoc"> *      Hwi_Params hwiParams;
+</span>   113    <span class="xdoc"> *
+</span>   114    <span class="xdoc"> *      Hwi_Params_init(&amp;hwiParams);
+</span>   115    <span class="xdoc"> *      hwiParams.type = Hwi_Type_FIQ;
+</span>   116    <span class="xdoc"> *      Hwi_create(INT_NUM_FIQ, myIsrFIQ, &amp;hwiParams, NULL);
+</span>   117    <span class="xdoc"> *      ...
+</span>   118    <span class="xdoc"> *
+</span>   119    <span class="xdoc"> *      BIOS_start();
+</span>   120    <span class="xdoc"> *  }
+</span>   121    <span class="xdoc"> *  <b>@p</b>
+</span>   122    <span class="xdoc"> *
+</span>   123    <span class="xdoc"> *  <b>@a(Interrupt Priorities)</b>
+</span>   124    <span class="xdoc"> *  FIQ interrupts have the highest priority i.e. any interrupt of FIQ type will
+</span>   125    <span class="xdoc"> *  have a higher priority than any other interrupt of IRQ type.
+</span>   126    <span class="xdoc"> *
+</span>   127    <span class="xdoc"> *  IRQ interrupts (or vectored interrupts) can be assigned different priority
+</span>   128    <span class="xdoc"> *  levels, ranging from 0-15. Lower priority levels imply a higher effective
+</span>   129    <span class="xdoc"> *  interrupt priority. Priority level can be set by writing to the
+</span>   130    <span class="xdoc"> *  {<b>@link</b> #priority} Hwi param. By default, all interrupts are set to the
+</span>   131    <span class="xdoc"> *  lowest priority (highest priority value).
+</span>   132    <span class="xdoc"> *
+</span>   133    <span class="xdoc"> *  If multiple interrupts that are at the same priority level occur at the
+</span>   134    <span class="xdoc"> *  same time, the smaller lower interrupt number wins arbitration.
+</span>   135    <span class="xdoc"> *
+</span>   136    <span class="xdoc"> *  <b>@a(Interrupt Masking Options)</b>
+</span>   137    <span class="xdoc"> *  In this Hwi module, the maskSetting instance configuration parameter is
+</span>   138    <span class="xdoc"> *  ignored. Effectively, only the {<b>@link</b> #MaskingOption_LOWER} is supported.
+</span>   139    <span class="xdoc"> *
+</span>   140    <span class="xdoc"> *  <b>@a(More Hwi examples)</b>
+</span>   141    <span class="xdoc"> *  Here's an example showing how to construct a Hwi at runtime:
+</span>   142    <span class="xdoc"> *  <b>@p(code)</b>
+</span>   143    <span class="xdoc"> *  *.c:
+</span>   144    <span class="xdoc"> *  #include &lt;ti/sysbios/family/arm/v7r/keystone3/Hwi.h&gt;
+</span>   145    <span class="xdoc"> *
+</span>   146    <span class="xdoc"> *  Hwi_Struct hwiStruct;
+</span>   147    <span class="xdoc"> *
+</span>   148    <span class="xdoc"> *  Void myIsrIRQ(UArg arg)
+</span>   149    <span class="xdoc"> *  {
+</span>   150    <span class="xdoc"> *      ...
+</span>   151    <span class="xdoc"> *  }
+</span>   152    <span class="xdoc"> *
+</span>   153    <span class="xdoc"> *  Void main(Void)
+</span>   154    <span class="xdoc"> *  {
+</span>   155    <span class="xdoc"> *      Hwi_Params hwiParams;
+</span>   156    <span class="xdoc"> *
+</span>   157    <span class="xdoc"> *      Hwi_Params_init(&amp;hwiParams);
+</span>   158    <span class="xdoc"> *      Hwi_construct(&amp;hwiStruct, INT_NUM_IRQ, myIsrIRQ, &amp;hwiParams, NULL);
+</span>   159    <span class="xdoc"> *      ...
+</span>   160    <span class="xdoc"> *      BIOS_start();
+</span>   161    <span class="xdoc"> *  }
+</span>   162    <span class="xdoc"> *  <b>@p</b>
+</span>   163    <span class="xdoc"> *
+</span>   164    <span class="xdoc"> *  <b>@p(html)</b>
+</span>   165    <span class="xdoc"> *  &lt;h3&gt; Calling Context &lt;/h3&gt;
+</span>   166    <span class="xdoc"> *  &lt;table border="1" cellpadding="3"&gt;
+</span>   167    <span class="xdoc"> *    &lt;colgroup span="1"&gt;&lt;/colgroup&gt; &lt;colgroup span="5" align="center"&gt;&lt;/colgroup&gt;
+</span>   168    <span class="xdoc"> *
+</span>   169    <span class="xdoc"> *    &lt;tr&gt;&lt;th&gt; Function                 &lt;/th&gt;&lt;th&gt;  Hwi   &lt;/th&gt;&lt;th&gt;  Swi   &lt;/th&gt;&lt;th&gt;  Task  &lt;/th&gt;&lt;th&gt;  Main  &lt;/th&gt;&lt;th&gt;  Startup  &lt;/th&gt;&lt;/tr&gt;
+</span>   170    <span class="xdoc"> *    &lt;!--                                                                                                                 --&gt;
+</span>   171    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #clearInterrupt}   &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   172    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #create}           &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   173    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #disable}          &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   174    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #disableInterrupt} &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   175    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #disableIRQ}       &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   176    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #enable}           &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   177    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #enableInterrupt}  &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   178    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #enableIRQ}        &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   179    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #getHandle}        &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   180    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #Params_init}      &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   181    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #restore}          &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   182    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #restoreInterrupt} &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   183    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #restoreIRQ}       &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;/tr&gt;
+</span>   184    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #construct}        &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   185    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #delete}           &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   186    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #destruct}         &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   187    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #getHookContext}   &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   188    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #reconfig}         &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   189    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #setFunc}          &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   190    <span class="xdoc"> *    &lt;tr&gt;&lt;td&gt; {<b>@link</b> #setHookContext}   &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   Y    &lt;/td&gt;&lt;td&gt;   N    &lt;/td&gt;&lt;/tr&gt;
+</span>   191    <span class="xdoc"> *    &lt;tr&gt;&lt;td colspan="6"&gt; Definitions: &lt;br /&gt;
+</span>   192    <span class="xdoc"> *       &lt;ul&gt;
+</span>   193    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Hwi&lt;/b&gt;: API is callable from a Hwi thread. &lt;/li&gt;
+</span>   194    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Swi&lt;/b&gt;: API is callable from a Swi thread. &lt;/li&gt;
+</span>   195    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Task&lt;/b&gt;: API is callable from a Task thread. &lt;/li&gt;
+</span>   196    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Main&lt;/b&gt;: API is callable during any of these phases: &lt;/li&gt;
+</span>   197    <span class="xdoc"> *           &lt;ul&gt;
+</span>   198    <span class="xdoc"> *             &lt;li&gt; In your module startup after this module is started (e.g. Hwi_Module_startupDone() returns TRUE). &lt;/li&gt;
+</span>   199    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.lastFxns. &lt;/li&gt;
+</span>   200    <span class="xdoc"> *             &lt;li&gt; During main().&lt;/li&gt;
+</span>   201    <span class="xdoc"> *             &lt;li&gt; During BIOS.startupFxns.&lt;/li&gt;
+</span>   202    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   203    <span class="xdoc"> *         &lt;li&gt; &lt;b&gt;Startup&lt;/b&gt;: API is callable during any of these phases:&lt;/li&gt;
+</span>   204    <span class="xdoc"> *           &lt;ul&gt;
+</span>   205    <span class="xdoc"> *             &lt;li&gt; During xdc.runtime.Startup.firstFxns.&lt;/li&gt;
+</span>   206    <span class="xdoc"> *             &lt;li&gt; In your module startup before this module is started (e.g. Hwi_Module_startupDone() returns FALSE).&lt;/li&gt;
+</span>   207    <span class="xdoc"> *           &lt;/ul&gt;
+</span>   208    <span class="xdoc"> *       &lt;/ul&gt;
+</span>   209    <span class="xdoc"> *    &lt;/td&gt;&lt;/tr&gt;
+</span>   210    <span class="xdoc"> *
+</span>   211    <span class="xdoc"> *
+</span>   212    <span class="xdoc"> *  &lt;/table&gt;
+</span>   213    <span class="xdoc"> *  <b>@p</b>
+</span>   214    <span class="xdoc"> */</span>
+   215    
+   216    @Template(<span class="string">"./Hwi.xdt"</span>)  <span class="comment">/* generates the vector table and the dispatcher */</span>
+   217    @ModuleStartup          <span class="comment">/* generates call to Hwi_Module_startup at startup */</span>
+   218    @InstanceInitStatic     <span class="comment">/* allow constructs in static only systems */</span>
+   219    @CustomHeader
+   220    
+   221    <span class=key>module</span> Hwi <span class=key>inherits</span> ti.sysbios.interfaces.IHwi
+   222    {
+   223    
+   224        <span class=comment>// -------- Module Constants --------</span>
+   225    
+   226        <span class=key>config</span> UInt DEFAULT_INT_PRIORITY = 0xF;
+   227    
+   228        <span class=key>config</span> UInt NUM_INTERRUPTS;
+   229    
+   230        <span class=comment>// -------- Module Types --------</span>
+   231    
+   232        <span class="xdoc">/*! Hwi vector function type definition. */</span>
+   233        <span class=key>typedef</span> Void (*VectorFuncPtr)(<span class=key>void</span>);
+   234    
+   235        <span class="xdoc">/*! <b>@_nodoc</b> Hwi plug function type definition. */</span>
+   236        <span class=key>typedef</span> Void (*PlugFuncPtr)(<span class=key>void</span>);
+   237    
+   238        <span class="xdoc">/*! Interrupt type. IRQ or FIQ */</span>
+   239        <span class=key>enum</span> Type {
+   240            Type_IRQ,                <span class="xdoc">/*! IRQ interrupt. */</span>
+   241            Type_FIQ                 <span class="xdoc">/*! FIQ interrupt. */</span>
+   242        };
+   243    
+   244        <span class="xdoc">/*! Interrupt trigger type. Pulse or Level triggered */</span>
+   245        <span class=key>enum</span> TriggerType {
+   246            TriggerType_LEVEL,
+   247            TriggerType_PULSE
+   248        };
+   249    
+   250        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   251        <span class=key>metaonly</span> <span class=key>struct</span> BasicView {
+   252            Ptr         halHwiHandle;
+   253            String      label;
+   254            String      type;
+   255            String      triggerType;
+   256            Int         intNum;
+   257            String      fxn;
+   258            UArg        arg;
+   259            Ptr         irp;
+   260            String      status;
+   261        };
+   262    
+   263        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   264        <span class=key>metaonly</span> <span class=key>struct</span> ModuleView {
+   265            String      options[4];
+   266            SizeT       hwiStackPeak;
+   267            SizeT       hwiStackSize;
+   268            Ptr         hwiStackBase;
+   269        };
+   270    
+   271        <span class="xdoc">/*! <b>@_nodoc</b> */</span>
+   272        @Facet
+   273        <span class=key>metaonly</span> <span class=key>config</span> ViewInfo.Instance rovViewInfo =
+   274            ViewInfo.create({
+   275                viewMap: [
+   276                    [<span class="string">'Basic'</span>, {type: ViewInfo.INSTANCE, viewInitFxn: <span class="string">'viewInitBasic'</span>, structName: <span class="string">'BasicView'</span>}],
+   277                    [<span class="string">'ChannelMap'</span>, {type: ViewInfo.MODULE_DATA, viewInitFxn: <span class="string">'viewChannelMap'</span>, structName: <span class="string">'ChannelMapView'</span>}],
+   278                    [<span class="string">'Module'</span>, {type: ViewInfo.MODULE, viewInitFxn: <span class="string">'viewInitModule'</span>, structName: <span class="string">'ModuleView'</span>}]
+   279                ]
+   280            });
+   281    
+   282        <span class=comment>// -------- Module Parameters --------</span>
+   283    
+   284        <span class="xdoc">/*! Reset Handler. Default is c_int00 */</span>
+   285        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr resetFunc;
+   286    
+   287        <span class="xdoc">/*!
+</span>   288    <span class="xdoc">     *  Undefined instruction exception handler.
+</span>   289    <span class="xdoc">     *  Default is set to an internal exception handler.
+</span>   290    <span class="xdoc">     */</span>
+   291        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr undefinedInstFunc;
+   292    
+   293        <span class="xdoc">/*! SWI Handler. Default is internal SWI handler */</span>
+   294        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr swiFunc;
+   295    
+   296        <span class="xdoc">/*!
+</span>   297    <span class="xdoc">     *  Prefetch abort exception handler.
+</span>   298    <span class="xdoc">     *  Default is set to an internal exception handler.
+</span>   299    <span class="xdoc">     */</span>
+   300        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr prefetchAbortFunc;
+   301    
+   302        <span class="xdoc">/*!
+</span>   303    <span class="xdoc">     *  Data abort exception handler.
+</span>   304    <span class="xdoc">     *  Default is set to an internal exception handler.
+</span>   305    <span class="xdoc">     */</span>
+   306        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr dataAbortFunc;
+   307    
+   308        <span class="xdoc">/*!
+</span>   309    <span class="xdoc">     *  Reserved exception handler.
+</span>   310    <span class="xdoc">     *  Default is set to an internal exception handler.
+</span>   311    <span class="xdoc">     */</span>
+   312        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr reservedFunc;
+   313    
+   314        <span class="xdoc">/*!
+</span>   315    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   316    <span class="xdoc">     *  IRQ interrupt handler.
+</span>   317    <span class="xdoc">     *  Default is set to an internal exception dispatcher.
+</span>   318    <span class="xdoc">     */</span>
+   319        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr irqFunc;
+   320    
+   321        <span class="xdoc">/*!
+</span>   322    <span class="xdoc">     *  FIQ interrupt handler.
+</span>   323    <span class="xdoc">     *  Default is set to an internal FIQ dispatcher.
+</span>   324    <span class="xdoc">     */</span>
+   325        <span class=key>metaonly</span> <span class=key>config</span> VectorFuncPtr fiqFunc;
+   326    
+   327        <span class="xdoc">/*!
+</span>   328    <span class="xdoc">     *  FIQ stack pointer. Default = null.
+</span>   329    <span class="xdoc">     *  (Indicates that stack is to be created using
+</span>   330    <span class="xdoc">     *  staticPlace())
+</span>   331    <span class="xdoc">     */</span>
+   332        <span class=key>config</span> Ptr fiqStack = <span class=key>null</span>;
+   333    
+   334        <span class="xdoc">/*!
+</span>   335    <span class="xdoc">     *  FIQ stack size in MAUs.
+</span>   336    <span class="xdoc">     *  Default is 1024 bytes.
+</span>   337    <span class="xdoc">     */</span>
+   338        <span class=key>metaonly</span> <span class=key>config</span> SizeT fiqStackSize = 1024;
+   339    
+   340        <span class="xdoc">/*!
+</span>   341    <span class="xdoc">     *  Memory section used for FIQ stack
+</span>   342    <span class="xdoc">     *  Default is null.
+</span>   343    <span class="xdoc">     */</span>
+   344        <span class=key>metaonly</span> <span class=key>config</span> String fiqStackSection = <span class=key>null</span>;
+   345    
+   346        <span class="xdoc">/*!
+</span>   347    <span class="xdoc">     *  Non dispatched IRQ stack pointer. Default = null.
+</span>   348    <span class="xdoc">     *  (Indicates that stack is to be created using
+</span>   349    <span class="xdoc">     *  staticPlace())
+</span>   350    <span class="xdoc">     */</span>
+   351        <span class=key>config</span> Ptr irqStack = <span class=key>null</span>;
+   352    
+   353        <span class="xdoc">/*!
+</span>   354    <span class="xdoc">     *  Non dispatched IRQ stack size in MAUs.
+</span>   355    <span class="xdoc">     *  Default is 1024 bytes.
+</span>   356    <span class="xdoc">     */</span>
+   357        <span class=key>metaonly</span> <span class=key>config</span> SizeT irqStackSize = 1024;
+   358    
+   359        <span class="xdoc">/*!
+</span>   360    <span class="xdoc">     *  Memory section used for non dispatched IRQ stack
+</span>   361    <span class="xdoc">     *  Default is null.
+</span>   362    <span class="xdoc">     */</span>
+   363        <span class=key>metaonly</span> <span class=key>config</span> String irqStackSection = <span class=key>null</span>;
+   364    
+   365        <span class="xdoc">/*!
+</span>   366    <span class="xdoc">     * <b>@_nodoc</b>
+</span>   367    <span class="xdoc">     * VIM base address
+</span>   368    <span class="xdoc">     */</span>
+   369        <span class=key>metaonly</span> <span class=key>config</span> Ptr vimBaseAddress;
+   370    
+   371        <span class="xdoc">/*!
+</span>   372    <span class="xdoc">     *  Error raised when Hwi is already defined
+</span>   373    <span class="xdoc">     */</span>
+   374        <span class=key>config</span> Error.Id E_alreadyDefined = {
+   375            msg: <span class="string">"E_alreadyDefined: Hwi already defined: intr# %d"</span>
+   376        };
+   377    
+   378        <span class="xdoc">/*!
+</span>   379    <span class="xdoc">     *  Error raised if an attempt is made to create a Hwi
+</span>   380    <span class="xdoc">     *  with an interrupt number greater than Hwi_NUM_INTERRUPTS - 1.
+</span>   381    <span class="xdoc">     */</span>
+   382        <span class=key>config</span> Error.Id E_badIntNum = {
+   383            msg: <span class="string">"E_badIntNum, intnum: %d is out of range"</span>
+   384        };
+   385    
+   386        <span class="xdoc">/*!
+</span>   387    <span class="xdoc">     *  Error raised when an undefined interrupt has fired.
+</span>   388    <span class="xdoc">     */</span>
+   389        <span class=key>config</span> Error.Id E_undefined = {
+   390            msg: <span class="string">"E_undefined: Hwi undefined, intNum: %d"</span>
+   391        };
+   392    
+   393        <span class="xdoc">/*!
+</span>   394    <span class="xdoc">     *  Issued just prior to Hwi function invocation (with interrupts disabled)
+</span>   395    <span class="xdoc">     */</span>
+   396        <span class=key>config</span> Log.Event LM_begin = {
+   397            mask: Diags.USER1 | Diags.USER2,
+   398            msg: <span class="string">"LM_begin: hwi: 0x%x, func: 0x%x, preThread: %d, intNum: %d, irp: 0x%x"</span>
+   399        };
+   400    
+   401        <span class="xdoc">/*!
+</span>   402    <span class="xdoc">     *  Issued just after return from Hwi function (with interrupts disabled)
+</span>   403    <span class="xdoc">     */</span>
+   404        <span class=key>config</span> Log.Event LD_end = {
+   405            mask: Diags.USER2,
+   406            msg: <span class="string">"LD_end: hwi: 0x%x"</span>
+   407        };
+   408    
+   409    
+   410        <span class=comment>// -------- Module Functions --------</span>
+   411    
+   412        <span class="xdoc">/*!
+</span>   413    <span class="xdoc">     *  ======== disable ========
+</span>   414    <span class="xdoc">     *  Globally disable interrupts.
+</span>   415    <span class="xdoc">     *
+</span>   416    <span class="xdoc">     *  Hwi_disable globally disables hardware interrupts and returns an
+</span>   417    <span class="xdoc">     *  opaque key indicating whether interrupts were globally enabled or
+</span>   418    <span class="xdoc">     *  disabled on entry to Hwi_disable().
+</span>   419    <span class="xdoc">     *  The actual value of the key is target/device specific and is meant
+</span>   420    <span class="xdoc">     *  to be passed to Hwi_restore().
+</span>   421    <span class="xdoc">     *
+</span>   422    <span class="xdoc">     *  Call Hwi_disable before a portion of a function that needs
+</span>   423    <span class="xdoc">     *  to run without interruption. When critical processing is complete, call
+</span>   424    <span class="xdoc">     *  Hwi_restore or Hwi_enable to reenable hardware interrupts.
+</span>   425    <span class="xdoc">     *
+</span>   426    <span class="xdoc">     *  Servicing of interrupts that occur while interrupts are disabled is
+</span>   427    <span class="xdoc">     *  postponed until interrupts are reenabled. However, if the same type
+</span>   428    <span class="xdoc">     *  of interrupt occurs several times while interrupts are disabled,
+</span>   429    <span class="xdoc">     *  the interrupt's function is executed only once when interrupts are
+</span>   430    <span class="xdoc">     *  reenabled.
+</span>   431    <span class="xdoc">     *
+</span>   432    <span class="xdoc">     *  A context switch can occur when calling Hwi_enable or Hwi_restore if
+</span>   433    <span class="xdoc">     *  an enabled interrupt occurred while interrupts are disabled.
+</span>   434    <span class="xdoc">     *
+</span>   435    <span class="xdoc">     *  Hwi_disable may be called from main(). However, since Hwi interrupts
+</span>   436    <span class="xdoc">     *  are already disabled in main(), such a call has no effect.
+</span>   437    <span class="xdoc">     *
+</span>   438    <span class="xdoc">     *  <b>@a(constraints)</b>
+</span>   439    <span class="xdoc">     *  If a Task switching API such as
+</span>   440    <span class="xdoc">     *  {<b>@link</b> ti.sysbios.knl.Semaphore#pend Semaphore_pend()},
+</span>   441    <span class="xdoc">     *  {<b>@link</b> ti.sysbios.knl.Semaphore#post Semaphore_post()},
+</span>   442    <span class="xdoc">     *  {<b>@link</b> ti.sysbios.knl.Task#sleep Task_sleep()}, or
+</span>   443    <span class="xdoc">     *  {<b>@link</b> ti.sysbios.knl.Task#yield Task_yield()}
+</span>   444    <span class="xdoc">     *  is invoked which results in a context switch while
+</span>   445    <span class="xdoc">     *  interrupts are disabled, an embedded call to
+</span>   446    <span class="xdoc">     *  {<b>@link</b> #enable Hwi_enable} occurs
+</span>   447    <span class="xdoc">     *  on the way to the new thread context which unconditionally re-enables
+</span>   448    <span class="xdoc">     *  interrupts. Interrupts will remain enabled until a subsequent
+</span>   449    <span class="xdoc">     *  {<b>@link</b> #disable Hwi_disable}
+</span>   450    <span class="xdoc">     *  invocation.
+</span>   451    <span class="xdoc">     *
+</span>   452    <span class="xdoc">     *  Swis always run with interrupts enabled.
+</span>   453    <span class="xdoc">     *  See {<b>@link</b> ti.sysbios.knl.Swi#post Swi_post()} for a discussion Swis and
+</span>   454    <span class="xdoc">     *  interrupts.
+</span>   455    <span class="xdoc">     *
+</span>   456    <span class="xdoc">     *  <b>@b(returns)</b>     opaque key for use by Hwi_restore()
+</span>   457    <span class="xdoc">     */</span>
+   458        @Macro
+   459        <span class=key>override</span> UInt disable();
+   460    
+   461        <span class="xdoc">/*!
+</span>   462    <span class="xdoc">     *  ======== enable ========
+</span>   463    <span class="xdoc">     */</span>
+   464        @Macro
+   465        <span class=key>override</span> UInt enable();
+   466    
+   467        <span class="xdoc">/*!
+</span>   468    <span class="xdoc">     *  ======== restore ========
+</span>   469    <span class="xdoc">     */</span>
+   470        @Macro
+   471        <span class=key>override</span> Void restore(UInt key);
+   472    
+   473        <span class="xdoc">/*!
+</span>   474    <span class="xdoc">     *  ======== getHandle ========
+</span>   475    <span class="xdoc">     *  Returns pointer to Hwi instance object.
+</span>   476    <span class="xdoc">     *
+</span>   477    <span class="xdoc">     *  <b>@param(intNum)</b>  interrupt number
+</span>   478    <span class="xdoc">     */</span>
+   479        Object *getHandle(UInt intNum);
+   480    
+   481        <span class="xdoc">/*!
+</span>   482    <span class="xdoc">     *  ======== enableFIQ ========
+</span>   483    <span class="xdoc">     *  Enable FIQ interrupts.
+</span>   484    <span class="xdoc">     *
+</span>   485    <span class="xdoc">     *  <b>@b(returns)</b>     previous FIQ interrupt enable/disable state
+</span>   486    <span class="xdoc">     */</span>
+   487        @Macro
+   488        UInt enableFIQ();
+   489    
+   490        <span class="xdoc">/*!
+</span>   491    <span class="xdoc">     *  ======== disableFIQ ========
+</span>   492    <span class="xdoc">     *  Disable FIQ interrupts.
+</span>   493    <span class="xdoc">     *
+</span>   494    <span class="xdoc">     *  <b>@b(returns)</b>     previous FIQ interrupt enable/disable state
+</span>   495    <span class="xdoc">     */</span>
+   496        @Macro
+   497        UInt disableFIQ();
+   498    
+   499        <span class="xdoc">/*!
+</span>   500    <span class="xdoc">     *  ======== restoreFIQ ========
+</span>   501    <span class="xdoc">     *  Restore FIQ interrupts.
+</span>   502    <span class="xdoc">     *
+</span>   503    <span class="xdoc">     *  <b>@param(key)</b>     enable/disable state to restore
+</span>   504    <span class="xdoc">     */</span>
+   505        @Macro
+   506        Void restoreFIQ(UInt key);
+   507    
+   508        <span class="xdoc">/*!
+</span>   509    <span class="xdoc">     *  ======== enableIRQ ========
+</span>   510    <span class="xdoc">     *  Enable IRQ interrupts.
+</span>   511    <span class="xdoc">     *
+</span>   512    <span class="xdoc">     *  <b>@param(key)</b>     enable/disable state to restore
+</span>   513    <span class="xdoc">     */</span>
+   514        UInt enableIRQ();
+   515    
+   516        <span class="xdoc">/*!
+</span>   517    <span class="xdoc">     *  ======== disableIRQ ========
+</span>   518    <span class="xdoc">     *  Disable IRQ interrupts.
+</span>   519    <span class="xdoc">     *
+</span>   520    <span class="xdoc">     *  <b>@b(returns)</b>     previous IRQ interrupt enable/disable state
+</span>   521    <span class="xdoc">     */</span>
+   522        UInt disableIRQ();
+   523    
+   524        <span class="xdoc">/*!
+</span>   525    <span class="xdoc">     *  ======== restoreIRQ ========
+</span>   526    <span class="xdoc">     *  Restore IRQ interrupts.
+</span>   527    <span class="xdoc">     *
+</span>   528    <span class="xdoc">     *  <b>@param(key)</b>     enable/disable state to restore
+</span>   529    <span class="xdoc">     */</span>
+   530        Void restoreIRQ(UInt key);
+   531    
+   532        <span class="xdoc">/*!
+</span>   533    <span class="xdoc">     *  ======== setPriority ========
+</span>   534    <span class="xdoc">     *  Set an interrupt's priority.
+</span>   535    <span class="xdoc">     *
+</span>   536    <span class="xdoc">     *  Not an instance function so that it can be used
+</span>   537    <span class="xdoc">     *  with non-dispatched interrupts.
+</span>   538    <span class="xdoc">     *
+</span>   539    <span class="xdoc">     *  <b>@param(intNum)</b>      ID of interrupt
+</span>   540    <span class="xdoc">     *  <b>@param(priority)</b>    priority
+</span>   541    <span class="xdoc">     */</span>
+   542        Void setPriority(UInt intNum, UInt priority);
+   543    
+   544        <span class="xdoc">/*!
+</span>   545    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   546    <span class="xdoc">     *  ======== setType ========
+</span>   547    <span class="xdoc">     *  Set an interrupt's type (FIQ/IRQ).
+</span>   548    <span class="xdoc">     *
+</span>   549    <span class="xdoc">     *  Not an instance function so that it can be used
+</span>   550    <span class="xdoc">     *  with non-dispatched interrupts.
+</span>   551    <span class="xdoc">     *
+</span>   552    <span class="xdoc">     *  <b>@param(intNum)</b>      ID of interrupt
+</span>   553    <span class="xdoc">     *  <b>@param(type)</b>        type = FIQ/IRQ
+</span>   554    <span class="xdoc">     */</span>
+   555        Void setType(UInt intNum, Type type);
+   556    
+   557        <span class="xdoc">/*!
+</span>   558    <span class="xdoc">     *  <b>@_nodoc</b>
+</span>   559    <span class="xdoc">     *  ======== setTriggerType ========
+</span>   560    <span class="xdoc">     *  Set an interrupt's trigger type (Pulse/Level).
+</span>   561    <span class="xdoc">     *
+</span>   562    <span class="xdoc">     *  <b>@param(intNum)</b>      ID of interrupt
+</span>   563    <span class="xdoc">     *  <b>@param(triggerType)</b> triggerType = Pulse/Level
+</span>   564    <span class="xdoc">     */</span>
+   565        Void setTriggerType(UInt intNum, TriggerType triggerType);
+   566    
+   567    <span class=key>instance</span>:
+   568    
+   569        <span class="xdoc">/*!
+</span>   570    <span class="xdoc">     *  Interrupt priority.
+</span>   571    <span class="xdoc">     *
+</span>   572    <span class="xdoc">     *  There are a total of 16 different priority levels and therefore
+</span>   573    <span class="xdoc">     *  the priority field can take a value from 0-15. Lower numeric
+</span>   574    <span class="xdoc">     *  value means a higher effective interrupt priority.
+</span>   575    <span class="xdoc">     *
+</span>   576    <span class="xdoc">     *  The default value of -1 is used as a flag to indicate
+</span>   577    <span class="xdoc">     *  the lowest (logical) device-specific priority value.
+</span>   578    <span class="xdoc">     *
+</span>   579    <span class="xdoc">     *  Not all targets/devices support this instance parameter.
+</span>   580    <span class="xdoc">     *  On those that don't, this parameter is ignored.
+</span>   581    <span class="xdoc">     */</span>
+   582        <span class=key>override</span> <span class=key>config</span> Int priority = -1;
+   583    
+   584        <span class="xdoc">/*! Interrupt type (IRQ/FIQ). Default is IRQ. */</span>
+   585        <span class=key>config</span> Type type = Type_IRQ;
+   586    
+   587        <span class="xdoc">/*! Interrupt trigger type (Pulse/Level). Default is Level triggered. */</span>
+   588        <span class=key>config</span> TriggerType triggerType = TriggerType_LEVEL;
+   589    
+   590        <span class="xdoc">/*!
+</span>   591    <span class="xdoc">     *  ======== reconfig ========
+</span>   592    <span class="xdoc">     *  Reconfigure a dispatched interrupt.
+</span>   593    <span class="xdoc">     */</span>
+   594        Void reconfig(FuncPtr fxn, <span class=key>const</span> Params *params);
+   595    
+   596    <span class=key>internal</span>:   <span class="comment">/* not for client use */</span>
+   597    
+   598        <span class=key>struct</span> InterruptGroup {
+   599            UInt32 RAWSTATUSSET;              <span class="xdoc">/*! Interrupt Raw Status/Set */</span>
+   600            UInt32 ENABLEDSTATUSCLEAR;        <span class="xdoc">/*! Interrupt Enabled Status/Clear */</span>
+   601            UInt32 ENABLEDSET;                <span class="xdoc">/*! Interrupt Enabled Set */</span>
+   602            UInt32 ENABLEDCLEAR;              <span class="xdoc">/*! Interrupt Enabled Clear */</span>
+   603            UInt32 IRQENABLEDSTATUSCLEAR;     <span class="xdoc">/*! IRQ Enabled Status/Clear */</span>
+   604            UInt32 FIQENABLEDSTATUSCLEAR;     <span class="xdoc">/*! FIQ Enabled Status/Clear */</span>
+   605            UInt32 INTERRUPTMAP;              <span class="xdoc">/*! Interrupt Map - IRQ or FIQ */</span>
+   606            UInt32 TYPEMAP;                   <span class="xdoc">/*! Type Map - Level or Pulse */</span>
+   607        };
+   608    
+   609        <span class="comment">/*
+</span>   610    <span class="comment">     *  Vectored Interrupt Manager (VIM) Registers
+</span>   611    <span class="comment">     */</span>
+   612        <span class=key>struct</span> VIM {
+   613            UInt32 REVISION;          <span class="xdoc">/*! 0x0000 Revision Register */</span>
+   614            UInt32 INFO;              <span class="xdoc">/*! 0x0004 Info Register */</span>
+   615            UInt32 PRIOIRQ;           <span class="xdoc">/*! 0x0008 Prioritized IRQ */</span>
+   616            UInt32 PRIOFIQ;           <span class="xdoc">/*! 0x000C Prioritized FIQ */</span>
+   617            UInt32 IRQGROUPSTATUS;    <span class="xdoc">/*! 0x0010 IRQ Group Status */</span>
+   618            UInt32 FIQGROUPSTATUS;    <span class="xdoc">/*! 0x0014 FIQ Group Status */</span>
+   619            UInt32 IRQVECADDRESS;     <span class="xdoc">/*! 0x0018 IRQ Vector Address */</span>
+   620            UInt32 FIQVECADDRESS;     <span class="xdoc">/*! 0x001C FIQ Vector Address */</span>
+   621            UInt32 ACTIVEIRQ;         <span class="xdoc">/*! 0x0020 Active IRQ */</span>
+   622            UInt32 ACTIVEFIQ;         <span class="xdoc">/*! 0x0024 Active FIQ */</span>
+   623            UInt32 hole0[2];          <span class="xdoc">/*! 0x0028-0x002F Reserved */</span>
+   624            UInt32 DECVECADDRESS;     <span class="xdoc">/*! 0x0030 DED Vector Address */</span>
+   625            UInt32 hole1[243];        <span class="xdoc">/*! 0x0034-0x03FF Reserved */</span>
+   626            InterruptGroup GROUP[32]; <span class="xdoc">/*! 0x0400-0x07FF Interrupt Group M Regs */</span>
+   627            UInt32 hole2[512];        <span class="xdoc">/*! 0x0800-0x0FFF Reserved */</span>
+   628            UInt32 PRIORITY[1024];    <span class="xdoc">/*! 0x1000-0x1FFF Interrupt N Priority Reg */</span>
+   629            UInt32 VECTOR[1024];      <span class="xdoc">/*! 0x2000-0x2FFF Vector Register */</span>
+   630        };
+   631    
+   632        <span class="comment">/*
+</span>   633    <span class="comment">     *  ======== vim ========
+</span>   634    <span class="comment">     *  Symbol "Hwi_vim" is a physical device
+</span>   635    <span class="comment">     */</span>
+   636        <span class=key>extern</span> volatile VIM vim;
+   637    
+   638        <span class="comment">/*
+</span>   639    <span class="comment">     *  ======== intEnable ========
+</span>   640    <span class="comment">     *  Initial interrupt enable register value
+</span>   641    <span class="comment">     */</span>
+   642        <span class=key>config</span> UInt32 intEnable[];
+   643    
+   644        <span class="comment">/*
+</span>   645    <span class="comment">     * Swi and Task module function pointers.
+</span>   646    <span class="comment">     * Used to decouple Hwi from Swi and Task when
+</span>   647    <span class="comment">     * dispatcherSwiSupport or
+</span>   648    <span class="comment">     * dispatcherTaskSupport is false.
+</span>   649    <span class="comment">     */</span>
+   650        <span class=key>config</span> UInt (*swiDisable)();
+   651        <span class=key>config</span> Void (*swiRestoreHwi)(UInt);
+   652        <span class=key>config</span> UInt (*taskDisable)();
+   653        <span class=key>config</span> Void (*taskRestoreHwi)(UInt);
+   654    
+   655        <span class="comment">/*
+</span>   656    <span class="comment">     *  ======== postInit ========
+</span>   657    <span class="comment">     *  finish initializing static and dynamic Hwis
+</span>   658    <span class="comment">     */</span>
+   659        Int postInit(Object *hwi, Error.Block *eb);
+   660    
+   661        <span class="comment">/*
+</span>   662    <span class="comment">     *  ======== initIntController ========
+</span>   663    <span class="comment">     */</span>
+   664        Void initIntController();
+   665    
+   666        <span class="comment">/* assembly code mode registers setup */</span>
+   667        Void init();
+   668    
+   669        <span class="comment">/* Interrupt Dispatcher assembly code wrapper */</span>
+   670        Void dispatchIRQ();
+   671    
+   672        <span class="comment">/* FIQ Interrupt Dispatcher */</span>
+   673        Void dispatchFIQC();
+   674    
+   675        <span class="comment">/* IRQ Interrupt Dispatcher */</span>
+   676        Void dispatchIRQC(Irp irp);
+   677    
+   678        <span class="comment">/* non plugged interrupt handler */</span>
+   679        Void nonPluggedHwiHandler();
+   680    
+   681        <span class="comment">/*
+</span>   682    <span class="comment">     *  ======== plug ========
+</span>   683    <span class="comment">     *  Plug an interrupt vector with an ISR address.
+</span>   684    <span class="comment">     *
+</span>   685    <span class="comment">     *  @param(intNum)  interrupt number
+</span>   686    <span class="comment">     *  @param(fxn)     pointer to ISR function
+</span>   687    <span class="comment">     */</span>
+   688        Void plug(UInt intNum, PlugFuncPtr fxn);
+   689    
+   690        <span class="xdoc">/*!
+</span>   691    <span class="xdoc">     *  const array to hold all HookSet objects.
+</span>   692    <span class="xdoc">     */</span>
+   693        <span class=key>config</span> HookSet hooks[<span class=key>length</span>] = [];
+   694    
+   695        <span class="xdoc">/*! Meta World Only Hwi Configuration Object. */</span>
+   696        <span class=key>metaonly</span> <span class=key>struct</span> InterruptObj {
+   697            Bool used;              <span class="comment">/* Interrupt already defined? */</span>
+   698            FuncPtr fxn;            <span class="comment">/* Dispatched ISR function */</span>
+   699        };
+   700    
+   701        <span class="xdoc">/*!
+</span>   702    <span class="xdoc">     * Meta-only array of interrupt objects.
+</span>   703    <span class="xdoc">     * This meta-only array of Hwi config objects is initialized
+</span>   704    <span class="xdoc">     * in Hwi.xs:module$meta$init().
+</span>   705    <span class="xdoc">     */</span>
+   706        <span class=key>metaonly</span> <span class=key>config</span> InterruptObj interrupt[];
+   707    
+   708        <span class=key>struct</span> Instance_State {
+   709            Type        type;                   <span class=comment>// Interrupt Type</span>
+   710            UArg        arg;                    <span class=comment>// Argument to Hwi function.</span>
+   711            FuncPtr     fxn;                    <span class=comment>// Hwi function.</span>
+   712            Int         intNum;                 <span class=comment>// Interrupt number</span>
+   713            Irp         irp;                    <span class=comment>// current IRP</span>
+   714            Ptr         hookEnv[];
+   715            Int         priority;               <span class=comment>// Interript priority</span>
+   716            TriggerType triggerType;            <span class=comment>// Trigger Type</span>
+   717        };
+   718    
+   719        <span class=key>struct</span> Module_State {
+   720            Char        *taskSP;                <span class="comment">/* temporary storage of interrupted
+</span>   721    <span class="comment">                                               Task's SP during ISR execution */</span>
+   722            Char        *isrStack;              <span class="comment">/* Points to isrStack address */</span>
+   723            Ptr         isrStackBase;           <span class="comment">/* _stack */</span>
+   724            Ptr         isrStackSize;           <span class="comment">/* _STACK_SIZE */</span>
+   725            Char        fiqStack[];             <span class="comment">/* buffer used for FIQ stack */</span>
+   726            SizeT       fiqStackSize;
+   727            Char        irqStack[];             <span class="comment">/* buffer used for non dispatched
+</span>   728    <span class="comment">                                               IRQ stack */</span>
+   729            SizeT       irqStackSize;
+   730            Handle      dispatchTable[];        <span class="comment">/* dispatch table */</span>
+   731            UInt        spuriousInts;           <span class="comment">/* Count of spurious interrupts */</span>
+   732        };
+   733    }
+</pre>
+</body></html>

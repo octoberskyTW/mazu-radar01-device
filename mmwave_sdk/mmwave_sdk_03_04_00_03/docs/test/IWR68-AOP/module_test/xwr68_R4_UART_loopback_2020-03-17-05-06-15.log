@@ -1,0 +1,506 @@
+mss in binary >>> xwr68xx_uart_mss.xer4f
+eth008 Board details:
+IP address: 10.218.113.67
+
+Port: 17494
+
+connecting...
+Relay states 8->1 : 01000001
+7 off
+8 off
+Relay states 8->1 : 00000001
+7 on
+Relay states 8->1 : 01000001
+exit
+Disconnected
+Pre-Script returned: Success
+**************************************************
+Testcase mods & parameters invoked:
+**************************************************
+Two core test case: None (this is not a two core testcase)
+
+**************************************************
+Copying test case files from the Build server
+**************************************************
+Testdata possible location 1: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/uart/test/testdata
+
+
+Testdata directory was not found on Testdata possible location 1
+
+
+Testdata possible location 2: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/uart/test/xwr68xx/testdata
+
+
+Testdata directory was not found on Testdata possible location 2
+
+Call to copy_testcase_binary:
+TCP: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/uart/test/xwr68xx; /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09
+
+Copying testcase binary file from http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/uart/test/xwr68xx/xwr68xx_uart_mss.xer4f to /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09 using command: 
+wget -e robots=off --no-proxy -N -T 30 -t 2 -P /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09 http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/uart/test/xwr68xx/xwr68xx_uart_mss.xer4f
+**************************************************
+Executing Testcase:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_uart_mss.xer4f
+**************************************************
+Checking if Py4J Gateway server has started...
+Py4J Gateway Server is Started
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/DEBUGSSM_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/CS_DAP_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/Cortex_R4_0
+DSS test case opening debug session.
+
+cr4ctl = 0xadad00
+
+Loading binary to the DUT:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_uart_mss.xer4f
+
+**************************************************
+ Parameters found in the Binary arguments : 
+{'gMCPIUARTNonLoopbackTestEnable(8)': '0', 'gMCPIUARTDMATestEnable(8)': '0'}
+**************************************************
+Reading address of symbol: gMCPIUARTNonLoopbackTestEnable
+Address of symbol obtained: 0x800d750
+Write value 0 to address 0x800d750 
+Value updated successfully
+Reading address of symbol: gMCPIUARTDMATestEnable
+Address of symbol obtained: 0x800d719
+Write value 0 to address 0x800d719 
+Value updated successfully
+binary path = /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_uart_mss.xer4f
+
+total CCS time = 103
+
+
+**************************************************
+CIO Log captured for the testcase
+**************************************************
+******************************************
+Debug: Launching the UART Test Application
+CPU Clock Frequency: 200000000
+******************************************
+Debug: Launching BIOS [Reset the FIQ]
+Debug: UART PINMUX configurations for MSS and DSS have been initialized
+Debug: UART Instance 800d5b4 has been opened successfully
+Debug: UART Instance 800d5b4 has been closed successfully
+Debug: UART Instance 800d5b4 has been reopened successfully
+Debug: UART Write with invalid buffer passed
+Debug: UART Write with invalid size passed
+Debug: UART Write with invalid buffer & size passed
+Debug: UART Write Polling with invalid buffer passed
+Debug: UART Write Polling with invalid size passed
+Debug: UART Write Polling with invalid buffer & size passed
+Debug: UART Read with invalid buffer passed
+Debug: UART Read with invalid size passed
+Debug: UART Read with invalid buffer & size passed
+Debug: UART Read Polling with invalid buffer passed
+Debug: UART Read Polling with invalid size passed
+Debug: UART Read Polling with invalid buffer & size passed
+Feature: Basic UART API: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 64
+Debug: Transmit         : 1084661 ticks
+Debug: Tx Interrupt     : 63
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in Non-DMA Blocking Mode [Data Size 64 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 64
+Debug: Transmit         : 1085779 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 1
+Feature: UART 0 Profile Test in DMA Blocking Mode [Data Size 64 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 64
+Debug: Transmit         : 1083389 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in Non-DMA Polling Mode [Data Size 64 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 64
+Debug: Transmit         : 1084768 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in DMA Polling Mode [Data Size 64 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 256
+Debug: Transmit         : 4433147 ticks
+Debug: Tx Interrupt     : 255
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in Non-DMA Blocking Mode [Data Size 256 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 256
+Debug: Transmit         : 4434325 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 1
+Feature: UART 0 Profile Test in DMA Blocking Mode [Data Size 256 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 256
+Debug: Transmit         : 4431818 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in Non-DMA Polling Mode [Data Size 256 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 256
+Debug: Transmit         : 4433228 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in DMA Polling Mode [Data Size 256 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 1024
+Debug: Transmit         : 17827087 ticks
+Debug: Tx Interrupt     : 1023
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in Non-DMA Blocking Mode [Data Size 1024 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 1024
+Debug: Transmit         : 17828171 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 1
+Feature: UART 0 Profile Test in DMA Blocking Mode [Data Size 1024 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 1024
+Debug: Transmit         : 17825742 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in Non-DMA Polling Mode [Data Size 1024 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 1024
+Debug: Transmit         : 17827122 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in DMA Polling Mode [Data Size 1024 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 4096
+Debug: Transmit         : 71402745 ticks
+Debug: Tx Interrupt     : 4095
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in Non-DMA Blocking Mode [Data Size 4096 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 4096
+Debug: Transmit         : 71403964 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 1
+Feature: UART 0 Profile Test in DMA Blocking Mode [Data Size 4096 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 4096
+Debug: Transmit         : 71401517 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in Non-DMA Polling Mode [Data Size 4096 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 4096
+Debug: Transmit         : 71402859 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in DMA Polling Mode [Data Size 4096 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 8000
+Debug: Transmit         : 139488544 ticks
+Debug: Tx Interrupt     : 7999
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in Non-DMA Blocking Mode [Data Size 8000 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 8000
+Debug: Transmit         : 139489608 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 1
+Feature: UART 0 Profile Test in DMA Blocking Mode [Data Size 8000 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 8000
+Debug: Transmit         : 139487206 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in Non-DMA Polling Mode [Data Size 8000 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 8000
+Debug: Transmit         : 139488588 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 0 Profile Test in DMA Polling Mode [Data Size 8000 bytes]: Passed
+Feature: DMA/Normal Profile: Passed
+*************************************************************
+Debug: Testing HW Capabilities @ Baud Rate: 115200
+*************************************************************
+Debug: UART-1 PIN Mux capability test passed
+Debug: UART-3 Read capability test passed
+Debug: Write to the UART-3 was successful. Please verify the Console application.
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 64
+Debug: Transmit         : 1084749 ticks
+Debug: Tx Interrupt     : 63
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in Non-DMA Blocking Mode [Data Size 64 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 64
+Debug: Transmit         : 1085862 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 1
+Feature: UART 1 Profile Test in DMA Blocking Mode [Data Size 64 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 64
+Debug: Transmit         : 1083364 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in Non-DMA Polling Mode [Data Size 64 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 64
+Debug: Transmit         : 1084767 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in DMA Polling Mode [Data Size 64 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 256
+Debug: Transmit         : 4433139 ticks
+Debug: Tx Interrupt     : 255
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in Non-DMA Blocking Mode [Data Size 256 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 256
+Debug: Transmit         : 4434324 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 1
+Feature: UART 1 Profile Test in DMA Blocking Mode [Data Size 256 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 256
+Debug: Transmit         : 4431903 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in Non-DMA Polling Mode [Data Size 256 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 256
+Debug: Transmit         : 4433250 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in DMA Polling Mode [Data Size 256 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 1024
+Debug: Transmit         : 17827085 ticks
+Debug: Tx Interrupt     : 1023
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in Non-DMA Blocking Mode [Data Size 1024 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 1024
+Debug: Transmit         : 17828264 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 1
+Feature: UART 1 Profile Test in DMA Blocking Mode [Data Size 1024 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 1024
+Debug: Transmit         : 17825819 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in Non-DMA Polling Mode [Data Size 1024 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 1024
+Debug: Transmit         : 17827188 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in DMA Polling Mode [Data Size 1024 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 4096
+Debug: Transmit         : 71402751 ticks
+Debug: Tx Interrupt     : 4095
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in Non-DMA Blocking Mode [Data Size 4096 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 4096
+Debug: Transmit         : 71403906 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 1
+Feature: UART 1 Profile Test in DMA Blocking Mode [Data Size 4096 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 4096
+Debug: Transmit         : 71401499 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in Non-DMA Polling Mode [Data Size 4096 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 4096
+Debug: Transmit         : 71402872 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in DMA Polling Mode [Data Size 4096 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 8000
+Debug: Transmit         : 139488538 ticks
+Debug: Tx Interrupt     : 7999
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in Non-DMA Blocking Mode [Data Size 8000 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 8000
+Debug: Transmit         : 139489702 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 1
+Feature: UART 1 Profile Test in DMA Blocking Mode [Data Size 8000 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 8000
+Debug: Transmit         : 139487260 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in Non-DMA Polling Mode [Data Size 8000 bytes]: Passed
+Debug: Transmit Measurements
+Debug: Baud Rate        : 115200
+Debug: Data Size        : 8000
+Debug: Transmit         : 139488639 ticks
+Debug: Tx Interrupt     : 0
+Debug: Tx DMA Interrupt : 0
+Feature: UART 1 Profile Test in DMA Polling Mode [Data Size 8000 bytes]: Passed
+Feature: UART3 DMA/Normal Profile: Passed
+Feature: UART SOC Hw Capabilties: Passed
+*************************************************************
+Debug: Testing UART in Polling Mode @ Baud Rate: 9600
+*************************************************************
+Debug: Dummy loopback workaround completed.
+Debug: Successfully validated receive/transmit for payload of 128 bytes
+Debug: Receive & Transmit Measurements
+Debug: Baud Rate  : 9600
+Debug: Rx Average : 207522 ticks
+Debug: Tx Average : 329 ticks
+*************************************************************
+Debug: Testing UART in Polling Mode @ Baud Rate: 115200
+*************************************************************
+Debug: Dummy loopback workaround completed.
+Debug: Successfully validated receive/transmit for payload of 128 bytes
+Debug: Receive & Transmit Measurements
+Debug: Baud Rate  : 115200
+Debug: Rx Average : 16598 ticks
+Debug: Tx Average : 316 ticks
+*************************************************************
+Debug: Testing UART in Polling Mode @ Baud Rate: 921600
+*************************************************************
+Debug: Dummy loopback workaround completed.
+Debug: Successfully validated receive/transmit for payload of 128 bytes
+Debug: Receive & Transmit Measurements
+Debug: Baud Rate  : 921600
+Debug: Rx Average : 2199 ticks
+Debug: Tx Average : 314 ticks
+*************************************************************
+Debug: Testing UART in Polling Mode @ Baud Rate: 1843200
+*************************************************************
+Debug: Dummy loopback workaround completed.
+Debug: Successfully validated receive/transmit for payload of 128 bytes
+Debug: Receive & Transmit Measurements
+Debug: Baud Rate  : 1843200
+Debug: Rx Average : 1003 ticks
+Debug: Tx Average : 314 ticks
+*************************************************************
+Debug: Testing UART in Polling Mode @ Baud Rate: 3125000
+*************************************************************
+Debug: Dummy loopback workaround completed.
+Debug: Successfully validated receive/transmit for payload of 128 bytes
+Debug: Receive & Transmit Measurements
+Debug: Baud Rate  : 3125000
+Debug: Rx Average : 506 ticks
+Debug: Tx Average : 315 ticks
+Feature: UART Polling Data: Passed
+Debug: UART Receive Task [Waiting for the UART Handle]
+*************************************************************
+Debug: Testing UART in Blocking Mode @ Baud Rate: 921600
+*************************************************************
+Debug: Dummy loopback workaround completed.
+Debug: UART Receive Task is active
+Feature: UART Blocking Write: Passed
+Debug: UART Read has been completed
+Debug: UART Blocking Read Test completed successfully
+Feature: UART Blocking Read: Passed
+Value read from Global variable (MCPI_Result): 0
+Test Failure Signature: 0
+Test Log Messages: 
+Feature tested: Basic UART API: Passed
+Feature tested: UART 0 Profile Test in Non-DMA Blocking Mode [Data Size 64 bytes]: Passed
+Feature tested: UART 0 Profile Test in DMA Blocking Mode [Data Size 64 bytes]: Passed
+Feature tested: UART 0 Profile Test in Non-DMA Polling Mode [Data Size 64 bytes]: Passed
+Feature tested: UART 0 Profile Test in DMA Polling Mode [Data Size 64 bytes]: Passed
+Feature tested: UART 0 Profile Test in Non-DMA Blocking Mode [Data Size 256 bytes]: Passed
+Feature tested: UART 0 Profile Test in DMA Blocking Mode [Data Size 256 bytes]: Passed
+Feature tested: UART 0 Profile Test in Non-DMA Polling Mode [Data Size 256 bytes]: Passed
+Feature tested: UART 0 Profile Test in DMA Polling Mode [Data Size 256 bytes]: Passed
+Feature tested: UART 0 Profile Test in Non-DMA Blocking Mode [Data Size 1024 bytes]: Passed
+Feature tested: UART 0 Profile Test in DMA Blocking Mode [Data Size 1024 bytes]: Passed
+Feature tested: UART 0 Profile Test in Non-DMA Polling Mode [Data Size 1024 bytes]: Passed
+Feature tested: UART 0 Profile Test in DMA Polling Mode [Data Size 1024 bytes]: Passed
+Feature tested: UART 0 Profile Test in Non-DMA Blocking Mode [Data Size 4096 bytes]: Passed
+Feature tested: UART 0 Profile Test in DMA Blocking Mode [Data Size 4096 bytes]: Passed
+Feature tested: UART 0 Profile Test in Non-DMA Polling Mode [Data Size 4096 bytes]: Passed
+Feature tested: UART 0 Profile Test in DMA Polling Mode [Data Size 4096 bytes]: Passed
+Feature tested: UART 0 Profile Test in Non-DMA Blocking Mode [Data Size 8000 bytes]: Passed
+Feature tested: UART 0 Profile Test in DMA Blocking Mode [Data Size 8000 bytes]: Passed
+Feature tested: UART 0 Profile Test in Non-DMA Polling Mode [Data Size 8000 bytes]: Passed
+Feature tested: UART 0 Profile Test in DMA Polling Mode [Data Size 8000 bytes]: Passed
+Feature tested: DMA/Normal Profile: Passed
+Feature tested: UART 1 Profile Test in Non-DMA Blocking Mode [Data Size 64 bytes]: Passed
+Feature tested: UART 1 Profile Test in DMA Blocking Mode [Data Size 64 bytes]: Passed
+Feature tested: UART 1 Profile Test in Non-DMA Polling Mode [Data Size 64 bytes]: Passed
+Feature tested: UART 1 Profile Test in DMA Polling Mode [Data Size 64 bytes]: Passed
+Feature tested: UART 1 Profile Test in Non-DMA Blocking Mode [Data Size 256 bytes]: Passed
+Feature tested: UART 1 Profile Test in DMA Blocking Mode [Data Size 256 bytes]: Passed
+Feature tested: UART 1 Profile Test in Non-DMA Polling Mode [Data Size 256 bytes]: Passed
+Feature tested: UART 1 Profile Test in DMA Polling Mode [Data Size 256 bytes]: Passed
+Feature tested: UART 1 Profile Test in Non-DMA Blocking Mode [Data Size 1024 bytes]: Passed
+Feature tested: UART 1 Profile Test in DMA Blocking Mode [Data Size 1024 bytes]: Passed
+Feature tested: UART 1 Profile Test in Non-DMA Polling Mode [Data Size 1024 bytes]: Passed
+Feature tested: UART 1 Profile Test in DMA Polling Mode [Data Size 1024 bytes]: Passed
+Feature tested: UART 1 Profile Test in Non-DMA Blocking Mode [Data Size 4096 bytes]: Passed
+Feature tested: UART 1 Profile Test in DMA Blocking Mode [Data Size 4096 bytes]: Passed
+Feature tested: UART 1 Profile Test in Non-DMA Polling Mode [Data Size 4096 bytes]: Passed
+Feature tested: UART 1 Profile Test in DMA Polling Mode [Data Size 4096 bytes]: Passed
+Feature tested: UART 1 Profile Test in Non-DMA Blocking Mode [Data Size 8000 bytes]: Passed
+Feature tested: UART 1 Profile Test in DMA Blocking Mode [Data Size 8000 bytes]: Passed
+Feature tested: UART 1 Profile Test in Non-DMA Polling Mode [Data Size 8000 bytes]: Passed
+Feature tested: UART 1 Profile Test in DMA Polling Mode [Data Size 8000 bytes]: Passed
+Feature tested: UART3 DMA/Normal Profile: Passed
+Feature tested: UART SOC Hw Capabilties: Passed
+Feature tested: UART Polling Data: Passed
+Feature tested: UART Blocking Read: Passed
+
+
+shutting down py4j gw server.
+
+
+**************************************************
+Terminating the debug session and Shutting down gateway.
+**************************************************
+
+**************************************************
+Test case execution completed
+**************************************************
+
+**************************************************
+Testcase Result : PASS
+**************************************************

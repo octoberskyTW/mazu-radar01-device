@@ -1,0 +1,143 @@
+eth008 Board details:
+IP address: 10.218.113.67
+
+Port: 17494
+
+connecting...
+Relay states 8->1 : 01000001
+7 off
+8 off
+Relay states 8->1 : 00000001
+7 on
+Relay states 8->1 : 01000001
+exit
+Disconnected
+Pre-Script returned: Success
+
+**************************************************
+Testcase mods & parameters invoked:
+**************************************************
+TwoCoreTest:: slave_case: True, binary_file is xwr68xx_watchdog_dss.xe674, local path is /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09, remote path is http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/watchdog/test/xwr68xx, binary_params is testSelection(32)=2;
+
+**************************************************
+Copying test case files from the Build server
+**************************************************
+amk: ARGS['TestcasePath']: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/watchdog/test/xwr68xx
+
+amk: remote_datapath: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/watchdog/test/testdata
+
+A testdata directory was not found on build server for this testcase
+
+
+amk: error logging: testcasepath = http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/watchdog/test/xwr68xx
+amk: error logging: binaryfile = xwr68xx_watchdog_mss.xer4f
+Copying testcase binary file from http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/watchdog/test/xwr68xx/xwr68xx_watchdog_mss.xer4f to /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09 using command: 
+wget -e robots=off --no-proxy -N -T 30 -t 2 -P /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09 http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/watchdog/test/xwr68xx/xwr68xx_watchdog_mss.xer4f
+**************************************************
+Executing Testcase:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_watchdog_mss.xer4f
+**************************************************
+amk: TwoCoreTest:: slave_case: True, binary_file is xwr68xx_watchdog_dss.xe674, local path is /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09, remote path is http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/watchdog/test/xwr68xx, binary_params is testSelection(32)=2;
+
+Checking if Py4J Gateway server has started...
+Py4J Gateway Server is Started
+Two-core test check: dss_execute_obj.two_core_test: True
+
+
+amk: a path in detected cpuList is: Texas Instruments XDS110 USB Debug Probe_0/DEBUGSSM_0
+amk: a path in detected cpuList is: Texas Instruments XDS110 USB Debug Probe_0/CS_DAP_0
+amk: a path in detected cpuList is: Texas Instruments XDS110 USB Debug Probe_0/Cortex_R4_0
+amk: a path in detected cpuList is: Texas Instruments XDS110 USB Debug Probe_0/CSETB_0
+amk: a path in detected cpuList is: Texas Instruments XDS110 USB Debug Probe_0/IcePick_M_0
+amk: a path in detected cpuList is: Texas Instruments XDS110 USB Debug Probe_0/C674X_0
+Slave core now opening debug session, cpuName = C674X_0.
+
+amk: Loading slave core binary:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_watchdog_dss.xe674
+amk: Updating slave binary parameters:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_watchdog_dss.xe674
+
+**************************************************
+ Parameters found in the Binary arguments : 
+{'testSelection(32)': '2'}
+**************************************************
+Reading address of symbol: testSelection
+Address of symbol obtained: 0x80f310
+Write value 2 to address 0x80f310 
+Value updated successfully
+amk: a path in detected cpuList is Texas Instruments XDS110 USB Debug Probe_0/DEBUGSSM_0
+amk: a path in detected cpuList is Texas Instruments XDS110 USB Debug Probe_0/CS_DAP_0
+amk: a path in detected cpuList is Texas Instruments XDS110 USB Debug Probe_0/Cortex_R4_0
+Master core now opening debug session, cpuName = Cortex_R4_0.
+
+Loading binary to the DUT:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_watchdog_mss.xer4f
+
+**************************************************
+ Parameters found in the Binary arguments : 
+{'testSelection(32)': '2'}
+**************************************************
+Reading address of symbol: testSelection
+Address of symbol obtained: 0x80075dc
+Write value 2 to address 0x80075dc 
+Value updated successfully
+binary path = /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_watchdog_mss.xer4f
+
+
+**************************************************
+CIO Log captured for the testcase
+**************************************************
+********************************************************
+Watchdog Unit Test                                      
+Please select the type of test to execute:  
+1. Watchdog reset test                      
+2. Watchdog interrupt CPU test              
+3. Watchdog DSP interrupt CPU test          
+*******************************************************
+> Enter your selection: Debug: Testing watchdog interrupt mode
+Debug: Watchdog Driver NMI received
+Feature: Watchdog testing: Passed
+Value read from Global variable (MCPI_Result): 0
+Test Failure Signature: 0
+Test Log Messages: 
+Feature tested: Watchdog testing: Passed
+
+
+shutting down py4j gw server.
+
+
+**************************************************
+Terminating the debug session and Shutting down gateway.
+**************************************************
+
+**************************************************
+Test case execution completed
+**************************************************
+
+**************************************************
+Testcase Result : PASS
+**************************************************
+***********
+Reading address of symbol: testSelection
+Address of symbol obtained: 0x80075dc
+Write value 2 to address 0x80075dc 
+Value updated successfully
+binary path = /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_watchdog_mss.xer4f
+
+
+**************************************************
+CIO Log captured for the testcase
+**************************************************
+********************************************************
+Watchdog Unit Test                                      
+Please select the type of test to execute:  
+1. Watchdog reset test                      
+2. Watchdog interrupt CPU test              
+3. Watchdog DSP interrupt CPU test          
+*******************************************************
+> Enter your selection: Debug: Testing watchdog interrupt mode
+Debug: Watchdog Driver NMI received
+Feature: Watchdog testing: Passed
+Value read from Global variable (MCPI_Result): 0
+Test Failure Signature: 0
+Test Log Messages: 
+Feature tested: Watchdog testing: Passed
+
+
+shutting down py4j gw server.

@@ -1,0 +1,53 @@
+/*
+ *  Copyright 2018 by Texas Instruments Incorporated.
+ *
+ */
+
+var RtsBuild = xdc.loadCapsule('xdc/runtime/build.xs');
+var KnlBuild = xdc.loadCapsule('xdc/runtime/knl/build.xs');
+
+Pkg.makePrologue = RtsBuild.makePrologue;
+
+/*
+ * These files have been copied from the 18.1.1.LTS compiler release, and
+ * modified to include xdc.runtime.Startup support.
+ */
+var SRCS = ["boot.c", "pre_init.c", "autoinit.c"];
+
+/* define additional sources provided by this package */
+var BOOTFILES = [
+    "autoinit.h",
+    "boot_hooks.h"
+];
+
+Pkg.otherSrcs = SRCS.concat(BOOTFILES);
+Pkg.otherFiles = Pkg.otherSrcs;
+Pkg.otherFiles.$add("link.xdt");
+
+Pkg.generatedFiles = ["lib/"];
+
+var attrs = {
+    profile: Pkg.attrs.profile == "debug" ? "debug" : "release",
+    /* add debug without sacrificing optimizations; this allows stack trace
+     * displays in the debugger
+     */
+    copts: "--symdebug:dwarf --optimize_with_debug"
+};
+
+var cobjs = RtsBuild.objs.concat(KnlBuild.c_objs);
+for (var i = 0; i < Build.targets.length; i++) {
+    var targ = Build.targets[i];
+    if (targ.rts == Pkg.name) {
+        Pkg.addLibrary("lib/" + Pkg.name, targ, attrs).addObjects(cobjs);
+
+        attrs.defs = "-D__TI_RTS_BUILD=1";
+        Pkg.addLibrary("lib/boot", targ, attrs).addObjects(SRCS);
+        attrs.defs = undefined;
+    }
+}
+
+/*
+ *  @(#) ti.targets.msp430.rts430; 1, 0, 0,0; 7-20-2018 14:28:20; /db/ztree/library/trees/xdctargets/xdctargets-r09/src/ xlibrary
+
+ */
+

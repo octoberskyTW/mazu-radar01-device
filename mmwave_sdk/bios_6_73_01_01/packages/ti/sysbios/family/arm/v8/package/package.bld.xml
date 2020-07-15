@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.sysbios.family.arm.v8" version="2, 0, 0, 0" producerId="undefined">
+    <units>
+        <module name="MPU"/>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.sysbios.family.arm.v8.c"/>
+        <srcFile name="MPU.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/debug/ti.sysbios.family.arm.v8.am33f.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/ti.sysbios.family.arm.v8/package/package_ti.sysbios.family.arm.v8.om33f.dep" src="package/package_ti.sysbios.family.arm.v8.c"/>
+        <srcFile name="package/lib/lib/debug/ti.sysbios.family.arm.v8/MPU.om33f.dep" src="MPU.c"/>
+        <srcFile name="lib/debug/ti.sysbios.family.arm.v8.am33fg.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/ti.sysbios.family.arm.v8/package/package_ti.sysbios.family.arm.v8.om33fg.dep" src="package/package_ti.sysbios.family.arm.v8.c"/>
+        <srcFile name="package/lib/lib/debug/ti.sysbios.family.arm.v8/MPU.om33fg.dep" src="MPU.c"/>
+        <srcFile name="lib/debug/ti.sysbios.family.arm.v8.arm33.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/debug/ti.sysbios.family.arm.v8/package/package_ti.sysbios.family.arm.v8.orm33.dep" src="package/package_ti.sysbios.family.arm.v8.c"/>
+        <srcFile name="package/lib/lib/debug/ti.sysbios.family.arm.v8/MPU.orm33.dep" src="MPU.c"/>
+        <srcFile name="package/rel/ti_sysbios_family_arm_v8.tar.gz.dep" src="package/rel/ti_sysbios_family_arm_v8.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.arm.clang.M33F"
+            version="ti.targets.arm.clang.M33F{1,0,6.0,0"
+            rawVersion="Texas Instruments clang version 6.0.0 (ssh://git@bitbucket.itg.ti.com/code/clang.git 4a9bc830088222b14073429421b2815f1d5a1414) (ssh://git@bitbucket.itg.ti.com/code/llvm.git 867403ba8f1446cdd257b568d8a355bf2dcde2df) (based on LLVM 6.0.0svn)Target: arm-ti-none-eabi
+Thread model: posix
+InstalledDir: /db/vendors/ti/arm/llvm/tiarmclang_linux_alpha2//bin
+"
+            platform="ti.platforms.cortexM:MTL1_VSOC:1"
+            isa="v8M"
+            suffix="m33f"
+            rootDir="/db/vendors/ti/arm/llvm/tiarmclang_linux_alpha2/"
+            os="undefined"
+            rts="ti.targets.arm.rtsarm">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="gnu.targets.arm.M33F"
+            version="gnu.targets.arm.M33F{1,0,7.2,1"
+            rawVersion="7.2.1"
+            platform="ti.platforms.cortexM:MTL1_VSOC:1"
+            isa="v8M"
+            suffix="m33fg"
+            rootDir="/db/vendors/linaro/gcc-arm-none-eabi-7-2017-q4-major"
+            os="undefined"
+            rts="gnu.targets.arm.rtsv8M">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+        <target name="iar.targets.arm.M33"
+            version="iar.targets.arm.M33{1,0,8.11,1"
+            rawVersion="8.11.1.47"
+            platform="ti.platforms.cortexM:FVP_MPS2"
+            isa="v8M"
+            suffix="rm33"
+            rootDir="/db/vendors/iar/arm/8.11.1.47/Linux"
+            os="undefined"
+            rts="iar.targets.arm.rts">
+            <model endian="little"
+                codeModel="thumb2"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/debug/ti.sysbios.family.arm.v8"
+        pname="lib/debug/ti.sysbios.family.arm.v8.am33f"
+        profile="debug"
+        target="ti.targets.arm.clang.M33F"/>
+    <library name="lib/debug/ti.sysbios.family.arm.v8"
+        pname="lib/debug/ti.sysbios.family.arm.v8.am33fg"
+        profile="debug"
+        target="gnu.targets.arm.M33F"/>
+    <library name="lib/debug/ti.sysbios.family.arm.v8"
+        pname="lib/debug/ti.sysbios.family.arm.v8.arm33"
+        profile="debug"
+        target="iar.targets.arm.M33"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_sysbios_family_arm_v8"
+        pname="../../../../..//../exports/ti_sysbios_family_arm_v8.tar.gz"
+        label="default"
+        relScript="ti/sysbios/libFilter.xs">
+        <file name="package/package.bld.xml"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package.bld"/>
+        <file name="linkcmd.xdt"/>
+        <file name="MPU.xml"/>
+        <file name="MPU_link.xdt"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/debug/ti.sysbios.family.arm.v8.am33f"/>
+        <file name="package/package_ti.sysbios.family.arm.v8.c"/>
+        <file name="MPU.c"/>
+        <file name="lib/debug/ti.sysbios.family.arm.v8.am33fg"/>
+        <file name="lib/debug/ti.sysbios.family.arm.v8.arm33"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

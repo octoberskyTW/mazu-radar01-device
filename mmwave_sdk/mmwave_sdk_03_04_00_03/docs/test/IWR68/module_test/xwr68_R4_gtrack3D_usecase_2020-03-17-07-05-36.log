@@ -1,0 +1,532 @@
+mss in binary >>> xwr68xx_gtrack3D_usecase_mss.xer4f
+eth008 Board details:
+IP address: 10.218.113.61
+
+Port: 17494
+
+connecting...
+Relay states 8->1 : 01010101
+7 off
+8 off
+Relay states 8->1 : 00010101
+7 on
+Relay states 8->1 : 01010101
+exit
+Disconnected
+Pre-Script returned: Success
+**************************************************
+Testcase mods & parameters invoked:
+**************************************************
+Two core test case: None (this is not a two core testcase)
+
+**************************************************
+Copying test case files from the Build server
+**************************************************
+gtrack case.
+
+/mss
+
+/usecases
+
+http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/alg/gtrack/test
+
+
+amk: remote testcase data path: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/alg/gtrack/test/vectors/usecases/people_counting
+
+
+amk: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/alg/gtrack/test/vectors/usecases/people_counting exists: T/F: True
+debug 1 </mmWave_SDK___iwr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08> 
+
+debug 2 </temp> 
+
+debug 3 </home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test> 
+
+
+Copy-To local testcase data path is: /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/vectors/usecases/people_counting
+
+Test case data file fHistScene4_3d_0001.bin found on server for downloading
+Test case data file fHistScene4_2d_0001.bin found on server for downloading
+Call to copy_testcase_binary:
+TCP: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/alg/gtrack/test/usecases/mss; /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08
+
+Copying testcase binary file from http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/alg/gtrack/test/usecases/mss/xwr68xx_gtrack3D_usecase_mss.xer4f to /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08 using command: 
+wget -e robots=off --no-proxy -N -T 30 -t 2 -P /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08 http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/alg/gtrack/test/usecases/mss/xwr68xx_gtrack3D_usecase_mss.xer4f
+**************************************************
+Executing Testcase:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08/xwr68xx_gtrack3D_usecase_mss.xer4f
+**************************************************
+Checking if Py4J Gateway server has started...
+Py4J Gateway Server is Started
+amk: a path in cpuList is Blackhawk USB560-M Emulator_0/DEBUGSSM_0
+amk: a path in cpuList is Blackhawk USB560-M Emulator_0/CS_DAP_0
+amk: a path in cpuList is Blackhawk USB560-M Emulator_0/Cortex_R4_0
+DSS test case opening debug session.
+
+cr4ctl = 0xadad00
+
+Loading binary to the DUT (no binary args updated):/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08/xwr68xx_gtrack3D_usecase_mss.xer4f
+binary path = /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08/xwr68xx_gtrack3D_usecase_mss.xer4f
+
+total CCS time = 90
+
+
+**************************************************
+CIO Log captured for the testcase
+**************************************************
+******************************************
+Debug: Launching the GTRACK Test Application
+******************************************
+Total Heap Size = 49152 bytes
+HeapMem: Used = 9040 bytes, Free = 40112 bytes
+Gtrack is configured for 3D
+Tracker Configuration
+	stateVectorType: 3
+	maxNumPoints: 250
+	maxNumTracks: 20
+	maxRadialVelocity: 5.2899
+	radialVelocityResolution: 0.0829
+	deltaT: 0.0500
+	initialRadialVelocity: 0.0000
+	maxAcceleration: [0.1000, 0.1000, 0.1000]
+	scenery:
+		 BoundaryBox 0: [-4.0000, 4.0000, 0.5000, 7.5000, -1.0000, 3.0000]
+		 StaticBox 0: [-3.0000, 3.0000, 2.0000, 6.0000, -0.5000, 2.5000]
+	allocation: [60.0000, 200.0000, 0.1000, 5, 1.5000, 2.0000]
+	gating: [3.0000, 1.5000, 1.5000, 2.0000, 0.0000]
+	thresholds: [10, 5, 50, 100, 5]
+Calibration: 1 seconds is 200889565 Cycless
+Calibration: CCNT read is 6 Cycles
+Frame #1, 0 Targets, 0 Points, 0 Tracks, 354 Cycles = (128, 23, 38, 45, 39, 29)... OK
+Frame #2, 0 Targets, 0 Points, 0 Tracks, 327 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #3, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #4, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #5, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #6, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #7, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #8, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #9, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #10, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #11, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #12, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #13, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #14, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #15, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #16, 0 Targets, 0 Points, 0 Tracks, 305 Cycles = (108, 23, 38, 38, 39, 29)... OK
+Frame #17, 0 Targets, 1 Points, 0 Tracks, 625 Cycles = (351, 23, 31, 105, 39, 36)... OK
+Frame #18, 0 Targets, 3 Points, 0 Tracks, 3416 Cycles = (816, 23, 31, 2433, 32, 29)... OK
+Frame #19, 0 Targets, 2 Points, 0 Tracks, 1315 Cycles = (568, 23, 31, 588, 32, 29)... OK
+Frame #20, 0 Targets, 9 Points, 0 Tracks, 17492 Cycles = (2006, 23, 31, 15327, 32, 29)... OK
+Frame #21, 1 Targets, 8 Points, 1 Tracks, 26239 Cycles = (1832, 30, 31, 4239, 19753, 186)... OK
+Frame #22, 1 Targets, 11 Points, 1 Tracks, 46820 Cycles = (2423, 18229, 3790, 1747, 20284, 179)... OK
+Frame #23, 1 Targets, 9 Points, 1 Tracks, 44266 Cycles = (2043, 18214, 3274, 298, 20090, 179)... OK
+Frame #24, 1 Targets, 12 Points, 1 Tracks, 47489 Cycles = (2649, 18311, 4259, 187, 21729, 186)... OK
+Frame #25, 1 Targets, 11 Points, 1 Tracks, 46510 Cycles = (2428, 18243, 3947, 177, 21361, 186)... OK
+Frame #26, 1 Targets, 11 Points, 1 Tracks, 46508 Cycles = (2421, 18266, 3947, 177, 21350, 179)... OK
+Frame #27, 1 Targets, 12 Points, 1 Tracks, 47442 Cycles = (2623, 18251, 4278, 187, 21756, 179)... OK
+Frame #28, 1 Targets, 12 Points, 1 Tracks, 48408 Cycles = (2623, 19189, 4262, 187, 21800, 179)... OK
+Frame #29, 1 Targets, 11 Points, 1 Tracks, 47401 Cycles = (2421, 19205, 3923, 178, 21327, 179)... OK
+Frame #30, 1 Targets, 12 Points, 1 Tracks, 47437 Cycles = (2623, 18244, 4209, 194, 21820, 179)... OK
+Frame #31, 1 Targets, 16 Points, 1 Tracks, 51027 Cycles = (3431, 18277, 5605, 234, 23128, 184)... OK
+Frame #32, 1 Targets, 14 Points, 1 Tracks, 49053 Cycles = (3027, 18251, 5027, 214, 22194, 172)... OK
+Frame #33, 1 Targets, 8 Points, 1 Tracks, 43202 Cycles = (1822, 18250, 3070, 154, 19575, 163)... OK
+Frame #34, 1 Targets, 6 Points, 1 Tracks, 42187 Cycles = (1418, 19186, 2424, 133, 18695, 163)... OK
+Frame #35, 1 Targets, 16 Points, 1 Tracks, 50975 Cycles = (3438, 18243, 5642, 234, 23087, 163)... OK
+Frame #36, 1 Targets, 9 Points, 1 Tracks, 44133 Cycles = (2024, 18262, 3307, 164, 20045, 163)... OK
+Frame #37, 1 Targets, 13 Points, 1 Tracks, 48125 Cycles = (2851, 18308, 4667, 204, 21764, 163)... OK
+Frame #38, 1 Targets, 14 Points, 1 Tracks, 49004 Cycles = (3034, 18258, 4962, 214, 22205, 163)... OK
+Frame #39, 1 Targets, 11 Points, 1 Tracks, 46059 Cycles = (2428, 18271, 3927, 184, 20918, 163)... OK
+Frame #40, 1 Targets, 14 Points, 1 Tracks, 48962 Cycles = (3034, 18251, 4929, 214, 22203, 163)... OK
+Frame #41, 1 Targets, 16 Points, 1 Tracks, 50932 Cycles = (3457, 18276, 5536, 234, 23098, 163)... OK
+Frame #42, 1 Targets, 13 Points, 1 Tracks, 48021 Cycles = (2832, 18251, 4616, 204, 21787, 163)... OK
+Frame #43, 1 Targets, 12 Points, 1 Tracks, 46884 Cycles = (2630, 18251, 4209, 194, 21269, 163)... OK
+Frame #44, 1 Targets, 21 Points, 1 Tracks, 55731 Cycles = (4467, 18277, 7134, 284, 25238, 163)... OK
+Frame #45, 1 Targets, 16 Points, 1 Tracks, 51931 Cycles = (3457, 18294, 5591, 234, 24024, 163)... OK
+Frame #46, 1 Targets, 16 Points, 1 Tracks, 50933 Cycles = (3438, 18258, 5581, 234, 23091, 163)... OK
+Frame #47, 1 Targets, 19 Points, 1 Tracks, 53922 Cycles = (4063, 18277, 6616, 264, 24371, 163)... OK
+Frame #48, 1 Targets, 19 Points, 1 Tracks, 53904 Cycles = (4063, 18284, 6640, 264, 24322, 163)... OK
+Frame #49, 1 Targets, 14 Points, 1 Tracks, 49066 Cycles = (3034, 18250, 5033, 214, 22204, 163)... OK
+Frame #50, 1 Targets, 15 Points, 1 Tracks, 49968 Cycles = (3236, 18243, 5325, 224, 22609, 163)... OK
+Frame #51, 1 Targets, 18 Points, 1 Tracks, 52456 Cycles = (3845, 18299, 5658, 254, 24060, 170)... OK
+Frame #52, 1 Targets, 15 Points, 1 Tracks, 50058 Cycles = (3267, 18321, 5278, 224, 22637, 163)... OK
+Frame #53, 1 Targets, 23 Points, 1 Tracks, 55631 Cycles = (4886, 18338, 6914, 304, 24844, 177)... OK
+Frame #54, 1 Targets, 26 Points, 1 Tracks, 58712 Cycles = (5492, 18315, 7505, 334, 26721, 177)... OK
+Frame #55, 1 Targets, 26 Points, 1 Tracks, 62265 Cycles = (5564, 18285, 7913, 4892, 25273, 170)... OK
+Frame #56, 1 Targets, 17 Points, 1 Tracks, 53356 Cycles = (3746, 19220, 5188, 3086, 21785, 163)... OK
+Frame #57, 2 Targets, 22 Points, 2 Tracks, 76110 Cycles = (4734, 18323, 6178, 4094, 42143, 331)... OK
+Frame #58, 2 Targets, 30 Points, 2 Tracks, 103614 Cycles = (6390, 36466, 13977, 367, 45769, 331)... OK
+Frame #59, 2 Targets, 21 Points, 2 Tracks, 94149 Cycles = (4510, 36463, 10311, 277, 41950, 324)... OK
+Frame #60, 2 Targets, 22 Points, 2 Tracks, 93936 Cycles = (4786, 36458, 10045, 287, 41722, 324)... OK
+Frame #61, 2 Targets, 18 Points, 2 Tracks, 87126 Cycles = (3998, 36480, 7977, 247, 37800, 310)... OK
+Frame #62, 2 Targets, 23 Points, 2 Tracks, 96166 Cycles = (4955, 36447, 11723, 310, 42093, 324)... OK
+Frame #63, 2 Targets, 24 Points, 2 Tracks, 97203 Cycles = (5121, 36466, 11677, 314, 42987, 324)... OK
+Frame #64, 2 Targets, 29 Points, 2 Tracks, 102185 Cycles = (6180, 36465, 14126, 365, 44411, 324)... OK
+Frame #65, 2 Targets, 27 Points, 2 Tracks, 99694 Cycles = (5773, 37380, 12153, 344, 43406, 324)... OK
+Frame #66, 2 Targets, 35 Points, 2 Tracks, 108021 Cycles = (7379, 36483, 15366, 424, 47721, 339)... OK
+Frame #67, 2 Targets, 38 Points, 2 Tracks, 113767 Cycles = (7924, 36471, 17927, 454, 50351, 324)... OK
+Frame #68, 2 Targets, 33 Points, 2 Tracks, 108120 Cycles = (6929, 36494, 15619, 404, 48038, 322)... OK
+Frame #69, 2 Targets, 36 Points, 2 Tracks, 110424 Cycles = (7530, 36474, 16937, 434, 48425, 310)... OK
+Frame #70, 2 Targets, 33 Points, 2 Tracks, 107051 Cycles = (6919, 36481, 15582, 404, 47041, 310)... OK
+Frame #71, 2 Targets, 31 Points, 2 Tracks, 104924 Cycles = (6548, 37421, 14304, 384, 45652, 301)... OK
+Frame #72, 2 Targets, 33 Points, 2 Tracks, 107063 Cycles = (7838, 36488, 15076, 677, 46361, 309)... OK
+Frame #73, 2 Targets, 31 Points, 2 Tracks, 105674 Cycles = (6505, 36479, 14732, 657, 46686, 301)... OK
+Frame #74, 2 Targets, 28 Points, 2 Tracks, 102327 Cycles = (5909, 37404, 13354, 354, 44691, 301)... OK
+Frame #75, 2 Targets, 32 Points, 2 Tracks, 105556 Cycles = (6712, 36466, 15027, 657, 46079, 301)... OK
+Frame #76, 2 Targets, 32 Points, 2 Tracks, 106833 Cycles = (6722, 36466, 15208, 394, 47428, 301)... OK
+Frame #77, 2 Targets, 32 Points, 2 Tracks, 105852 Cycles = (6722, 36488, 15155, 394, 46478, 301)... OK
+Frame #78, 2 Targets, 41 Points, 2 Tracks, 115918 Cycles = (8505, 36496, 19254, 484, 50564, 301)... OK
+Frame #79, 2 Targets, 38 Points, 2 Tracks, 112730 Cycles = (7909, 36480, 17964, 454, 49308, 301)... OK
+Frame #80, 2 Targets, 35 Points, 2 Tracks, 109289 Cycles = (7333, 36442, 16615, 424, 47860, 301)... OK
+Frame #81, 2 Targets, 38 Points, 2 Tracks, 113577 Cycles = (7909, 37382, 17963, 454, 49254, 301)... OK
+Frame #82, 2 Targets, 31 Points, 2 Tracks, 106010 Cycles = (6529, 36442, 14845, 384, 47195, 301)... OK
+Frame #83, 2 Targets, 33 Points, 2 Tracks, 107943 Cycles = (6924, 36442, 15669, 404, 47889, 301)... OK
+Frame #84, 2 Targets, 34 Points, 2 Tracks, 108116 Cycles = (7116, 36442, 16125, 414, 47404, 301)... OK
+Frame #85, 2 Targets, 33 Points, 2 Tracks, 107093 Cycles = (6914, 36442, 15682, 404, 47036, 301)... OK
+Frame #86, 2 Targets, 33 Points, 2 Tracks, 111240 Cycles = (6924, 37444, 14749, 6404, 45104, 301)... OK
+Frame #87, 3 Targets, 34 Points, 3 Tracks, 128868 Cycles = (7156, 36466, 15035, 4241, 65042, 484)... OK
+Frame #88, 3 Targets, 32 Points, 3 Tracks, 145553 Cycles = (6739, 55734, 19949, 773, 61464, 456)... OK
+Frame #89, 3 Targets, 46 Points, 3 Tracks, 164572 Cycles = (9556, 54770, 27991, 1906, 69454, 451)... OK
+Frame #90, 3 Targets, 33 Points, 3 Tracks, 148387 Cycles = (6947, 55691, 20448, 397, 63997, 463)... OK
+Frame #91, 3 Targets, 38 Points, 3 Tracks, 154746 Cycles = (7953, 54762, 23347, 447, 67330, 463)... OK
+Frame #92, 3 Targets, 37 Points, 3 Tracks, 153591 Cycles = (7741, 54783, 22805, 437, 66918, 463)... OK
+Frame #93, 3 Targets, 42 Points, 3 Tracks, 159954 Cycles = (8741, 54776, 25742, 487, 69313, 455)... OK
+Frame #94, 3 Targets, 31 Points, 3 Tracks, 145963 Cycles = (6529, 54759, 19296, 377, 64088, 463)... OK
+Frame #95, 3 Targets, 43 Points, 3 Tracks, 161292 Cycles = (8938, 55714, 26253, 491, 68989, 463)... OK
+Frame #96, 3 Targets, 44 Points, 3 Tracks, 162340 Cycles = (9135, 54763, 26821, 507, 70205, 463)... OK
+Frame #97, 3 Targets, 51 Points, 3 Tracks, 170686 Cycles = (10573, 54740, 30628, 584, 73254, 463)... OK
+Frame #98, 3 Targets, 38 Points, 3 Tracks, 152883 Cycles = (7932, 54686, 22872, 454, 66046, 449)... OK
+Frame #99, 3 Targets, 40 Points, 3 Tracks, 156385 Cycles = (8337, 55678, 24027, 468, 66970, 461)... OK
+Frame #100, 3 Targets, 47 Points, 3 Tracks, 165268 Cycles = (9745, 54748, 28048, 544, 70374, 1371)... OK
+Frame #101, 3 Targets, 46 Points, 3 Tracks, 163225 Cycles = (9554, 54732, 27733, 534, 69776, 452)... OK
+Frame #102, 3 Targets, 46 Points, 3 Tracks, 164305 Cycles = (9587, 54732, 27739, 534, 70809, 460)... OK
+Frame #103, 3 Targets, 44 Points, 3 Tracks, 160643 Cycles = (9164, 54732, 26437, 514, 68892, 460)... OK
+Frame #104, 3 Targets, 51 Points, 3 Tracks, 170524 Cycles = (10577, 54710, 30452, 584, 73297, 460)... OK
+Frame #105, 3 Targets, 42 Points, 3 Tracks, 159003 Cycles = (8775, 54718, 26291, 494, 67821, 460)... OK
+Frame #106, 3 Targets, 56 Points, 3 Tracks, 176881 Cycles = (11610, 54718, 34411, 634, 74604, 460)... OK
+Frame #107, 3 Targets, 49 Points, 3 Tracks, 166253 Cycles = (11126, 54718, 29349, 558, 69604, 460)... OK
+Frame #108, 3 Targets, 51 Points, 3 Tracks, 170475 Cycles = (10686, 55666, 30446, 584, 72189, 460)... OK
+Frame #109, 3 Targets, 45 Points, 3 Tracks, 163042 Cycles = (9491, 54718, 27036, 524, 70382, 447)... OK
+Frame #110, 3 Targets, 41 Points, 3 Tracks, 156143 Cycles = (8721, 54732, 24852, 484, 66455, 455)... OK
+Frame #111, 3 Targets, 37 Points, 3 Tracks, 151095 Cycles = (7839, 54718, 22489, 444, 64701, 460)... OK
+Frame #112, 3 Targets, 34 Points, 3 Tracks, 149281 Cycles = (7203, 54727, 20883, 414, 65155, 455)... OK
+Frame #113, 3 Targets, 25 Points, 3 Tracks, 136724 Cycles = (5526, 54706, 17380, 324, 57895, 449)... OK
+Frame #114, 3 Targets, 29 Points, 3 Tracks, 141759 Cycles = (6224, 54735, 19735, 364, 59808, 449)... OK
+Frame #115, 3 Targets, 18 Points, 3 Tracks, 118851 Cycles = (3881, 55565, 11755, 254, 46517, 430)... OK
+Frame #116, 3 Targets, 29 Points, 3 Tracks, 124623 Cycles = (6176, 37291, 18094, 362, 61796, 460)... OK
+Frame #117, 3 Targets, 23 Points, 3 Tracks, 133228 Cycles = (4923, 55540, 14495, 304, 57102, 426)... OK
+Frame #118, 3 Targets, 35 Points, 3 Tracks, 150408 Cycles = (7398, 54631, 22506, 424, 64554, 451)... OK
+Frame #119, 3 Targets, 33 Points, 3 Tracks, 147910 Cycles = (7008, 55462, 20538, 404, 63603, 451)... OK
+Frame #120, 3 Targets, 33 Points, 3 Tracks, 147048 Cycles = (7005, 54494, 20544, 404, 63706, 451)... OK
+Frame #121, 3 Targets, 40 Points, 3 Tracks, 156837 Cycles = (8477, 54480, 24577, 474, 67945, 451)... OK
+Frame #122, 3 Targets, 43 Points, 3 Tracks, 159914 Cycles = (9068, 54480, 26469, 504, 68498, 451)... OK
+Frame #123, 3 Targets, 34 Points, 3 Tracks, 149409 Cycles = (7266, 54497, 21212, 414, 65125, 451)... OK
+Frame #124, 3 Targets, 34 Points, 3 Tracks, 149464 Cycles = (7290, 55468, 21249, 414, 64148, 451)... OK
+Frame #125, 3 Targets, 37 Points, 3 Tracks, 153186 Cycles = (7831, 55456, 22996, 444, 65564, 451)... OK
+Frame #126, 3 Targets, 44 Points, 3 Tracks, 162336 Cycles = (9359, 54523, 27072, 514, 69973, 451)... OK
+Frame #127, 3 Targets, 41 Points, 3 Tracks, 157575 Cycles = (8669, 54545, 25456, 484, 67526, 451)... OK
+Frame #128, 3 Targets, 47 Points, 3 Tracks, 166222 Cycles = (9946, 55500, 29007, 538, 70336, 451)... OK
+Frame #129, 3 Targets, 40 Points, 3 Tracks, 157173 Cycles = (8476, 54537, 24955, 474, 67836, 451)... OK
+Frame #130, 3 Targets, 43 Points, 3 Tracks, 160822 Cycles = (9056, 54537, 26524, 504, 69297, 460)... OK
+Frame #131, 3 Targets, 36 Points, 3 Tracks, 152122 Cycles = (8626, 54517, 22498, 434, 65143, 460)... OK
+Frame #132, 3 Targets, 46 Points, 3 Tracks, 164787 Cycles = (9649, 54523, 28336, 534, 70841, 460)... OK
+Frame #133, 3 Targets, 40 Points, 3 Tracks, 157205 Cycles = (8498, 55486, 24869, 474, 66974, 460)... OK
+Frame #134, 3 Targets, 39 Points, 3 Tracks, 155744 Cycles = (8219, 54520, 24242, 464, 67395, 460)... OK
+Frame #135, 3 Targets, 34 Points, 3 Tracks, 149465 Cycles = (7203, 54527, 21373, 414, 65056, 452)... OK
+Frame #136, 3 Targets, 31 Points, 3 Tracks, 145629 Cycles = (6614, 55498, 19535, 378, 62709, 451)... OK
+Frame #137, 3 Targets, 37 Points, 3 Tracks, 152262 Cycles = (7832, 54446, 23095, 444, 65550, 451)... OK
+Frame #138, 3 Targets, 36 Points, 3 Tracks, 151134 Cycles = (7712, 54452, 22423, 434, 65210, 451)... OK
+Frame #139, 3 Targets, 23 Points, 3 Tracks, 134539 Cycles = (4992, 54459, 14872, 304, 59017, 451)... OK
+Frame #140, 3 Targets, 37 Points, 3 Tracks, 150864 Cycles = (7829, 54510, 22971, 444, 64227, 439)... OK
+Frame #141, 3 Targets, 31 Points, 3 Tracks, 145424 Cycles = (7567, 54509, 19359, 437, 62662, 446)... OK
+Frame #142, 3 Targets, 31 Points, 3 Tracks, 143990 Cycles = (6623, 54480, 19578, 384, 62030, 451)... OK
+Frame #143, 3 Targets, 27 Points, 3 Tracks, 140815 Cycles = (5876, 54480, 17273, 344, 61949, 444)... OK
+Frame #144, 3 Targets, 29 Points, 3 Tracks, 140168 Cycles = (6185, 54501, 18198, 364, 60031, 451)... OK
+Frame #145, 3 Targets, 34 Points, 3 Tracks, 150037 Cycles = (7297, 54488, 21460, 414, 65482, 451)... OK
+Frame #146, 3 Targets, 32 Points, 3 Tracks, 147023 Cycles = (6839, 55420, 20074, 394, 63392, 460)... OK
+Frame #147, 3 Targets, 24 Points, 3 Tracks, 133965 Cycles = (5230, 54485, 15296, 369, 57681, 455)... OK
+Frame #148, 3 Targets, 27 Points, 3 Tracks, 139803 Cycles = (5859, 54479, 17285, 344, 60927, 460)... OK
+Frame #149, 3 Targets, 28 Points, 3 Tracks, 140329 Cycles = (6029, 54481, 18677, 354, 59884, 460)... OK
+Frame #150, 3 Targets, 31 Points, 3 Tracks, 145851 Cycles = (6657, 54494, 20482, 384, 62950, 440)... OK
+Frame #151, 3 Targets, 33 Points, 3 Tracks, 146487 Cycles = (7043, 54484, 20612, 404, 63040, 460)... OK
+Frame #152, 3 Targets, 19 Points, 3 Tracks, 129451 Cycles = (4200, 54474, 12466, 264, 57135, 460)... OK
+Frame #153, 3 Targets, 27 Points, 3 Tracks, 138607 Cycles = (5803, 55443, 17071, 660, 58726, 460)... OK
+Frame #154, 3 Targets, 23 Points, 3 Tracks, 133777 Cycles = (4979, 54474, 14805, 304, 58311, 460)... OK
+Frame #155, 3 Targets, 36 Points, 3 Tracks, 152247 Cycles = (7710, 54454, 23483, 434, 65257, 460)... OK
+Frame #156, 3 Targets, 28 Points, 3 Tracks, 142042 Cycles = (6077, 54440, 18813, 354, 61449, 460)... OK
+Frame #157, 3 Targets, 27 Points, 3 Tracks, 138488 Cycles = (5792, 55372, 17120, 344, 58956, 460)... OK
+Frame #158, 3 Targets, 29 Points, 3 Tracks, 140538 Cycles = (6181, 54454, 18391, 364, 60244, 460)... OK
+Frame #159, 3 Targets, 25 Points, 3 Tracks, 135798 Cycles = (5324, 55365, 15870, 324, 58018, 453)... OK
+Frame #160, 3 Targets, 27 Points, 3 Tracks, 139048 Cycles = (5786, 54440, 17120, 344, 60454, 460)... OK
+Frame #161, 3 Targets, 20 Points, 3 Tracks, 121180 Cycles = (4312, 55390, 12830, 274, 47472, 458)... OK
+Frame #162, 3 Targets, 19 Points, 3 Tracks, 110146 Cycles = (4146, 37107, 12387, 264, 55338, 460)... OK
+Frame #163, 3 Targets, 26 Points, 3 Tracks, 137020 Cycles = (6478, 54453, 16442, 334, 58429, 440)... OK
+Frame #164, 3 Targets, 28 Points, 3 Tracks, 131119 Cycles = (6937, 54449, 17425, 354, 51052, 458)... OK
+Frame #165, 3 Targets, 19 Points, 3 Tracks, 102537 Cycles = (4176, 37137, 12584, 264, 47470, 458)... OK
+Frame #166, 3 Targets, 27 Points, 3 Tracks, 111505 Cycles = (5815, 37113, 17026, 344, 50305, 458)... OK
+Frame #167, 3 Targets, 20 Points, 3 Tracks, 111457 Cycles = (4358, 37139, 13051, 274, 55731, 460)... OK
+Frame #168, 3 Targets, 30 Points, 3 Tracks, 143016 Cycles = (6380, 54442, 19147, 374, 61767, 460)... OK
+Frame #169, 3 Targets, 28 Points, 3 Tracks, 141465 Cycles = (5975, 54440, 18524, 354, 61268, 460)... OK
+Frame #170, 3 Targets, 26 Points, 3 Tracks, 138010 Cycles = (5560, 55384, 17168, 334, 58667, 453)... OK
+Frame #171, 3 Targets, 26 Points, 3 Tracks, 137843 Cycles = (5590, 55363, 17158, 334, 58507, 447)... OK
+Frame #172, 3 Targets, 17 Points, 3 Tracks, 115367 Cycles = (3706, 54446, 11573, 244, 44496, 458)... OK
+Frame #173, 3 Targets, 12 Points, 3 Tracks, 100624 Cycles = (2693, 37136, 9028, 194, 50669, 460)... OK
+Frame #174, 3 Targets, 19 Points, 3 Tracks, 121232 Cycles = (5033, 54452, 13623, 264, 46958, 458)... OK
+Frame #175, 3 Targets, 16 Points, 3 Tracks, 99693 Cycles = (3506, 37156, 11838, 234, 46057, 458)... OK
+Frame #176, 3 Targets, 14 Points, 3 Tracks, 95675 Cycles = (3115, 37143, 10020, 214, 44288, 451)... OK
+Frame #177, 3 Targets, 21 Points, 3 Tracks, 112488 Cycles = (4550, 38023, 14162, 284, 54565, 460)... OK
+Frame #178, 3 Targets, 18 Points, 3 Tracks, 119506 Cycles = (3900, 54459, 12618, 254, 47380, 451)... OK
+Frame #179, 3 Targets, 17 Points, 3 Tracks, 100486 Cycles = (3750, 37126, 11884, 244, 46587, 451)... OK
+Frame #180, 3 Targets, 15 Points, 3 Tracks, 106776 Cycles = (3384, 37137, 10782, 224, 54341, 460)... OK
+Frame #181, 3 Targets, 11 Points, 3 Tracks, 117099 Cycles = (2509, 55346, 8135, 184, 50034, 447)... OK
+Frame #182, 3 Targets, 12 Points, 3 Tracks, 120089 Cycles = (2730, 54454, 8445, 194, 53362, 460)... OK
+Frame #183, 3 Targets, 12 Points, 3 Tracks, 118331 Cycles = (2689, 54418, 8509, 194, 51622, 455)... OK
+Frame #184, 3 Targets, 19 Points, 3 Tracks, 119242 Cycles = (4083, 54476, 13431, 264, 46102, 441)... OK
+Frame #185, 3 Targets, 21 Points, 3 Tracks, 114002 Cycles = (4560, 37141, 14515, 284, 56598, 460)... OK
+Frame #186, 3 Targets, 27 Points, 3 Tracks, 138238 Cycles = (5792, 54445, 17776, 344, 58990, 447)... OK
+Frame #187, 3 Targets, 20 Points, 3 Tracks, 131067 Cycles = (4363, 54441, 14034, 274, 57051, 460)... OK
+Frame #188, 3 Targets, 16 Points, 3 Tracks, 115805 Cycles = (3517, 54424, 11141, 234, 45589, 456)... OK
+Frame #189, 3 Targets, 13 Points, 3 Tracks, 93996 Cycles = (2964, 37137, 9057, 204, 43723, 467)... OK
+Frame #190, 3 Targets, 11 Points, 3 Tracks, 91006 Cycles = (2470, 38058, 7809, 178, 41580, 467)... OK
+Frame #191, 3 Targets, 16 Points, 3 Tracks, 88704 Cycles = (4463, 37179, 10927, 228, 34996, 467)... OK
+Frame #192, 3 Targets, 22 Points, 3 Tracks, 87507 Cycles = (4709, 20724, 14673, 294, 46196, 467)... OK
+Frame #193, 3 Targets, 18 Points, 3 Tracks, 89909 Cycles = (3895, 37171, 11594, 1229, 35124, 452)... OK
+Frame #194, 3 Targets, 15 Points, 3 Tracks, 69460 Cycles = (3338, 19771, 9993, 1146, 34311, 452)... OK
+Frame #195, 3 Targets, 24 Points, 3 Tracks, 90689 Cycles = (5158, 19791, 14841, 4073, 45911, 461)... OK
+Frame #196, 3 Targets, 18 Points, 3 Tracks, 108356 Cycles = (3926, 37209, 11341, 2300, 52676, 455)... OK
+Frame #197, 4 Targets, 23 Points, 4 Tracks, 141761 Cycles = (4919, 54461, 13731, 4057, 63413, 574)... OK
+Frame #198, 4 Targets, 26 Points, 4 Tracks, 140337 Cycles = (5532, 55397, 20477, 327, 57454, 565)... OK
+Frame #199, 4 Targets, 23 Points, 4 Tracks, 133510 Cycles = (4934, 38091, 18470, 304, 70549, 567)... OK
+Frame #200, 4 Targets, 27 Points, 4 Tracks, 168567 Cycles = (5696, 72726, 20985, 337, 67660, 567)... OK
+Frame #201, 4 Targets, 23 Points, 4 Tracks, 153139 Cycles = (4929, 55451, 18680, 297, 72630, 551)... OK
+Frame #202, 4 Targets, 24 Points, 4 Tracks, 172666 Cycles = (5120, 72704, 20904, 307, 72462, 568)... OK
+Frame #203, 4 Targets, 26 Points, 4 Tracks, 175288 Cycles = (5532, 72719, 20743, 327, 74802, 574)... OK
+Frame #204, 4 Targets, 16 Points, 4 Tracks, 160411 Cycles = (3519, 73674, 14124, 228, 67717, 554)... OK
+Frame #205, 4 Targets, 30 Points, 4 Tracks, 172860 Cycles = (6302, 72754, 23971, 367, 68302, 558)... OK
+Frame #206, 4 Targets, 30 Points, 4 Tracks, 165537 Cycles = (6338, 55466, 23562, 367, 78646, 567)... OK
+Frame #207, 4 Targets, 22 Points, 4 Tracks, 162391 Cycles = (4728, 73685, 17502, 287, 65025, 558)... OK
+Frame #208, 4 Targets, 29 Points, 4 Tracks, 152028 Cycles = (6111, 55389, 22437, 357, 66575, 558)... OK
+Frame #209, 4 Targets, 25 Points, 4 Tracks, 137873 Cycles = (5313, 55299, 19799, 317, 55992, 552)... OK
+Frame #210, 4 Targets, 25 Points, 4 Tracks, 129046 Cycles = (5328, 37985, 19925, 317, 64338, 552)... OK
+Frame #211, 4 Targets, 25 Points, 4 Tracks, 147642 Cycles = (5338, 56351, 20111, 317, 64366, 558)... OK
+Frame #212, 4 Targets, 36 Points, 4 Tracks, 172207 Cycles = (7505, 55365, 28021, 427, 79704, 579)... OK
+Frame #213, 4 Targets, 26 Points, 4 Tracks, 174157 Cycles = (5489, 72621, 20585, 334, 73984, 549)... OK
+Frame #214, 4 Targets, 34 Points, 4 Tracks, 178295 Cycles = (7095, 72632, 26999, 414, 69992, 562)... OK
+Frame #215, 4 Targets, 32 Points, 4 Tracks, 158041 Cycles = (6722, 55281, 25783, 394, 68703, 562)... OK
+Frame #216, 4 Targets, 29 Points, 4 Tracks, 153152 Cycles = (6085, 55345, 24373, 364, 65835, 549)... OK
+Frame #217, 4 Targets, 26 Points, 4 Tracks, 149204 Cycles = (5516, 55359, 21072, 334, 65766, 566)... OK
+Frame #218, 4 Targets, 27 Points, 4 Tracks, 159413 Cycles = (5736, 56290, 21845, 338, 74039, 564)... OK
+Frame #219, 4 Targets, 36 Points, 4 Tracks, 180763 Cycles = (7509, 73576, 28193, 434, 69879, 571)... OK
+Frame #220, 4 Targets, 35 Points, 4 Tracks, 169769 Cycles = (7367, 55291, 27228, 1545, 77183, 564)... OK
+Frame #221, 4 Targets, 26 Points, 4 Tracks, 166716 Cycles = (5616, 73503, 21102, 334, 64989, 571)... OK
+Frame #222, 4 Targets, 39 Points, 4 Tracks, 167223 Cycles = (8258, 55261, 30445, 464, 71623, 571)... OK
+Frame #223, 4 Targets, 31 Points, 4 Tracks, 155550 Cycles = (6539, 55261, 23984, 384, 68215, 566)... OK
+Frame #224, 4 Targets, 25 Points, 4 Tracks, 157225 Cycles = (5404, 55248, 20701, 324, 74383, 564)... OK
+Frame #225, 4 Targets, 35 Points, 4 Tracks, 188646 Cycles = (7424, 72608, 27921, 424, 79112, 556)... OK
+Frame #226, 4 Targets, 37 Points, 4 Tracks, 189985 Cycles = (7757, 72570, 28549, 444, 79490, 564)... OK
+Frame #227, 4 Targets, 21 Points, 4 Tracks, 167986 Cycles = (4601, 72595, 17003, 284, 72338, 564)... OK
+Frame #228, 4 Targets, 36 Points, 4 Tracks, 179421 Cycles = (7555, 72576, 27929, 434, 69755, 571)... OK
+Frame #229, 4 Targets, 36 Points, 4 Tracks, 173320 Cycles = (8572, 55258, 27783, 434, 80108, 564)... OK
+Frame #230, 4 Targets, 44 Points, 4 Tracks, 200707 Cycles = (10166, 72598, 34167, 514, 82097, 564)... OK
+Frame #231, 4 Targets, 21 Points, 4 Tracks, 166798 Cycles = (4525, 72571, 16741, 284, 71517, 559)... OK
+Frame #232, 4 Targets, 30 Points, 4 Tracks, 173434 Cycles = (6411, 73499, 23186, 374, 68792, 571)... OK
+Frame #233, 4 Targets, 25 Points, 4 Tracks, 147209 Cycles = (5411, 55331, 19753, 324, 65218, 571)... OK
+Frame #234, 4 Targets, 32 Points, 4 Tracks, 158354 Cycles = (6820, 55318, 24502, 394, 70166, 563)... OK
+Frame #235, 4 Targets, 28 Points, 4 Tracks, 152858 Cycles = (6012, 55333, 21642, 354, 68345, 571)... OK
+Frame #236, 4 Targets, 20 Points, 4 Tracks, 140016 Cycles = (5338, 55298, 15868, 274, 62074, 563)... OK
+Frame #237, 4 Targets, 28 Points, 4 Tracks, 141528 Cycles = (5967, 55312, 21557, 354, 57177, 560)... OK
+Frame #238, 4 Targets, 27 Points, 4 Tracks, 123156 Cycles = (5770, 37952, 20867, 344, 57062, 560)... OK
+Frame #239, 4 Targets, 22 Points, 4 Tracks, 125127 Cycles = (4774, 37948, 17373, 294, 63571, 566)... OK
+Frame #240, 4 Targets, 17 Points, 4 Tracks, 126828 Cycles = (3745, 55185, 13622, 244, 52876, 550)... OK
+Frame #241, 4 Targets, 16 Points, 4 Tracks, 117239 Cycles = (3581, 37816, 13329, 234, 61107, 571)... OK
+Frame #242, 4 Targets, 10 Points, 4 Tracks, 124240 Cycles = (2350, 56089, 8992, 174, 55476, 564)... OK
+Frame #243, 4 Targets, 28 Points, 4 Tracks, 159787 Cycles = (5991, 56122, 21947, 354, 74228, 544)... OK
+Frame #244, 4 Targets, 18 Points, 4 Tracks, 160394 Cycles = (3955, 72471, 14844, 254, 67713, 551)... OK
+Frame #245, 4 Targets, 28 Points, 4 Tracks, 180939 Cycles = (5969, 72478, 22477, 354, 78491, 564)... OK
+Frame #246, 4 Targets, 19 Points, 4 Tracks, 155287 Cycles = (4183, 72456, 15568, 264, 61639, 571)... OK
+Frame #247, 4 Targets, 19 Points, 4 Tracks, 146654 Cycles = (4144, 55181, 16220, 264, 69685, 559)... OK
+Frame #248, 4 Targets, 23 Points, 4 Tracks, 168106 Cycles = (4984, 72515, 18668, 304, 70470, 564)... OK
+Frame #249, 4 Targets, 24 Points, 4 Tracks, 172005 Cycles = (5186, 72521, 19628, 314, 73214, 551)... OK
+Frame #250, 4 Targets, 34 Points, 4 Tracks, 188672 Cycles = (8181, 72499, 27631, 408, 78793, 559)... OK
+Frame #251, 4 Targets, 39 Points, 4 Tracks, 196390 Cycles = (8201, 72515, 31489, 464, 82566, 564)... OK
+Frame #252, 4 Targets, 40 Points, 4 Tracks, 189117 Cycles = (8398, 73444, 32108, 460, 73545, 571)... OK
+Frame #253, 4 Targets, 33 Points, 4 Tracks, 160455 Cycles = (7017, 55202, 26959, 404, 69719, 563)... OK
+Frame #254, 4 Targets, 29 Points, 4 Tracks, 154975 Cycles = (6181, 55212, 23319, 364, 68735, 563)... OK
+Frame #255, 4 Targets, 26 Points, 4 Tracks, 148855 Cycles = (5597, 55203, 21002, 334, 65547, 571)... OK
+Frame #256, 4 Targets, 33 Points, 4 Tracks, 171545 Cycles = (7037, 55202, 26537, 404, 81214, 564)... OK
+Frame #257, 4 Targets, 42 Points, 4 Tracks, 200031 Cycles = (8825, 72476, 32962, 494, 84109, 564)... OK
+Frame #258, 4 Targets, 29 Points, 4 Tracks, 178014 Cycles = (6196, 72471, 23201, 364, 74630, 551)... OK
+Frame #259, 4 Targets, 28 Points, 4 Tracks, 177920 Cycles = (5994, 73415, 22491, 354, 74519, 556)... OK
+Frame #260, 4 Targets, 26 Points, 4 Tracks, 168005 Cycles = (5570, 72487, 20736, 334, 67724, 563)... OK
+Frame #261, 4 Targets, 29 Points, 4 Tracks, 163972 Cycles = (6214, 55219, 23231, 364, 77779, 564)... OK
+Frame #262, 4 Targets, 31 Points, 4 Tracks, 184099 Cycles = (6590, 72454, 25068, 384, 78448, 564)... OK
+Frame #263, 4 Targets, 26 Points, 4 Tracks, 178823 Cycles = (5594, 72457, 21420, 334, 77848, 564)... OK
+Frame #264, 4 Targets, 26 Points, 4 Tracks, 176920 Cycles = (5592, 72469, 22157, 334, 75203, 564)... OK
+Frame #265, 4 Targets, 26 Points, 4 Tracks, 177062 Cycles = (5591, 72471, 21242, 334, 76259, 564)... OK
+Frame #266, 4 Targets, 23 Points, 4 Tracks, 164054 Cycles = (5034, 72457, 18803, 304, 66279, 571)... OK
+Frame #267, 4 Targets, 31 Points, 4 Tracks, 158291 Cycles = (6704, 56166, 24679, 384, 69193, 559)... OK
+Frame #268, 4 Targets, 25 Points, 4 Tracks, 158200 Cycles = (5470, 56161, 20129, 324, 74963, 547)... OK
+Frame #269, 4 Targets, 27 Points, 4 Tracks, 178412 Cycles = (5872, 73391, 21968, 344, 75680, 551)... OK
+Frame #270, 4 Targets, 19 Points, 4 Tracks, 157573 Cycles = (4191, 73449, 15113, 264, 63394, 566)... OK
+Frame #271, 4 Targets, 18 Points, 4 Tracks, 137448 Cycles = (3979, 55182, 14975, 1055, 61096, 564)... OK
+Frame #272, 4 Targets, 19 Points, 4 Tracks, 150073 Cycles = (4221, 55211, 16000, 264, 73210, 571)... OK
+Frame #273, 4 Targets, 20 Points, 4 Tracks, 167242 Cycles = (4377, 72465, 17364, 274, 71590, 571)... OK
+Frame #274, 4 Targets, 15 Points, 4 Tracks, 149602 Cycles = (3359, 72488, 12745, 386, 59446, 578)... OK
+Frame #275, 4 Targets, 14 Points, 4 Tracks, 133234 Cycles = (3137, 56138, 12039, 214, 60534, 571)... OK
+Frame #276, 4 Targets, 24 Points, 4 Tracks, 157470 Cycles = (5227, 55204, 20365, 314, 75195, 564)... OK
+Frame #277, 4 Targets, 23 Points, 4 Tracks, 170892 Cycles = (4933, 72465, 18953, 304, 73085, 557)... OK
+Frame #278, 4 Targets, 26 Points, 4 Tracks, 167930 Cycles = (5529, 72459, 22977, 334, 65477, 564)... OK
+Frame #279, 4 Targets, 21 Points, 4 Tracks, 151096 Cycles = (4535, 55217, 18648, 284, 71259, 558)... OK
+Frame #280, 4 Targets, 27 Points, 4 Tracks, 177604 Cycles = (5741, 72457, 23816, 344, 74091, 558)... OK
+Frame #281, 4 Targets, 18 Points, 4 Tracks, 154339 Cycles = (3944, 72466, 16300, 254, 60252, 532)... OK
+Frame #282, 4 Targets, 21 Points, 4 Tracks, 149892 Cycles = (4542, 56082, 18901, 282, 68945, 545)... OK
+Frame #283, 4 Targets, 20 Points, 4 Tracks, 165857 Cycles = (4324, 73375, 18027, 274, 68717, 545)... OK
+Frame #284, 4 Targets, 15 Points, 4 Tracks, 151520 Cycles = (3326, 73401, 13577, 224, 59826, 571)... OK
+Frame #285, 4 Targets, 23 Points, 4 Tracks, 145014 Cycles = (4950, 55212, 20404, 304, 62978, 571)... OK
+Frame #286, 4 Targets, 20 Points, 4 Tracks, 130240 Cycles = (4320, 55203, 18155, 274, 51160, 532)... OK
+Frame #287, 4 Targets, 25 Points, 4 Tracks, 130099 Cycles = (5372, 37869, 22053, 322, 63317, 571)... OK
+Frame #288, 4 Targets, 24 Points, 4 Tracks, 146953 Cycles = (5166, 56160, 20773, 314, 63374, 571)... OK
+Frame #289, 4 Targets, 23 Points, 4 Tracks, 145645 Cycles = (4980, 56149, 20119, 304, 62927, 571)... OK
+Frame #290, 4 Targets, 16 Points, 4 Tracks, 125628 Cycles = (3509, 55225, 14397, 234, 51126, 541)... OK
+Frame #291, 4 Targets, 17 Points, 4 Tracks, 110132 Cycles = (3701, 37889, 16040, 242, 51114, 545)... OK
+Frame #292, 4 Targets, 20 Points, 4 Tracks, 122545 Cycles = (4322, 37869, 17650, 272, 61271, 571)... OK
+Frame #293, 4 Targets, 20 Points, 4 Tracks, 132120 Cycles = (4306, 55221, 16971, 274, 54211, 536)... OK
+Frame #294, 4 Targets, 12 Points, 4 Tracks, 102395 Cycles = (2682, 37876, 10442, 192, 50076, 536)... OK
+Frame #295, 4 Targets, 10 Points, 4 Tracks, 99524 Cycles = (2309, 37878, 8959, 159, 49092, 536)... OK
+Frame #296, 4 Targets, 15 Points, 4 Tracks, 106205 Cycles = (3288, 37823, 13259, 222, 50486, 536)... OK
+Frame #297, 4 Targets, 17 Points, 4 Tracks, 110037 Cycles = (3710, 37888, 14769, 242, 52307, 536)... OK
+Frame #298, 4 Targets, 16 Points, 4 Tracks, 108943 Cycles = (3500, 37836, 15643, 232, 50605, 536)... OK
+Frame #299, 4 Targets, 17 Points, 4 Tracks, 109524 Cycles = (3726, 37888, 15493, 242, 51048, 536)... OK
+Frame #300, 4 Targets, 16 Points, 4 Tracks, 108296 Cycles = (3519, 37871, 14843, 232, 50704, 536)... OK
+Frame #301, 4 Targets, 15 Points, 4 Tracks, 107558 Cycles = (3298, 37836, 13901, 222, 51165, 545)... OK
+Frame #302, 4 Targets, 7 Points, 4 Tracks, 94660 Cycles = (1694, 37869, 7386, 136, 46448, 536)... OK
+Frame #303, 4 Targets, 10 Points, 4 Tracks, 99984 Cycles = (2323, 37850, 9389, 159, 49133, 544)... OK
+Frame #304, 4 Targets, 13 Points, 4 Tracks, 104266 Cycles = (2908, 38771, 11634, 202, 49624, 536)... OK
+Frame #305, 4 Targets, 6 Points, 4 Tracks, 98972 Cycles = (1482, 38789, 6070, 126, 51352, 558)... OK
+Frame #306, 4 Targets, 10 Points, 4 Tracks, 124655 Cycles = (2330, 55219, 10593, 174, 55168, 571)... OK
+Frame #307, 4 Targets, 13 Points, 4 Tracks, 129890 Cycles = (2922, 55185, 11848, 204, 58565, 571)... OK
+Frame #308, 4 Targets, 10 Points, 4 Tracks, 123972 Cycles = (2312, 55218, 9807, 174, 55290, 571)... OK
+Frame #309, 4 Targets, 13 Points, 4 Tracks, 128391 Cycles = (2941, 55227, 12230, 204, 56618, 571)... OK
+Frame #310, 4 Targets, 10 Points, 4 Tracks, 116812 Cycles = (2301, 55185, 9993, 174, 48027, 536)... OK
+Frame #311, 4 Targets, 9 Points, 4 Tracks, 97366 Cycles = (2093, 38762, 8873, 156, 46355, 536)... OK
+Frame #312, 4 Targets, 10 Points, 4 Tracks, 97763 Cycles = (2320, 37856, 9756, 159, 46540, 536)... OK
+Frame #313, 4 Targets, 8 Points, 4 Tracks, 95934 Cycles = (1891, 37823, 8154, 146, 46793, 536)... OK
+Frame #314, 4 Targets, 9 Points, 4 Tracks, 97545 Cycles = (2080, 38781, 8844, 156, 46520, 569)... OK
+Frame #315, 4 Targets, 11 Points, 4 Tracks, 90485 Cycles = (2458, 37861, 10456, 184, 38395, 535)... OK
+Frame #316, 4 Targets, 12 Points, 4 Tracks, 83549 Cycles = (2711, 20485, 11338, 192, 47691, 536)... OK
+Frame #317, 4 Targets, 12 Points, 4 Tracks, 110449 Cycles = (2739, 38799, 11305, 192, 56241, 578)... OK
+Frame #318, 4 Targets, 13 Points, 4 Tracks, 119794 Cycles = (2908, 55179, 12023, 204, 48362, 527)... OK
+Frame #319, 4 Targets, 16 Points, 4 Tracks, 115520 Cycles = (3550, 37858, 15031, 232, 57704, 559)... OK
+Frame #320, 4 Targets, 15 Points, 4 Tracks, 123901 Cycles = (3311, 55125, 13156, 222, 50955, 536)... OK
+Frame #321, 4 Targets, 18 Points, 4 Tracks, 111816 Cycles = (3915, 38773, 16057, 252, 51663, 550)... OK
+Frame #322, 4 Targets, 21 Points, 4 Tracks, 125647 Cycles = (4524, 38821, 18820, 276, 62079, 536)... OK
+Frame #323, 4 Targets, 22 Points, 4 Tracks, 135032 Cycles = (4692, 56017, 19055, 553, 53588, 536)... OK
+Frame #324, 4 Targets, 24 Points, 4 Tracks, 119999 Cycles = (5135, 37856, 21281, 312, 54297, 527)... OK
+Frame #325, 4 Targets, 20 Points, 4 Tracks, 123308 Cycles = (4332, 37856, 18028, 272, 61693, 536)... OK
+Frame #326, 4 Targets, 21 Points, 4 Tracks, 133922 Cycles = (4519, 55111, 18710, 553, 53917, 527)... OK
+Frame #327, 4 Targets, 15 Points, 4 Tracks, 107821 Cycles = (3322, 37856, 14050, 222, 51253, 527)... OK
+Frame #328, 4 Targets, 24 Points, 4 Tracks, 121182 Cycles = (5130, 37856, 21830, 312, 54917, 536)... OK
+Frame #329, 4 Targets, 20 Points, 4 Tracks, 114337 Cycles = (4303, 37869, 18277, 272, 52477, 543)... OK
+Frame #330, 4 Targets, 18 Points, 4 Tracks, 112092 Cycles = (3918, 38762, 16710, 252, 51313, 536)... OK
+Frame #331, 4 Targets, 11 Points, 4 Tracks, 99348 Cycles = (2519, 37869, 10844, 182, 46807, 536)... OK
+Frame #332, 4 Targets, 11 Points, 4 Tracks, 100629 Cycles = (2506, 38748, 10347, 182, 47700, 550)... OK
+Frame #333, 4 Targets, 4 Points, 4 Tracks, 87481 Cycles = (1051, 37836, 4377, 106, 42956, 555)... OK
+Frame #334, 4 Targets, 12 Points, 4 Tracks, 100794 Cycles = (2686, 37856, 11428, 192, 47505, 536)... OK
+Frame #335, 4 Targets, 11 Points, 4 Tracks, 99343 Cycles = (2540, 37869, 10699, 182, 46916, 536)... OK
+Frame #336, 4 Targets, 7 Points, 4 Tracks, 92963 Cycles = (1694, 37850, 6917, 136, 45226, 540)... OK
+Frame #337, 4 Targets, 9 Points, 4 Tracks, 95746 Cycles = (2074, 37815, 8347, 156, 46223, 536)... OK
+Frame #338, 4 Targets, 12 Points, 4 Tracks, 110956 Cycles = (2729, 37861, 10994, 192, 58012, 578)... OK
+Frame #339, 4 Targets, 14 Points, 4 Tracks, 131497 Cycles = (3187, 55215, 12208, 214, 59479, 578)... OK
+Frame #340, 4 Targets, 15 Points, 4 Tracks, 132633 Cycles = (3364, 56099, 12982, 224, 58785, 578)... OK
+Frame #341, 4 Targets, 16 Points, 4 Tracks, 136196 Cycles = (3587, 55202, 13441, 234, 62565, 571)... OK
+Frame #342, 4 Targets, 23 Points, 4 Tracks, 154604 Cycles = (4995, 55201, 18697, 466, 74075, 559)... OK
+Frame #343, 4 Targets, 16 Points, 4 Tracks, 153844 Cycles = (3581, 72472, 13453, 234, 62932, 571)... OK
+Frame #344, 4 Targets, 15 Points, 4 Tracks, 132247 Cycles = (3395, 55202, 12514, 224, 59725, 571)... OK
+Frame #345, 4 Targets, 16 Points, 4 Tracks, 145297 Cycles = (3571, 56134, 13649, 234, 70539, 564)... OK
+Frame #346, 4 Targets, 21 Points, 4 Tracks, 157902 Cycles = (4583, 72448, 16921, 284, 62484, 571)... OK
+Frame #347, 4 Targets, 17 Points, 4 Tracks, 135743 Cycles = (3755, 55171, 13976, 244, 61420, 571)... OK
+Frame #348, 4 Targets, 14 Points, 4 Tracks, 131266 Cycles = (3116, 55195, 12696, 214, 58878, 566)... OK
+Frame #349, 4 Targets, 16 Points, 4 Tracks, 135892 Cycles = (3560, 56108, 13334, 234, 61484, 571)... OK
+Frame #350, 4 Targets, 14 Points, 4 Tracks, 131368 Cycles = (3168, 56136, 11677, 214, 58996, 571)... OK
+Frame #351, 4 Targets, 20 Points, 4 Tracks, 139787 Cycles = (4358, 56169, 16166, 392, 61539, 562)... OK
+Frame #352, 4 Targets, 14 Points, 4 Tracks, 131723 Cycles = (3153, 55202, 11824, 214, 60158, 571)... OK
+Frame #353, 4 Targets, 11 Points, 4 Tracks, 127497 Cycles = (2541, 55202, 9596, 184, 58803, 557)... OK
+Frame #354, 4 Targets, 17 Points, 4 Tracks, 143732 Cycles = (3788, 55195, 14116, 244, 69243, 555)... OK
+Frame #355, 4 Targets, 27 Points, 4 Tracks, 179806 Cycles = (5794, 72456, 22844, 344, 77218, 549)... OK
+Frame #356, 4 Targets, 21 Points, 4 Tracks, 169817 Cycles = (4587, 73408, 17952, 284, 72430, 555)... OK
+Frame #357, 4 Targets, 28 Points, 4 Tracks, 181872 Cycles = (5991, 72471, 23265, 354, 78630, 564)... OK
+Frame #358, 4 Targets, 28 Points, 4 Tracks, 181921 Cycles = (5996, 72464, 23399, 354, 78552, 555)... OK
+Frame #359, 4 Targets, 31 Points, 4 Tracks, 184797 Cycles = (6607, 73455, 25928, 378, 77273, 555)... OK
+Frame #360, 4 Targets, 22 Points, 4 Tracks, 171203 Cycles = (4784, 72470, 18400, 294, 74099, 555)... OK
+Frame #361, 4 Targets, 27 Points, 4 Tracks, 179227 Cycles = (5792, 73418, 23192, 344, 75333, 557)... OK
+Frame #362, 4 Targets, 25 Points, 4 Tracks, 167597 Cycles = (5308, 72471, 21424, 324, 66898, 571)... OK
+Frame #363, 4 Targets, 23 Points, 4 Tracks, 146917 Cycles = (4904, 56078, 19872, 304, 64587, 571)... OK
+Frame #364, 4 Targets, 25 Points, 4 Tracks, 148064 Cycles = (5308, 55161, 21654, 324, 64445, 571)... OK
+Frame #365, 4 Targets, 30 Points, 4 Tracks, 157178 Cycles = (6344, 55154, 25964, 374, 68179, 562)... OK
+Frame #366, 4 Targets, 32 Points, 4 Tracks, 169228 Cycles = (6754, 55137, 27961, 394, 77817, 564)... OK
+Frame #367, 4 Targets, 31 Points, 4 Tracks, 174214 Cycles = (6662, 72457, 25939, 370, 67625, 560)... OK
+Frame #368, 4 Targets, 41 Points, 4 Tracks, 182307 Cycles = (8681, 55181, 33280, 484, 83516, 564)... OK
+Frame #369, 4 Targets, 33 Points, 4 Tracks, 177129 Cycles = (6956, 72483, 27687, 743, 68097, 562)... OK
+Frame #370, 4 Targets, 49 Points, 4 Tracks, 193302 Cycles = (10282, 55139, 39771, 564, 86381, 564)... OK
+Frame #371, 4 Targets, 48 Points, 4 Tracks, 206445 Cycles = (10040, 73389, 38391, 554, 82930, 540)... OK
+Frame #372, 4 Targets, 44 Points, 4 Tracks, 203588 Cycles = (9271, 72484, 35269, 514, 84889, 564)... OK
+Frame #373, 4 Targets, 53 Points, 4 Tracks, 215161 Cycles = (11038, 72482, 41285, 604, 88615, 536)... OK
+Frame #374, 4 Targets, 51 Points, 4 Tracks, 213382 Cycles = (10646, 72457, 41610, 584, 86942, 542)... OK
+Frame #375, 4 Targets, 44 Points, 4 Tracks, 194899 Cycles = (9204, 73419, 35357, 514, 75249, 555)... OK
+Frame #376, 4 Targets, 48 Points, 4 Tracks, 191880 Cycles = (10084, 55141, 39015, 554, 85930, 555)... OK
+Frame #377, 4 Targets, 50 Points, 4 Tracks, 212003 Cycles = (10433, 72475, 41052, 574, 86330, 548)... OK
+Frame #378, 4 Targets, 30 Points, 4 Tracks, 183292 Cycles = (6350, 72471, 25315, 374, 76738, 542)... OK
+Frame #379, 4 Targets, 44 Points, 4 Tracks, 205945 Cycles = (9271, 72471, 35801, 514, 86732, 555)... OK
+Frame #380, 4 Targets, 38 Points, 4 Tracks, 194227 Cycles = (7966, 73393, 30676, 454, 80597, 540)... OK
+Frame #381, 4 Targets, 42 Points, 4 Tracks, 202887 Cycles = (8851, 72497, 34348, 792, 85243, 555)... OK
+Frame #382, 4 Targets, 34 Points, 4 Tracks, 190719 Cycles = (7224, 73400, 27798, 414, 80727, 555)... OK
+Frame #383, 4 Targets, 29 Points, 4 Tracks, 183775 Cycles = (6223, 72471, 23977, 364, 79574, 555)... OK
+Frame #384, 4 Targets, 44 Points, 4 Tracks, 205727 Cycles = (9239, 73399, 35710, 514, 85709, 555)... OK
+Frame #385, 4 Targets, 34 Points, 4 Tracks, 190879 Cycles = (7219, 73380, 27925, 414, 80785, 555)... OK
+Frame #386, 4 Targets, 29 Points, 4 Tracks, 183111 Cycles = (6220, 72457, 23649, 364, 79265, 555)... OK
+Frame #387, 4 Targets, 39 Points, 4 Tracks, 195712 Cycles = (8250, 72471, 31960, 464, 81411, 555)... OK
+Frame #388, 4 Targets, 43 Points, 4 Tracks, 202548 Cycles = (9081, 72457, 33439, 557, 85863, 550)... OK
+Frame #389, 4 Targets, 43 Points, 4 Tracks, 201855 Cycles = (9118, 73441, 34133, 766, 83241, 555)... OK
+Frame #390, 4 Targets, 33 Points, 4 Tracks, 187448 Cycles = (7067, 72488, 26733, 404, 79610, 555)... OK
+Frame #391, 4 Targets, 40 Points, 4 Tracks, 198409 Cycles = (9407, 72481, 31226, 474, 83656, 564)... OK
+Frame #392, 4 Targets, 27 Points, 4 Tracks, 180027 Cycles = (5820, 72457, 22987, 344, 77263, 555)... OK
+Frame #393, 4 Targets, 50 Points, 4 Tracks, 212409 Cycles = (10460, 72471, 39152, 574, 88587, 564)... OK
+Frame #394, 4 Targets, 44 Points, 4 Tracks, 204608 Cycles = (9210, 72471, 34631, 514, 86617, 564)... OK
+Frame #395, 4 Targets, 44 Points, 4 Tracks, 203838 Cycles = (9215, 72464, 34962, 500, 85532, 564)... OK
+Frame #396, 4 Targets, 39 Points, 4 Tracks, 196986 Cycles = (8210, 72564, 30533, 464, 84050, 564)... OK
+Frame #397, 4 Targets, 39 Points, 4 Tracks, 196880 Cycles = (8205, 72564, 30377, 464, 84115, 564)... OK
+Frame #398, 4 Targets, 39 Points, 4 Tracks, 197017 Cycles = (8205, 72573, 31531, 464, 83079, 564)... OK
+Frame #399, 4 Targets, 50 Points, 4 Tracks, 212783 Cycles = (10397, 73555, 38479, 568, 88628, 555)... OK
+Frame #400, 4 Targets, 33 Points, 4 Tracks, 188161 Cycles = (7888, 72543, 26046, 404, 80124, 555)... OK
+**************************************************************************************************************
+Tracking in 3D space
+Configured for 250 maxPoints and 20 maxTracks
+Gtrack Library is using 18516 bytes of program memory
+Gtrack Library is using 27878 bytes of data memory
+Cycles, per target {mean, min, max} = 42631, 20887, 62265
+uSec, per target {mean, min, max} = 212, 103, 309
+PERFORMANCE TEST PASSED
+MEMORY LEAK TEST PASSED
+PROGRAM MEMORY SIZE TEST PASSED
+DATA MEMORY SIZE TEST PASSED
+BENCHMARK TEST PASSED
+ALL TEST PASSED
+Feature: Group Tracker: Passed
+**************************************************************************************************************
+Value read from Global variable (MCPI_Result): 0
+Test Failure Signature: 0
+Test Log Messages: 
+Feature tested: Group Tracker: Passed
+
+
+shutting down py4j gw server.
+
+
+**************************************************
+Terminating the debug session and Shutting down gateway.
+**************************************************
+
+**************************************************
+Test case execution completed
+**************************************************
+
+**************************************************
+Testcase Result : PASS
+**************************************************

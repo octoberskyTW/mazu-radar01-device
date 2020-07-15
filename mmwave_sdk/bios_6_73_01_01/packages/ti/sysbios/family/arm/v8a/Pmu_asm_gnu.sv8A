@@ -1,0 +1,265 @@
+/*
+ *  Copyright (c) 2017, Texas Instruments Incorporated
+ *  All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *
+ *  *  Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *  *  Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *  *  Neither the name of Texas Instruments Incorporated nor the names of
+ *     its contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ *  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ *  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ *  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ *  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ *  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ *  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+/*
+ * ======== Pmu_asm_gnu.asm ========
+ */
+
+        .global ti_sysbios_family_arm_v8a_Pmu_configureCounterI__I
+        .global ti_sysbios_family_arm_v8a_Pmu_clearOverflowStatusReg__I
+        .global ti_sysbios_family_arm_v8a_Pmu_clearOverflowStatusI__E
+        .global ti_sysbios_family_arm_v8a_Pmu_disableInterruptI__E
+        .global ti_sysbios_family_arm_v8a_Pmu_enableInterruptI__E
+        .global ti_sysbios_family_arm_v8a_Pmu_getCountI__E
+        .global ti_sysbios_family_arm_v8a_Pmu_getEnabled__E
+        .global ti_sysbios_family_arm_v8a_Pmu_getNumCounters__E
+        .global ti_sysbios_family_arm_v8a_Pmu_getOverflowStatusI__E
+        .global ti_sysbios_family_arm_v8a_Pmu_getOverflowStatusReg__I
+        .global ti_sysbios_family_arm_v8a_Pmu_initCounters__I
+        .global ti_sysbios_family_arm_v8a_Pmu_resetCountI__E
+        .global ti_sysbios_family_arm_v8a_Pmu_setCountI__E
+        .global ti_sysbios_family_arm_v8a_Pmu_startCounterI__E
+        .global ti_sysbios_family_arm_v8a_Pmu_stopCounterI__E
+
+        .align  2
+
+/*
+ *  ======== Pmu_clearOverflowStatusReg ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_clearOverflowStatusReg__I
+        .func ti_sysbios_family_arm_v8a_Pmu_clearOverflowStatusReg__I
+
+ti_sysbios_family_arm_v8a_Pmu_clearOverflowStatusReg__I:
+        msr     pmovsclr_el0, x0
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_clearOverflowStatusI ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_clearOverflowStatusI__E
+        .func ti_sysbios_family_arm_v8a_Pmu_clearOverflowStatusI__E
+
+ti_sysbios_family_arm_v8a_Pmu_clearOverflowStatusI__E:
+        mov     x1, #1
+        lsl     x0, x1, x0
+        msr     pmovsclr_el0, x0
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_configureCounterI ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_configureCounterI__I
+        .func ti_sysbios_family_arm_v8a_Pmu_configureCounterI__I
+
+ti_sysbios_family_arm_v8a_Pmu_configureCounterI__I:
+        msr     pmselr_el0, x0              /* Select counter */
+        msr     pmxevtyper_el0, x1          /* Set event type */
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_disableInterruptI ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_disableInterruptI__E
+        .func ti_sysbios_family_arm_v8a_Pmu_disableInterruptI__E
+
+ti_sysbios_family_arm_v8a_Pmu_disableInterruptI__E:
+        mov     x1, #1
+        lsl     x0, x1, x0
+        msr     pmintenclr_el1, x0
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_enableInterruptI ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_enableInterruptI__E
+        .func ti_sysbios_family_arm_v8a_Pmu_enableInterruptI__E
+
+ti_sysbios_family_arm_v8a_Pmu_enableInterruptI__E:
+        mov     x1, #1
+        lsl     x0, x1, x0
+        msr     pmintenset_el1, x0
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_getCountI ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_getCountI__E
+        .func ti_sysbios_family_arm_v8a_Pmu_getCountI__E
+
+ti_sysbios_family_arm_v8a_Pmu_getCountI__E:
+        msr     pmselr_el0, x0              /* Select counter */
+        mrs     x0, pmxevcntr_el0           /* Read event count */
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_getEnabled ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_getEnabled__E
+        .func ti_sysbios_family_arm_v8a_Pmu_getEnabled__E
+
+ti_sysbios_family_arm_v8a_Pmu_getEnabled__E:
+        mrs     x0, pmcntenset_el0
+        ret
+        .endfunc
+
+
+/*
+ * ======== Pmu_getNumCounters__E ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_getNumCounters__E
+        .func ti_sysbios_family_arm_v8a_Pmu_getNumCounters__E
+
+ti_sysbios_family_arm_v8a_Pmu_getNumCounters__E:
+        mrs     x0, pmcr_el0
+        ubfx    x0, x0, #11, #5
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_getOverflowStatusI ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_getOverflowStatusI__E
+        .func ti_sysbios_family_arm_v8a_Pmu_getOverflowStatusI__E
+
+ti_sysbios_family_arm_v8a_Pmu_getOverflowStatusI__E:
+        mov     x1, #1
+        lsl     x1, x1, x0
+        mrs     x0, pmovsclr_el0            /* Read overflow status reg */
+        and     x0, x0, x1
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_getOverflowStatusReg ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_getOverflowStatusReg__I
+        .func ti_sysbios_family_arm_v8a_Pmu_getOverflowStatusReg__I
+
+ti_sysbios_family_arm_v8a_Pmu_getOverflowStatusReg__I:
+        mrs     x0, pmovsclr_el0            /* Read overflow status reg */
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_initCounters ========
+ *
+ *  initCounters() Algorithm:
+ *  1. Disable interrupt requests for all counters.
+ *  2. Clear overflow status register
+ *  3. Reset and enable all counters in Performance Monitors Control
+ *     Register (PMCR).
+ *
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_initCounters__I
+        .func ti_sysbios_family_arm_v8a_Pmu_initCounters__I
+
+ti_sysbios_family_arm_v8a_Pmu_initCounters__I:
+        msr     pmintenclr_el1, x0          /* Disable interrupt request */
+        msr     pmovsclr_el0, x0            /* Clear overflow flag */
+        mrs     x0, pmcr_el0
+        orr     x0, x0, #0x3
+        msr     pmcr_el0, x0                /* Reset and enable all counters */
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_resetCountI ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_resetCountI__E
+        .func ti_sysbios_family_arm_v8a_Pmu_resetCountI__E
+
+ti_sysbios_family_arm_v8a_Pmu_resetCountI__E:
+        mov     x1, #0
+        msr     pmselr_el0, x0              /* Select counter */
+        msr     pmxevcntr_el0, x1           /* Reset the count */
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_setCountI ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_setCountI__E
+        .func ti_sysbios_family_arm_v8a_Pmu_setCountI__E
+
+ti_sysbios_family_arm_v8a_Pmu_setCountI__E:
+        msr     pmselr_el0, x0              /* Select counter */
+        msr     pmxevcntr_el0, x1           /* Set the count */
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_startCounterI ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_startCounterI__E
+        .func ti_sysbios_family_arm_v8a_Pmu_startCounterI__E
+
+ti_sysbios_family_arm_v8a_Pmu_startCounterI__E:
+        mov     x1, #1
+        lsl     x0, x1, x0
+        msr     pmcntenset_el0, x0
+        ret
+        .endfunc
+
+
+/*
+ *  ======== Pmu_stopCounterI ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Pmu_stopCounterI__E
+        .func ti_sysbios_family_arm_v8a_Pmu_stopCounterI__E
+
+ti_sysbios_family_arm_v8a_Pmu_stopCounterI__E:
+        mov     x1, #1
+        lsl     x0, x1, x0
+        msr     pmcntenclr_el0, x0
+        ret
+        .endfunc
+
+
+        .end

@@ -1,0 +1,134 @@
+
+<dom-module id="ti-rov-viewStyles">
+  <template>
+    <!-- Shared CSS rules for rov elements -->
+    <style>
+      #refreshSpinner {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 16px;
+        height: 16px;
+        --paper-spinner-stroke-width: 2px;
+        --paper-spinner-color: black;
+      }
+      .viewToobarButton {
+        margin-left: 0px;
+        width: 36px;
+        height: 36px;
+      }
+      #dragDiv:hover {
+        cursor: var(--rovDragDivCursor);
+      }
+      #defaultViewOptionsMenu, #rovViewOptionsMenu {
+        margin: 0px;
+        padding: 8px 0px 12px 0px;
+      }
+      .viewOptionsMenuItem {
+        --paper-item-min-height: 24px;
+        height: 30px;
+        cursor: pointer;
+        padding: 0px 16px 0px 0px;
+        --paper-item-focused-before: {
+          background: transparent;
+        };
+      }
+      .viewOptionsMenuButton {
+        padding: 0px 0px 0px 0px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-transform: none;
+      }
+      .viewOptionsMenuButtonIcon {
+        height: 20px;
+        width: 20px;
+      }
+      .viewOptionsMenuButtonLabel {
+        font-family: var(--rovFontFamily);
+        font-size: var(--rovContentFontSize);
+        margin-left: 6px;
+      }
+      .viewOptionsMenuButtonChar {
+        font-weight: 900;
+        padding: 0px 4px 0px 4px;
+        margin: 3px 4px 3px 9px;
+        text-transform: none;
+      }
+      #dividerInput {
+        height: 22px;
+        width: 36px;
+        font-size: var(--rovContentFontSize);
+        font-family: var(--rovFontFamily);
+        margin-left: 8px;
+        border: 1px solid black;
+        text-align: center;
+      }
+      #dividerInput:disabled {
+        border: 1px solid LightGray;
+      }
+      #dividerInput:focus {
+        outline: none;
+      }
+      #dividerInput::-webkit-inner-spin-button,
+      #dividerInput::-webkit-outer-spin-button {
+        opacity: 1;
+      }
+      #dividerIcon {
+        margin-left: 6px;
+      }
+      #closeViewOptionsButton {
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        right: 4px;
+        top: 2px;
+        padding: 0;
+        --paper-icon-button: {
+          color: #595959;
+        };
+      }
+      #closeViewOptionsButton:hover {
+        color: black;
+      }
+      .resizerBottomRight, .resizerBottomLeft, .resizerTopLeft, .resizerTopRight { /* resizer control styling */
+        width: 10px;
+        height: 10px;
+        position: absolute;
+      }
+      .resizerBottomRight {
+        right: 0;
+        bottom: 0;
+        cursor: se-resize;
+      }
+      .resizerBottomLeft {
+        left: 0;
+        bottom: 0;
+        cursor: sw-resize;
+      }
+      .resizerTopLeft {
+        left: 0;
+        top: 0;
+        cursor: nw-resize;
+      }
+      .resizerTopRight {
+        right: 0;
+        top: 0;
+        cursor: ne-resize;
+      }
+      .dividerToggleIcon {
+        height: 20px;
+        width: 20px;
+        padding: 0;
+        margin-left: 4px;
+      }
+      .dividerToggleIcon:hover {
+        cursor: pointer;
+      }
+
+      #dividerDisableIcon {
+        color: red;
+      }
+
+    </style>
+  </template>
+</dom-module>
+

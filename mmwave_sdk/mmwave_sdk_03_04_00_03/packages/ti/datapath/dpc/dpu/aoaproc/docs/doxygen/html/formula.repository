@@ -1,0 +1,67 @@
+\form#0:$N_{TxAnt}*N_{RxAnt}*N_{DopplerChirps}*sizeof(cmplx16ImRe\_t) \leq 16\;KB$
+\form#1:$N_{TxAnt}*N_{RxAnt}*N_{DopplerBins}*sizeof(cmplx16ImRe\_t) \leq 32\;KB$
+\form#2:$\Delta\varphi_{dop}=2\pi\frac{l_d}{N_{DopFFT}}$
+\form#3:$l_d$
+\form#4:$N_{Tx}$
+\form#5:$H_n$
+\form#6:$ n=0,...N_{Tx}-1$
+\form#7:$\Delta\varphi_n$
+\form#8:\[ \Delta\varphi_n= \left\{ \begin{array}{lr} \Delta\varphi_{dop}+2\pi(n-\frac{N_{Tx}}{2}) & : \Delta\varphi_{dop} \ge 0\\ \Delta\varphi_{dop}+2\pi(n-\frac{N_{Tx}}{2}+1) & : \Delta\varphi_{dop} < 0 \end{array}\right. \]
+\form#9:\[ \Delta\varphi_n= \Delta\varphi_{dop}+2\pi(n- \lfloor\frac{N_{Tx}}{2}\rfloor) \]
+\form#10:$\Delta\varphi_{dop}$
+\form#11:$i^{th}$
+\form#12:\[ \Delta\varphi_i= i \cdot \frac{\Delta\varphi_n}{N_{Tx}}, \;\; i=0,1,...,N_{Tx} - 1 \]
+\form#13:$S_n$
+\form#14:$P_n = max(Sn)$
+\form#15:$P_n$
+\form#16:$S_m$
+\form#17:$w_x$
+\form#18:$w_z$
+\form#19:$AB = \frac{\lambda}{2} \sin (\phi)$
+\form#20:$W_z = \frac{2\pi}{\lambda} \cdot AB$
+\form#21:$W_z = \pi \sin (\phi)$
+\form#22:$CD = \frac{\lambda}{2} \sin (\theta) \cos (\phi)$
+\form#23:$w_x = \frac{2\pi}{\lambda} \cdot CD$
+\form#24:$w_x = \pi \sin (\theta) \cos (\phi)$
+\form#25:$A_1$
+\form#26:$\psi$
+\form#27:\[ A_1 e^{j\psi} [ 1 \; e^{jw_x} \; e^{j2w_x} \; e^{j3w_x} \; e^{j4w_x} \; e^{j5w_x} \; e^{j6w_x} \; e^{j7w_x} ] \]
+\form#28:$P_1$
+\form#29:\[ P_1 = A_1 e^{j\psi} \]
+\form#30:$k_{MAX}$
+\form#31:$[-\frac{N}{2}, \frac{N}{2}-1]$
+\form#32:$ w_x $
+\form#33:\[ w_x = \frac{2\pi}{N}k_{MAX} \]
+\form#34:\[ A_2 e^{j(\psi + 2 w_x - w_z)} [ 1 \; e^{jw_x} \; e^{j2w_x} \; e^{j3w_x}] \]
+\form#35:$P_2$
+\form#36:$\psi + 2w_x - w_z$
+\form#37:\[ P_2 = A_2 e^{j(\psi+ 2 w_x - w_z)} \]
+\form#38:\[ P_1 \cdot P_2^* = A_1 \cdot A_2 e^{j(\psi - (\psi+ 2 w_x - w_z))} \]
+\form#39:\[ w_z=\angle (P_1 \cdot P_2^* \cdot e^{j2w_x}) \]
+\form#40:\[ R=k_r\frac{c \cdot F_{SAMP}}{2 \cdot S \cdot N_{FFT}} \]
+\form#41:$c$
+\form#42:$k_r$
+\form#43:$F_{SAMP}$
+\form#44:$S$
+\form#45:$N_{FFT}$
+\form#46:$R$
+\form#47:$(x,y,z)$
+\form#48:\[ x = R\cos(\phi)\sin(\theta) = R\frac{w_x}{\pi}, \;\;\;\;\; z = R\sin(\phi) = R\frac{w_z}{\pi},\;\;\;\;\; y = \sqrt{R^2-x^2-z^2} \]
+\form#49:$\theta$
+\form#50:$\phi$
+\form#51:$\phi_{min},\;\phi_{max},$
+\form#52:$\theta_{min},\;\theta_{max}$
+\form#53:$W_z$
+\form#54:$W_x$
+\form#55:$W_z = w_z/\pi$
+\form#56:$W_x = w_x/\pi$
+\form#57:$W_z = \sin(\phi)$
+\form#58:$W_x = \cos(\phi) \sin(\theta)$
+\form#59:\[ \sin(\phi_{min}) \leq W_z \leq \sin(\phi_{max}) \]
+\form#60:$\cos(\phi)$
+\form#61:\[ \cos(\phi)\sin(\theta_{min}) \leq W_x \leq \cos(\phi) \sin(\theta_{max}) \]
+\form#62:$\cos(\phi) = \sqrt{1 - \sin(\phi)^2} = \sqrt{1 - W_z^2}$
+\form#63:$\sin(\phi_{min})$
+\form#64:$\sin(\phi_{max})$
+\form#65:$\sin(\theta_{min})$
+\form#66:$\sin(\theta_{max})$

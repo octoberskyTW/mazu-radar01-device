@@ -1,0 +1,2541 @@
+eth008 Board details:
+IP address: 10.218.113.67
+
+Port: 17494
+
+connecting...
+Relay states 8->1 : 01000001
+7 off
+8 off
+Relay states 8->1 : 00000001
+7 on
+Relay states 8->1 : 01000001
+exit
+Disconnected
+Pre-Script returned: Success
+**************************************************
+Testcase mods & parameters invoked:
+**************************************************
+Two core test case: None (this is not a two core testcase)
+
+**************************************************
+Copying test case files from the Build server
+**************************************************
+Testdata possible location 1: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/mmwave_sdk/packages/ti/datapath/dpu/rangeproc/testdata
+
+
+Testdata directory was not found on Testdata possible location 1
+
+
+Testdata possible location 2: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/datapath/dpu/rangeproc/test/testdata
+
+
+Copy-To local testcase data path is: /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/testdata
+
+Test case data file rangeprochwa_test_data.bin found on server for downloading
+Test case data file rangeprocdsp_test_data.bin found on server for downloading
+Call to copy_testcase_binary:
+TCP: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/datapath/dpu/rangeproc/test; /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09
+
+Copying testcase binary file from http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/datapath/dpu/rangeproc/test/xwr68xx_rangeprocdsp_dss.xe674 to /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09 using command: 
+wget -e robots=off --no-proxy -N -T 30 -t 2 -P /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09 http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/datapath/dpu/rangeproc/test/xwr68xx_rangeprocdsp_dss.xe674
+**************************************************
+Executing Testcase:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_rangeprocdsp_dss.xe674
+**************************************************
+Checking if Py4J Gateway server has started...
+Py4J Gateway Server is Started
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/DEBUGSSM_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/CS_DAP_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/Cortex_R4_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/CSETB_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/IcePick_M_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/C674X_0
+DSS test case opening debug session.
+
+cr4ctl = 0x0
+
+Loading binary to the DUT (no binary args updated):/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_rangeprocdsp_dss.xe674
+binary path = /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___iwr68xx-AOP_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-09_2020_03_17_03_00_09/xwr68xx_rangeprocdsp_dss.xe674
+
+total CCS time = 739
+
+
+**************************************************
+CIO Log captured for the testcase
+**************************************************
+...... Initialization ...... 
+
+...... 129 Tests to be run .......
+
+numTxAntennas = 1
+numRangeBins = 64
+numChirpsPerFrame = 4
+
+Test #0 start
+Configuration : :Tx1 Rx1 ADC64 ChpsEvt1 Chps4
+DPU processing time 2036, wait time 403
+DPU processing time 1882, wait time 375
+DPU processing time 1811, wait time 594
+DPU processing time 2238, wait time 578
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 1782, wait time 375
+DPU processing time 1750, wait time 373
+DPU processing time 1765, wait time 568
+DPU processing time 2092, wait time 568
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #0 finished!
+
+Configuration : :Tx1 Rx1 ADC64 ChpsEvt2 Chps4
+DPU processing time 3467, wait time 728
+DPU processing time 3858, wait time 1126
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 3347, wait time 736
+DPU processing time 3684, wait time 1106
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #1 finished!
+
+Test #2 start
+Configuration : :Tx1 Rx2 ADC64 ChpsEvt1 Chps4
+DPU processing time 2667, wait time 416
+DPU processing time 2667, wait time 428
+DPU processing time 2529, wait time 612
+DPU processing time 3190, wait time 618
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 2486, wait time 415
+DPU processing time 2476, wait time 413
+DPU processing time 2473, wait time 606
+DPU processing time 2972, wait time 600
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #2 finished!
+
+Configuration : :Tx1 Rx2 ADC64 ChpsEvt2 Chps4
+DPU processing time 4933, wait time 800
+DPU processing time 5522, wait time 1202
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4782, wait time 807
+DPU processing time 5279, wait time 1183
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #3 finished!
+
+Test #4 start
+Configuration : :Tx1 Rx4 ADC64 ChpsEvt1 Chps4
+DPU processing time 4216, wait time 801
+DPU processing time 4350, wait time 811
+DPU processing time 4047, wait time 1002
+DPU processing time 5096, wait time 1000
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 3990, wait time 801
+DPU processing time 4284, wait time 801
+DPU processing time 3987, wait time 992
+DPU processing time 4738, wait time 992
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #4 finished!
+
+Configuration : :Tx1 Rx4 ADC64 ChpsEvt2 Chps4
+DPU processing time 8109, wait time 1572
+DPU processing time 8860, wait time 1978
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 7985, wait time 1582
+DPU processing time 8470, wait time 1954
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #5 finished!
+
+Feature: :Tx1 Rx4 R64 D4: Passed
+
+numTxAntennas = 1
+numRangeBins = 128
+numChirpsPerFrame = 4
+
+Test #6 start
+Configuration : :Tx1 Rx1 ADC126 ChpsEvt1 Chps4
+DPU processing time 2382, wait time 535
+DPU processing time 2200, wait time 529
+DPU processing time 2137, wait time 748
+DPU processing time 2724, wait time 734
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 2104, wait time 543
+DPU processing time 2076, wait time 531
+DPU processing time 2089, wait time 724
+DPU processing time 2572, wait time 720
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #6 finished!
+
+Configuration : :Tx1 Rx1 ADC126 ChpsEvt2 Chps4
+DPU processing time 4157, wait time 1040
+DPU processing time 4678, wait time 1444
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4011, wait time 1048
+DPU processing time 4504, wait time 1416
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #7 finished!
+
+Test #8 start
+Configuration : :Tx1 Rx2 ADC126 ChpsEvt1 Chps4
+DPU processing time 3366, wait time 425
+DPU processing time 3331, wait time 568
+DPU processing time 3204, wait time 779
+DPU processing time 3942, wait time 768
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 3165, wait time 580
+DPU processing time 3380, wait time 567
+DPU processing time 3150, wait time 761
+DPU processing time 3737, wait time 765
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #8 finished!
+
+Configuration : :Tx1 Rx2 ADC126 ChpsEvt2 Chps4
+DPU processing time 6461, wait time 962
+DPU processing time 6969, wait time 1517
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 6361, wait time 1122
+DPU processing time 6719, wait time 1491
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #9 finished!
+
+Test #10 start
+Configuration : :Tx1 Rx4 ADC126 ChpsEvt1 Chps4
+DPU processing time 5768, wait time 809
+DPU processing time 5948, wait time 951
+DPU processing time 5513, wait time 1170
+DPU processing time 6626, wait time 1162
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 5816, wait time 965
+DPU processing time 5622, wait time 951
+DPU processing time 5477, wait time 1154
+DPU processing time 6214, wait time 1144
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #10 finished!
+
+Configuration : :Tx1 Rx4 ADC126 ChpsEvt2 Chps4
+DPU processing time 11700, wait time 1743
+DPU processing time 11893, wait time 2299
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 11157, wait time 1896
+DPU processing time 11604, wait time 2270
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #11 finished!
+
+Feature: :Tx1 Rx4 R128 D4: Passed
+
+Test #12 start
+Configuration : :Tx1 Rx1 ADC128 ChpsEvt1 Chps4
+DPU processing time 2352, wait time 401
+DPU processing time 2184, wait time 529
+DPU processing time 2159, wait time 748
+DPU processing time 2708, wait time 734
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 2124, wait time 529
+DPU processing time 2064, wait time 531
+DPU processing time 2107, wait time 720
+DPU processing time 2560, wait time 720
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #12 finished!
+
+Configuration : :Tx1 Rx1 ADC128 ChpsEvt2 Chps4
+DPU processing time 4161, wait time 1036
+DPU processing time 4682, wait time 1438
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4013, wait time 1046
+DPU processing time 4512, wait time 1418
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #13 finished!
+
+Test #14 start
+Configuration : :Tx1 Rx2 ADC128 ChpsEvt1 Chps4
+DPU processing time 3314, wait time 423
+DPU processing time 3444, wait time 571
+DPU processing time 3199, wait time 776
+DPU processing time 3919, wait time 769
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 3160, wait time 579
+DPU processing time 3342, wait time 565
+DPU processing time 3147, wait time 764
+DPU processing time 3701, wait time 759
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #14 finished!
+
+Configuration : :Tx1 Rx2 ADC128 ChpsEvt2 Chps4
+DPU processing time 6419, wait time 958
+DPU processing time 6936, wait time 1514
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 6319, wait time 1120
+DPU processing time 6678, wait time 1486
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #15 finished!
+
+Test #16 start
+Configuration : :Tx1 Rx4 ADC128 ChpsEvt1 Chps4
+DPU processing time 5726, wait time 807
+DPU processing time 5870, wait time 953
+DPU processing time 5465, wait time 1170
+DPU processing time 6546, wait time 1158
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 5738, wait time 965
+DPU processing time 5548, wait time 959
+DPU processing time 5401, wait time 1158
+DPU processing time 6134, wait time 1146
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #16 finished!
+
+Configuration : :Tx1 Rx4 ADC128 ChpsEvt2 Chps4
+DPU processing time 11539, wait time 1744
+DPU processing time 11737, wait time 2301
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 11003, wait time 1890
+DPU processing time 11460, wait time 2274
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #17 finished!
+
+Feature: :Tx1 Rx4 R128 D4: Passed
+
+numTxAntennas = 1
+numRangeBins = 256
+numChirpsPerFrame = 4
+
+Test #18 start
+Configuration : :Tx1 Rx1 ADC254 ChpsEvt1 Chps4
+DPU processing time 3000, wait time 559
+DPU processing time 2898, wait time 531
+DPU processing time 2771, wait time 748
+DPU processing time 3402, wait time 734
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 2728, wait time 531
+DPU processing time 2848, wait time 529
+DPU processing time 2725, wait time 722
+DPU processing time 3256, wait time 724
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #18 finished!
+
+Configuration : :Tx1 Rx1 ADC254 ChpsEvt2 Chps4
+DPU processing time 5515, wait time 1194
+DPU processing time 5966, wait time 1596
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 5375, wait time 1046
+DPU processing time 5792, wait time 1416
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #19 finished!
+
+Test #20 start
+Configuration : :Tx1 Rx2 ADC254 ChpsEvt1 Chps4
+DPU processing time 4684, wait time 585
+DPU processing time 4710, wait time 575
+DPU processing time 4494, wait time 801
+DPU processing time 5460, wait time 770
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4709, wait time 590
+DPU processing time 4476, wait time 567
+DPU processing time 4548, wait time 779
+DPU processing time 5241, wait time 761
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #20 finished!
+
+Configuration : :Tx1 Rx2 ADC254 ChpsEvt2 Chps4
+DPU processing time 9192, wait time 1147
+DPU processing time 9774, wait time 1554
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8988, wait time 1125
+DPU processing time 9606, wait time 1514
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #21 finished!
+
+Test #22 start
+Configuration : :Tx1 Rx4 ADC254 ChpsEvt1 Chps4
+DPU processing time 8589, wait time 990
+DPU processing time 8520, wait time 975
+DPU processing time 8057, wait time 1170
+DPU processing time 9401, wait time 1175
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8261, wait time 962
+DPU processing time 8153, wait time 972
+DPU processing time 8109, wait time 1148
+DPU processing time 9268, wait time 1166
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #22 finished!
+
+Configuration : :Tx1 Rx4 ADC254 ChpsEvt2 Chps4
+DPU processing time 16539, wait time 2056
+DPU processing time 17241, wait time 2637
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 16111, wait time 2196
+DPU processing time 17181, wait time 2585
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #23 finished!
+
+Feature: :Tx1 Rx4 R256 D4: Passed
+
+Test #24 start
+Configuration : :Tx1 Rx1 ADC256 ChpsEvt1 Chps4
+DPU processing time 2974, wait time 539
+DPU processing time 2880, wait time 531
+DPU processing time 2791, wait time 736
+DPU processing time 3390, wait time 734
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 2746, wait time 543
+DPU processing time 2832, wait time 529
+DPU processing time 2745, wait time 722
+DPU processing time 3238, wait time 720
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #24 finished!
+
+Configuration : :Tx1 Rx1 ADC256 ChpsEvt2 Chps4
+DPU processing time 5525, wait time 1040
+DPU processing time 5968, wait time 1444
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 5379, wait time 1048
+DPU processing time 5798, wait time 1416
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #25 finished!
+
+Test #26 start
+Configuration : :Tx1 Rx2 ADC256 ChpsEvt1 Chps4
+DPU processing time 4676, wait time 583
+DPU processing time 4675, wait time 566
+DPU processing time 4486, wait time 801
+DPU processing time 5421, wait time 771
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4678, wait time 589
+DPU processing time 4436, wait time 575
+DPU processing time 4514, wait time 777
+DPU processing time 5202, wait time 758
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #26 finished!
+
+Configuration : :Tx1 Rx2 ADC256 ChpsEvt2 Chps4
+DPU processing time 9111, wait time 1142
+DPU processing time 9699, wait time 1551
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8915, wait time 1130
+DPU processing time 9535, wait time 1513
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #27 finished!
+
+Test #28 start
+Configuration : :Tx1 Rx4 ADC256 ChpsEvt1 Chps4
+DPU processing time 8528, wait time 987
+DPU processing time 8357, wait time 976
+DPU processing time 7981, wait time 1178
+DPU processing time 9327, wait time 1175
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8188, wait time 955
+DPU processing time 8059, wait time 980
+DPU processing time 8032, wait time 1145
+DPU processing time 9193, wait time 1165
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #28 finished!
+
+Configuration : :Tx1 Rx4 ADC256 ChpsEvt2 Chps4
+DPU processing time 16387, wait time 2056
+DPU processing time 17093, wait time 2629
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 15943, wait time 2202
+DPU processing time 17028, wait time 2576
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #29 finished!
+
+Feature: :Tx1 Rx4 R256 D4: Passed
+
+numTxAntennas = 1
+numRangeBins = 512
+numChirpsPerFrame = 4
+
+Test #30 start
+Configuration : :Tx1 Rx1 ADC510 ChpsEvt1 Chps4
+DPU processing time 4906, wait time 845
+DPU processing time 4688, wait time 855
+DPU processing time 4625, wait time 1072
+DPU processing time 5352, wait time 1046
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4690, wait time 855
+DPU processing time 4594, wait time 841
+DPU processing time 4581, wait time 1046
+DPU processing time 5404, wait time 1032
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #30 finished!
+
+Configuration : :Tx1 Rx1 ADC510 ChpsEvt2 Chps4
+DPU processing time 9149, wait time 1536
+DPU processing time 9677, wait time 2091
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8995, wait time 1672
+DPU processing time 9661, wait time 2053
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #31 finished!
+
+Test #32 start
+Configuration : :Tx1 Rx2 ADC510 ChpsEvt1 Chps4
+DPU processing time 8414, wait time 751
+DPU processing time 8231, wait time 746
+DPU processing time 8109, wait time 1098
+DPU processing time 9314, wait time 1104
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8250, wait time 883
+DPU processing time 8133, wait time 744
+DPU processing time 8095, wait time 1078
+DPU processing time 9120, wait time 942
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #32 finished!
+
+Configuration : :Tx1 Rx2 ADC510 ChpsEvt2 Chps4
+DPU processing time 16243, wait time 1594
+DPU processing time 17132, wait time 2172
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 16011, wait time 1892
+DPU processing time 16859, wait time 2275
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #33 finished!
+
+Test #34 start
+Configuration : :Tx1 Rx4 ADC510 ChpsEvt1 Chps4
+DPU processing time 15627, wait time 1126
+DPU processing time 15590, wait time 1285
+DPU processing time 15448, wait time 1349
+DPU processing time 17676, wait time 1342
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 15380, wait time 1129
+DPU processing time 15459, wait time 1134
+DPU processing time 15403, wait time 1490
+DPU processing time 17363, wait time 1325
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #34 finished!
+
+Configuration : :Tx1 Rx4 ADC510 ChpsEvt2 Chps4
+DPU processing time 30733, wait time 3320
+DPU processing time 32693, wait time 3731
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 30426, wait time 3307
+DPU processing time 32355, wait time 3701
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #35 finished!
+
+Feature: :Tx1 Rx4 R512 D4: Passed
+
+Test #36 start
+Configuration : :Tx1 Rx1 ADC512 ChpsEvt1 Chps4
+DPU processing time 4792, wait time 715
+DPU processing time 4672, wait time 843
+DPU processing time 4611, wait time 1072
+DPU processing time 5338, wait time 1046
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4674, wait time 855
+DPU processing time 4582, wait time 841
+DPU processing time 4555, wait time 1048
+DPU processing time 5392, wait time 1036
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #36 finished!
+
+Configuration : :Tx1 Rx1 ADC512 ChpsEvt2 Chps4
+DPU processing time 9127, wait time 1532
+DPU processing time 9647, wait time 2093
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8963, wait time 1672
+DPU processing time 9633, wait time 2055
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #37 finished!
+
+Test #38 start
+Configuration : :Tx1 Rx2 ADC512 ChpsEvt1 Chps4
+DPU processing time 8385, wait time 752
+DPU processing time 8248, wait time 747
+DPU processing time 8070, wait time 1107
+DPU processing time 9304, wait time 952
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8220, wait time 883
+DPU processing time 8093, wait time 748
+DPU processing time 8066, wait time 1077
+DPU processing time 9062, wait time 1092
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #38 finished!
+
+Configuration : :Tx1 Rx2 ADC512 ChpsEvt2 Chps4
+DPU processing time 16181, wait time 1596
+DPU processing time 17083, wait time 2017
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 15938, wait time 1897
+DPU processing time 16778, wait time 2276
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #39 finished!
+
+Test #40 start
+Configuration : :Tx1 Rx4 ADC512 ChpsEvt1 Chps4
+DPU processing time 15556, wait time 1119
+DPU processing time 15544, wait time 1133
+DPU processing time 15370, wait time 1351
+DPU processing time 17570, wait time 1492
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 15303, wait time 1130
+DPU processing time 15384, wait time 1139
+DPU processing time 15367, wait time 1342
+DPU processing time 17293, wait time 1325
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #40 finished!
+
+Configuration : :Tx1 Rx4 ADC512 ChpsEvt2 Chps4
+DPU processing time 30603, wait time 3164
+DPU processing time 32556, wait time 3734
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 30274, wait time 3305
+DPU processing time 32182, wait time 3702
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #41 finished!
+
+Feature: :Tx1 Rx4 R512 D4: Passed
+
+numTxAntennas = 1
+numRangeBins = 1024
+numChirpsPerFrame = 4
+
+Test #42 start
+Configuration : :Tx1 Rx1 ADC1022 ChpsEvt1 Chps4
+DPU processing time 8048, wait time 1183
+DPU processing time 7532, wait time 1167
+DPU processing time 7451, wait time 1384
+DPU processing time 8692, wait time 1368
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 7528, wait time 1167
+DPU processing time 7422, wait time 1167
+DPU processing time 7419, wait time 1358
+DPU processing time 8544, wait time 1358
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #42 finished!
+
+Configuration : :Tx1 Rx1 ADC1022 ChpsEvt2 Chps4
+DPU processing time 15077, wait time 2468
+DPU processing time 15832, wait time 2872
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 14635, wait time 2450
+DPU processing time 15660, wait time 2832
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #43 finished!
+
+Test #44 start
+Configuration : :Tx1 Rx2 ADC1022 ChpsEvt1 Chps4
+DPU processing time 14392, wait time 1227
+DPU processing time 14094, wait time 1219
+DPU processing time 13965, wait time 1424
+DPU processing time 15990, wait time 1420
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 13870, wait time 1209
+DPU processing time 13909, wait time 1208
+DPU processing time 13926, wait time 1407
+DPU processing time 15830, wait time 1398
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #44 finished!
+
+Configuration : :Tx1 Rx2 ADC1022 ChpsEvt2 Chps4
+DPU processing time 27998, wait time 3327
+DPU processing time 29615, wait time 3729
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 27431, wait time 3308
+DPU processing time 29363, wait time 3693
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #45 finished!
+
+Test #46 start
+Configuration : :Tx1 Rx4 ADC1022 ChpsEvt1 Chps4
+DPU processing time 27651, wait time 1612
+DPU processing time 27234, wait time 1605
+DPU processing time 27169, wait time 1808
+DPU processing time 30921, wait time 1799
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 27098, wait time 1593
+DPU processing time 27106, wait time 1607
+DPU processing time 27116, wait time 1797
+DPU processing time 30568, wait time 1786
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #46 finished!
+
+Configuration : :Tx1 Rx4 ADC1022 ChpsEvt2 Chps4
+DPU processing time 54441, wait time 5660
+DPU processing time 57689, wait time 6071
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 53805, wait time 5644
+DPU processing time 57271, wait time 6027
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #47 finished!
+
+Feature: :Tx1 Rx4 R1024 D4: Passed
+
+Test #48 start
+Configuration : :Tx1 Rx1 ADC1024 ChpsEvt1 Chps4
+DPU processing time 8022, wait time 1189
+DPU processing time 7500, wait time 1167
+DPU processing time 7453, wait time 1384
+DPU processing time 8680, wait time 1372
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 7518, wait time 1167
+DPU processing time 7410, wait time 1167
+DPU processing time 7405, wait time 1356
+DPU processing time 8532, wait time 1358
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #48 finished!
+
+Configuration : :Tx1 Rx1 ADC1024 ChpsEvt2 Chps4
+DPU processing time 15051, wait time 2474
+DPU processing time 15802, wait time 2870
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 14611, wait time 2452
+DPU processing time 15634, wait time 2834
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #49 finished!
+
+Test #50 start
+Configuration : :Tx1 Rx2 ADC1024 ChpsEvt1 Chps4
+DPU processing time 14351, wait time 1228
+DPU processing time 14062, wait time 1207
+DPU processing time 13939, wait time 1434
+DPU processing time 15958, wait time 1410
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 13829, wait time 1208
+DPU processing time 13891, wait time 1216
+DPU processing time 13893, wait time 1400
+DPU processing time 15798, wait time 1406
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #50 finished!
+
+Configuration : :Tx1 Rx2 ADC1024 ChpsEvt2 Chps4
+DPU processing time 27935, wait time 3326
+DPU processing time 29544, wait time 3740
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 27375, wait time 3318
+DPU processing time 29275, wait time 3693
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #51 finished!
+
+Test #52 start
+Configuration : :Tx1 Rx4 ADC1024 ChpsEvt1 Chps4
+DPU processing time 27572, wait time 1615
+DPU processing time 27146, wait time 1593
+DPU processing time 27078, wait time 1819
+DPU processing time 30847, wait time 1805
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 27005, wait time 1596
+DPU processing time 27022, wait time 1597
+DPU processing time 27032, wait time 1783
+DPU processing time 30497, wait time 1797
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #52 finished!
+
+Configuration : :Tx1 Rx4 ADC1024 ChpsEvt2 Chps4
+DPU processing time 54290, wait time 5661
+DPU processing time 57546, wait time 6062
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 53618, wait time 5657
+DPU processing time 57091, wait time 6025
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #53 finished!
+
+Feature: :Tx1 Rx4 R1024 D4: Passed
+
+numTxAntennas = 1
+numRangeBins = 2048
+numChirpsPerFrame = 4
+
+Test #54 start
+Configuration : :Tx1 Rx1 ADC2046 ChpsEvt1 Chps4
+DPU processing time 16440, wait time 1969
+DPU processing time 15330, wait time 1947
+DPU processing time 15129, wait time 2164
+DPU processing time 17136, wait time 2150
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 15140, wait time 1947
+DPU processing time 15090, wait time 1947
+DPU processing time 15089, wait time 2136
+DPU processing time 16990, wait time 2138
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #54 finished!
+
+Configuration : :Tx1 Rx1 ADC2046 ChpsEvt2 Chps4
+DPU processing time 30547, wait time 4812
+DPU processing time 31984, wait time 5208
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 29839, wait time 4792
+DPU processing time 31698, wait time 5174
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #55 finished!
+
+Test #56 start
+Configuration : :Tx1 Rx2 ADC2046 ChpsEvt1 Chps4
+DPU processing time 30242, wait time 2005
+DPU processing time 29624, wait time 1995
+DPU processing time 29481, wait time 2204
+DPU processing time 33103, wait time 2203
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 29475, wait time 1996
+DPU processing time 29426, wait time 1993
+DPU processing time 29434, wait time 2185
+DPU processing time 32890, wait time 2178
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #56 finished!
+
+Configuration : :Tx1 Rx2 ADC2046 ChpsEvt2 Chps4
+DPU processing time 59267, wait time 6448
+DPU processing time 62239, wait time 6855
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 58487, wait time 6430
+DPU processing time 61904, wait time 6822
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #57 finished!
+
+Feature: :Tx1 Rx2 R2048 D4: Passed
+
+Test #58 start
+Configuration : :Tx1 Rx1 ADC2048 ChpsEvt1 Chps4
+DPU processing time 16204, wait time 1967
+DPU processing time 15426, wait time 1947
+DPU processing time 15117, wait time 2166
+DPU processing time 17122, wait time 2148
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 15138, wait time 1947
+DPU processing time 15080, wait time 1947
+DPU processing time 15067, wait time 2138
+DPU processing time 16980, wait time 2138
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #58 finished!
+
+Configuration : :Tx1 Rx1 ADC2048 ChpsEvt2 Chps4
+DPU processing time 30521, wait time 4808
+DPU processing time 31960, wait time 5210
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 29813, wait time 4790
+DPU processing time 31668, wait time 5172
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #59 finished!
+
+Test #60 start
+Configuration : :Tx1 Rx2 ADC2048 ChpsEvt1 Chps4
+DPU processing time 30207, wait time 2008
+DPU processing time 29582, wait time 1993
+DPU processing time 29446, wait time 2209
+DPU processing time 33068, wait time 2190
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 29442, wait time 1999
+DPU processing time 29395, wait time 1998
+DPU processing time 29388, wait time 2185
+DPU processing time 32861, wait time 2187
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #60 finished!
+
+Configuration : :Tx1 Rx2 ADC2048 ChpsEvt2 Chps4
+DPU processing time 59195, wait time 6446
+DPU processing time 62183, wait time 6853
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 58421, wait time 6434
+DPU processing time 61831, wait time 6823
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #61 finished!
+
+Feature: :Tx1 Rx2 R2048 D4: Passed
+
+numTxAntennas = 2
+numRangeBins = 64
+numChirpsPerFrame = 4
+
+Test #62 start
+Configuration : :Tx2 Rx2 ADC64 ChpsEvt1 Chps4
+DPU processing time 2815, wait time 428
+DPU processing time 2759, wait time 414
+DPU processing time 2525, wait time 618
+DPU processing time 3376, wait time 612
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 2484, wait time 415
+DPU processing time 2534, wait time 413
+DPU processing time 2471, wait time 602
+DPU processing time 3032, wait time 604
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #62 finished!
+
+Configuration : :Tx2 Rx2 ADC64 ChpsEvt2 Chps4
+DPU processing time 5022, wait time 801
+DPU processing time 5707, wait time 1207
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4833, wait time 812
+DPU processing time 5327, wait time 1181
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #63 finished!
+
+Test #64 start
+Configuration : :Tx2 Rx4 ADC64 ChpsEvt1 Chps4
+DPU processing time 4275, wait time 804
+DPU processing time 4425, wait time 810
+DPU processing time 4051, wait time 1016
+DPU processing time 5342, wait time 1002
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 3988, wait time 811
+DPU processing time 4350, wait time 799
+DPU processing time 3988, wait time 1003
+DPU processing time 4656, wait time 992
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #64 finished!
+
+Configuration : :Tx2 Rx4 ADC64 ChpsEvt2 Chps4
+DPU processing time 8345, wait time 1586
+DPU processing time 9132, wait time 2002
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8123, wait time 1586
+DPU processing time 8476, wait time 1966
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #65 finished!
+
+Feature: :Tx2 Rx4 R64 D4: Passed
+
+numTxAntennas = 2
+numRangeBins = 128
+numChirpsPerFrame = 4
+
+Test #66 start
+Configuration : :Tx2 Rx2 ADC126 ChpsEvt1 Chps4
+DPU processing time 3604, wait time 431
+DPU processing time 3374, wait time 565
+DPU processing time 3200, wait time 771
+DPU processing time 4296, wait time 776
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 3161, wait time 574
+DPU processing time 3478, wait time 567
+DPU processing time 3144, wait time 759
+DPU processing time 3803, wait time 759
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #66 finished!
+
+Configuration : :Tx2 Rx2 ADC126 ChpsEvt2 Chps4
+DPU processing time 6570, wait time 961
+DPU processing time 7154, wait time 1516
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 6457, wait time 1122
+DPU processing time 6774, wait time 1490
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #67 finished!
+
+Test #68 start
+Configuration : :Tx2 Rx4 ADC126 ChpsEvt1 Chps4
+DPU processing time 5831, wait time 812
+DPU processing time 6072, wait time 959
+DPU processing time 5511, wait time 1184
+DPU processing time 7108, wait time 1170
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 5812, wait time 965
+DPU processing time 5744, wait time 955
+DPU processing time 5477, wait time 1168
+DPU processing time 6350, wait time 1158
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #68 finished!
+
+Configuration : :Tx2 Rx4 ADC126 ChpsEvt2 Chps4
+DPU processing time 11867, wait time 1744
+DPU processing time 12372, wait time 2328
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 11329, wait time 1892
+DPU processing time 11807, wait time 2303
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #69 finished!
+
+Feature: :Tx2 Rx4 R128 D4: Passed
+
+Test #70 start
+Configuration : :Tx2 Rx2 ADC128 ChpsEvt1 Chps4
+DPU processing time 3541, wait time 430
+DPU processing time 3345, wait time 566
+DPU processing time 3197, wait time 770
+DPU processing time 4107, wait time 769
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 3156, wait time 567
+DPU processing time 3446, wait time 571
+DPU processing time 3143, wait time 758
+DPU processing time 3769, wait time 757
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #70 finished!
+
+Configuration : :Tx2 Rx2 ADC128 ChpsEvt2 Chps4
+DPU processing time 6534, wait time 965
+DPU processing time 7111, wait time 1519
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 6409, wait time 1118
+DPU processing time 6739, wait time 1489
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #71 finished!
+
+Test #72 start
+Configuration : :Tx2 Rx4 ADC128 ChpsEvt1 Chps4
+DPU processing time 5777, wait time 804
+DPU processing time 5990, wait time 953
+DPU processing time 5465, wait time 1182
+DPU processing time 7034, wait time 1170
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 5738, wait time 965
+DPU processing time 5664, wait time 953
+DPU processing time 5397, wait time 1172
+DPU processing time 6268, wait time 1162
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #72 finished!
+
+Configuration : :Tx2 Rx4 ADC128 ChpsEvt2 Chps4
+DPU processing time 11711, wait time 1744
+DPU processing time 12208, wait time 2326
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 11177, wait time 1894
+DPU processing time 11649, wait time 2301
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #73 finished!
+
+Feature: :Tx2 Rx4 R128 D4: Passed
+
+numTxAntennas = 2
+numRangeBins = 256
+numChirpsPerFrame = 4
+
+Test #74 start
+Configuration : :Tx2 Rx2 ADC254 ChpsEvt1 Chps4
+DPU processing time 4714, wait time 601
+DPU processing time 4780, wait time 575
+DPU processing time 4516, wait time 801
+DPU processing time 5616, wait time 770
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4682, wait time 593
+DPU processing time 4504, wait time 567
+DPU processing time 4482, wait time 779
+DPU processing time 5267, wait time 759
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #74 finished!
+
+Configuration : :Tx2 Rx2 ADC254 ChpsEvt2 Chps4
+DPU processing time 9254, wait time 1147
+DPU processing time 9942, wait time 1554
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 9011, wait time 1126
+DPU processing time 9552, wait time 1518
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #75 finished!
+
+Test #76 start
+Configuration : :Tx2 Rx4 ADC254 ChpsEvt1 Chps4
+DPU processing time 8663, wait time 990
+DPU processing time 8634, wait time 975
+DPU processing time 8099, wait time 1196
+DPU processing time 9801, wait time 1175
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8301, wait time 978
+DPU processing time 8233, wait time 972
+DPU processing time 8154, wait time 1175
+DPU processing time 9232, wait time 1166
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #76 finished!
+
+Configuration : :Tx2 Rx4 ADC254 ChpsEvt2 Chps4
+DPU processing time 16772, wait time 2073
+DPU processing time 17647, wait time 2633
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 16287, wait time 2218
+DPU processing time 17221, wait time 2611
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #77 finished!
+
+Feature: :Tx2 Rx4 R256 D4: Passed
+
+Test #78 start
+Configuration : :Tx2 Rx2 ADC256 ChpsEvt1 Chps4
+DPU processing time 4812, wait time 601
+DPU processing time 4759, wait time 566
+DPU processing time 4511, wait time 808
+DPU processing time 5610, wait time 782
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4673, wait time 584
+DPU processing time 4498, wait time 565
+DPU processing time 4443, wait time 784
+DPU processing time 5260, wait time 758
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #78 finished!
+
+Configuration : :Tx2 Rx2 ADC256 ChpsEvt2 Chps4
+DPU processing time 9209, wait time 1148
+DPU processing time 9898, wait time 1546
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8968, wait time 1133
+DPU processing time 9510, wait time 1508
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #79 finished!
+
+Test #80 start
+Configuration : :Tx2 Rx4 ADC256 ChpsEvt1 Chps4
+DPU processing time 8599, wait time 982
+DPU processing time 8465, wait time 976
+DPU processing time 8030, wait time 1185
+DPU processing time 9726, wait time 1178
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8223, wait time 970
+DPU processing time 8152, wait time 981
+DPU processing time 8084, wait time 1177
+DPU processing time 9158, wait time 1172
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #80 finished!
+
+Configuration : :Tx2 Rx4 ADC256 ChpsEvt2 Chps4
+DPU processing time 16617, wait time 2072
+DPU processing time 17491, wait time 2641
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 16141, wait time 2214
+DPU processing time 17073, wait time 2609
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #81 finished!
+
+Feature: :Tx2 Rx4 R256 D4: Passed
+
+numTxAntennas = 2
+numRangeBins = 512
+numChirpsPerFrame = 4
+
+Test #82 start
+Configuration : :Tx2 Rx2 ADC510 ChpsEvt1 Chps4
+DPU processing time 8549, wait time 760
+DPU processing time 8214, wait time 745
+DPU processing time 8169, wait time 1100
+DPU processing time 9535, wait time 949
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8271, wait time 886
+DPU processing time 8140, wait time 901
+DPU processing time 8163, wait time 1078
+DPU processing time 9151, wait time 937
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #82 finished!
+
+Configuration : :Tx2 Rx2 ADC510 ChpsEvt2 Chps4
+DPU processing time 16385, wait time 1592
+DPU processing time 17357, wait time 2327
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 16071, wait time 1892
+DPU processing time 16982, wait time 2272
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #83 finished!
+
+Test #84 start
+Configuration : :Tx2 Rx4 ADC510 ChpsEvt1 Chps4
+DPU processing time 15781, wait time 1126
+DPU processing time 15657, wait time 1134
+DPU processing time 15493, wait time 1504
+DPU processing time 18091, wait time 1351
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 15380, wait time 1135
+DPU processing time 15536, wait time 1129
+DPU processing time 15460, wait time 1337
+DPU processing time 17242, wait time 1492
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #84 finished!
+
+Configuration : :Tx2 Rx4 ADC510 ChpsEvt2 Chps4
+DPU processing time 30949, wait time 3154
+DPU processing time 33122, wait time 3738
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 30545, wait time 3456
+DPU processing time 32411, wait time 3725
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #85 finished!
+
+Feature: :Tx2 Rx4 R512 D4: Passed
+
+Test #86 start
+Configuration : :Tx2 Rx2 ADC512 ChpsEvt1 Chps4
+DPU processing time 8499, wait time 754
+DPU processing time 8254, wait time 749
+DPU processing time 8136, wait time 1107
+DPU processing time 9530, wait time 952
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8238, wait time 885
+DPU processing time 8161, wait time 748
+DPU processing time 8130, wait time 1069
+DPU processing time 9120, wait time 1092
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #86 finished!
+
+Configuration : :Tx2 Rx2 ADC512 ChpsEvt2 Chps4
+DPU processing time 16349, wait time 1596
+DPU processing time 17346, wait time 2178
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 16028, wait time 1897
+DPU processing time 16940, wait time 2276
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #87 finished!
+
+Test #88 start
+Configuration : :Tx2 Rx4 ADC512 ChpsEvt1 Chps4
+DPU processing time 15705, wait time 1128
+DPU processing time 15588, wait time 1131
+DPU processing time 15428, wait time 1353
+DPU processing time 17982, wait time 1504
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 15299, wait time 1130
+DPU processing time 15454, wait time 1139
+DPU processing time 15401, wait time 1338
+DPU processing time 17197, wait time 1341
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #88 finished!
+
+Configuration : :Tx2 Rx4 ADC512 ChpsEvt2 Chps4
+DPU processing time 30775, wait time 3168
+DPU processing time 32987, wait time 3745
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 30415, wait time 3308
+DPU processing time 32245, wait time 3715
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #89 finished!
+
+Feature: :Tx2 Rx4 R512 D4: Passed
+
+numTxAntennas = 2
+numRangeBins = 1024
+numChirpsPerFrame = 4
+
+Test #90 start
+Configuration : :Tx2 Rx2 ADC1022 ChpsEvt1 Chps4
+DPU processing time 14604, wait time 1227
+DPU processing time 14108, wait time 1217
+DPU processing time 13985, wait time 1424
+DPU processing time 16217, wait time 1413
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 13944, wait time 1221
+DPU processing time 14006, wait time 1207
+DPU processing time 14001, wait time 1406
+DPU processing time 15910, wait time 1402
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #90 finished!
+
+Configuration : :Tx2 Rx2 ADC1022 ChpsEvt2 Chps4
+DPU processing time 28161, wait time 3330
+DPU processing time 29884, wait time 3728
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 27560, wait time 3309
+DPU processing time 29538, wait time 3702
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #91 finished!
+
+Test #92 start
+Configuration : :Tx2 Rx4 ADC1022 ChpsEvt1 Chps4
+DPU processing time 27617, wait time 1616
+DPU processing time 27069, wait time 1596
+DPU processing time 27137, wait time 1810
+DPU processing time 31140, wait time 1810
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 27095, wait time 1604
+DPU processing time 26982, wait time 1605
+DPU processing time 27094, wait time 1799
+DPU processing time 30430, wait time 1798
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #92 finished!
+
+Configuration : :Tx2 Rx4 ADC1022 ChpsEvt2 Chps4
+DPU processing time 54261, wait time 5660
+DPU processing time 57856, wait time 6086
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 53755, wait time 5644
+DPU processing time 57238, wait time 6064
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #93 finished!
+
+Feature: :Tx2 Rx4 R1024 D4: Passed
+
+Test #94 start
+Configuration : :Tx2 Rx2 ADC1024 ChpsEvt1 Chps4
+DPU processing time 14598, wait time 1219
+DPU processing time 14062, wait time 1221
+DPU processing time 13963, wait time 1426
+DPU processing time 16190, wait time 1422
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 13902, wait time 1207
+DPU processing time 13957, wait time 1208
+DPU processing time 13962, wait time 1409
+DPU processing time 15874, wait time 1400
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #94 finished!
+
+Configuration : :Tx2 Rx2 ADC1024 ChpsEvt2 Chps4
+DPU processing time 28094, wait time 3327
+DPU processing time 29810, wait time 3730
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 27507, wait time 3310
+DPU processing time 29478, wait time 3692
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #95 finished!
+
+Test #96 start
+Configuration : :Tx2 Rx4 ADC1024 ChpsEvt1 Chps4
+DPU processing time 27520, wait time 1613
+DPU processing time 26986, wait time 1603
+DPU processing time 27058, wait time 1813
+DPU processing time 31058, wait time 1814
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 27006, wait time 1593
+DPU processing time 26891, wait time 1602
+DPU processing time 27021, wait time 1806
+DPU processing time 30321, wait time 1803
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #96 finished!
+
+Configuration : :Tx2 Rx4 ADC1024 ChpsEvt2 Chps4
+DPU processing time 54097, wait time 5664
+DPU processing time 57682, wait time 6086
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 53607, wait time 5644
+DPU processing time 57091, wait time 6055
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #97 finished!
+
+Feature: :Tx2 Rx4 R1024 D4: Passed
+
+numTxAntennas = 2
+numRangeBins = 2048
+numChirpsPerFrame = 4
+
+Test #98 start
+Configuration : :Tx2 Rx2 ADC2046 ChpsEvt1 Chps4
+DPU processing time 30570, wait time 1999
+DPU processing time 29602, wait time 1995
+DPU processing time 29323, wait time 2210
+DPU processing time 33101, wait time 2193
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 29290, wait time 1999
+DPU processing time 29269, wait time 1994
+DPU processing time 29269, wait time 2186
+DPU processing time 32730, wait time 2188
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #98 finished!
+
+Configuration : :Tx2 Rx2 ADC2046 ChpsEvt2 Chps4
+DPU processing time 59025, wait time 6448
+DPU processing time 62088, wait time 6860
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 58192, wait time 6435
+DPU processing time 61629, wait time 6823
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #99 finished!
+
+Feature: :Tx2 Rx2 R2048 D4: Passed
+
+Test #100 start
+Configuration : :Tx2 Rx2 ADC2048 ChpsEvt1 Chps4
+DPU processing time 30440, wait time 2007
+DPU processing time 29636, wait time 1993
+DPU processing time 29273, wait time 2212
+DPU processing time 33056, wait time 2202
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 29265, wait time 1998
+DPU processing time 29240, wait time 1993
+DPU processing time 29241, wait time 2186
+DPU processing time 32696, wait time 2184
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #100 finished!
+
+Configuration : :Tx2 Rx2 ADC2048 ChpsEvt2 Chps4
+DPU processing time 59016, wait time 6449
+DPU processing time 61976, wait time 6856
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 58109, wait time 6430
+DPU processing time 61569, wait time 6821
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #101 finished!
+
+Feature: :Tx2 Rx2 R2048 D4: Passed
+
+numTxAntennas = 3
+numRangeBins = 64
+numChirpsPerFrame = 6
+
+Test #102 start
+Configuration : :Tx3 Rx4 ADC64 ChpsEvt1 Chps6
+DPU processing time 5044, wait time 815
+DPU processing time 4748, wait time 801
+DPU processing time 4502, wait time 1013
+DPU processing time 4464, wait time 999
+DPU processing time 4316, wait time 1003
+DPU processing time 5933, wait time 1017
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 4326, wait time 811
+DPU processing time 4694, wait time 799
+DPU processing time 4321, wait time 1000
+DPU processing time 4408, wait time 989
+DPU processing time 4254, wait time 991
+DPU processing time 4969, wait time 1001
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #102 finished!
+
+Configuration : :Tx3 Rx4 ADC64 ChpsEvt2 Chps6
+DPU processing time 9052, wait time 1575
+DPU processing time 8603, wait time 2004
+DPU processing time 10028, wait time 1980
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8806, wait time 1581
+DPU processing time 8521, wait time 1968
+DPU processing time 9032, wait time 1952
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #103 finished!
+
+Configuration : :Tx3 Rx4 ADC64 ChpsEvt3 Chps6
+DPU processing time 13028, wait time 2559
+DPU processing time 13976, wait time 2950
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 12745, wait time 2556
+DPU processing time 13024, wait time 2916
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #104 finished!
+
+Feature: :Tx3 Rx4 R64 D6: Passed
+
+numTxAntennas = 3
+numRangeBins = 128
+numChirpsPerFrame = 6
+
+Test #105 start
+Configuration : :Tx3 Rx4 ADC126 ChpsEvt1 Chps6
+DPU processing time 6464, wait time 809
+DPU processing time 6376, wait time 953
+DPU processing time 5922, wait time 1181
+DPU processing time 6046, wait time 1159
+DPU processing time 6196, wait time 1169
+DPU processing time 7793, wait time 1177
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 5924, wait time 965
+DPU processing time 6320, wait time 953
+DPU processing time 5816, wait time 1167
+DPU processing time 5924, wait time 1143
+DPU processing time 6060, wait time 1153
+DPU processing time 6793, wait time 1153
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #105 finished!
+
+Configuration : :Tx3 Rx4 ADC126 ChpsEvt2 Chps6
+DPU processing time 12627, wait time 1744
+DPU processing time 11747, wait time 2312
+DPU processing time 13690, wait time 2308
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 12103, wait time 1890
+DPU processing time 11655, wait time 2284
+DPU processing time 12544, wait time 2272
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #106 finished!
+
+Configuration : :Tx3 Rx4 ADC126 ChpsEvt3 Chps6
+DPU processing time 18080, wait time 2593
+DPU processing time 19077, wait time 2969
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 17559, wait time 2578
+DPU processing time 18154, wait time 2924
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #107 finished!
+
+Feature: :Tx3 Rx4 R128 D6: Passed
+
+Test #108 start
+Configuration : :Tx3 Rx4 ADC128 ChpsEvt1 Chps6
+DPU processing time 6496, wait time 817
+DPU processing time 6292, wait time 953
+DPU processing time 5876, wait time 1179
+DPU processing time 5990, wait time 1153
+DPU processing time 6124, wait time 1167
+DPU processing time 7723, wait time 1183
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 5846, wait time 965
+DPU processing time 6244, wait time 953
+DPU processing time 5736, wait time 1167
+DPU processing time 5840, wait time 1147
+DPU processing time 5980, wait time 1157
+DPU processing time 6719, wait time 1155
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #108 finished!
+
+Configuration : :Tx3 Rx4 ADC128 ChpsEvt2 Chps6
+DPU processing time 12473, wait time 1744
+DPU processing time 11593, wait time 2312
+DPU processing time 13534, wait time 2308
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 11955, wait time 1892
+DPU processing time 11503, wait time 2284
+DPU processing time 12376, wait time 2270
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #109 finished!
+
+Configuration : :Tx3 Rx4 ADC128 ChpsEvt3 Chps6
+DPU processing time 17811, wait time 2588
+DPU processing time 18799, wait time 2965
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 17294, wait time 2577
+DPU processing time 17884, wait time 2920
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #110 finished!
+
+Feature: :Tx3 Rx4 R128 D6: Passed
+
+numTxAntennas = 3
+numRangeBins = 256
+numChirpsPerFrame = 6
+
+Test #111 start
+Configuration : :Tx3 Rx4 ADC254 ChpsEvt1 Chps6
+DPU processing time 9104, wait time 987
+DPU processing time 8898, wait time 977
+DPU processing time 8463, wait time 1186
+DPU processing time 8391, wait time 1180
+DPU processing time 8648, wait time 1173
+DPU processing time 10601, wait time 1179
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8634, wait time 975
+DPU processing time 8375, wait time 978
+DPU processing time 8461, wait time 1178
+DPU processing time 8561, wait time 1162
+DPU processing time 8474, wait time 1161
+DPU processing time 9561, wait time 1167
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #111 finished!
+
+Configuration : :Tx3 Rx4 ADC254 ChpsEvt2 Chps6
+DPU processing time 17523, wait time 2056
+DPU processing time 16598, wait time 2631
+DPU processing time 19098, wait time 2476
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 16702, wait time 2213
+DPU processing time 16797, wait time 2610
+DPU processing time 17871, wait time 2597
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #112 finished!
+
+Configuration : :Tx3 Rx4 ADC254 ChpsEvt3 Chps6
+DPU processing time 25421, wait time 3806
+DPU processing time 26526, wait time 4400
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 24880, wait time 3965
+DPU processing time 25479, wait time 4369
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #113 finished!
+
+Feature: :Tx3 Rx4 R256 D6: Passed
+
+Test #114 start
+Configuration : :Tx3 Rx4 ADC256 ChpsEvt1 Chps6
+DPU processing time 9058, wait time 969
+DPU processing time 8775, wait time 970
+DPU processing time 8399, wait time 1190
+DPU processing time 8319, wait time 1172
+DPU processing time 8570, wait time 1165
+DPU processing time 10517, wait time 1179
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 8553, wait time 974
+DPU processing time 8298, wait time 977
+DPU processing time 8387, wait time 1174
+DPU processing time 8480, wait time 1169
+DPU processing time 8402, wait time 1155
+DPU processing time 9482, wait time 1172
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #114 finished!
+
+Configuration : :Tx3 Rx4 ADC256 ChpsEvt2 Chps6
+DPU processing time 17365, wait time 2046
+DPU processing time 16434, wait time 2625
+DPU processing time 18979, wait time 2477
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 16548, wait time 2211
+DPU processing time 16655, wait time 2610
+DPU processing time 17705, wait time 2603
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #115 finished!
+
+Configuration : :Tx3 Rx4 ADC256 ChpsEvt3 Chps6
+DPU processing time 25227, wait time 3814
+DPU processing time 26281, wait time 4405
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 24663, wait time 3970
+DPU processing time 25266, wait time 4354
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #116 finished!
+
+Feature: :Tx3 Rx4 R256 D6: Passed
+
+numTxAntennas = 3
+numRangeBins = 512
+numChirpsPerFrame = 6
+
+Test #117 start
+Configuration : :Tx3 Rx4 ADC510 ChpsEvt1 Chps6
+DPU processing time 16253, wait time 1128
+DPU processing time 15942, wait time 1285
+DPU processing time 15831, wait time 1344
+DPU processing time 15848, wait time 1339
+DPU processing time 15826, wait time 1345
+DPU processing time 18804, wait time 1348
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 15736, wait time 1285
+DPU processing time 15823, wait time 1134
+DPU processing time 15692, wait time 1341
+DPU processing time 15852, wait time 1321
+DPU processing time 15671, wait time 1338
+DPU processing time 17533, wait time 1475
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #117 finished!
+
+Configuration : :Tx3 Rx4 ADC510 ChpsEvt2 Chps6
+DPU processing time 31641, wait time 3314
+DPU processing time 31255, wait time 3726
+DPU processing time 34065, wait time 3751
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 31228, wait time 3309
+DPU processing time 31180, wait time 3699
+DPU processing time 32885, wait time 3761
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #118 finished!
+
+Configuration : :Tx3 Rx4 ADC510 ChpsEvt3 Chps6
+DPU processing time 46590, wait time 6029
+DPU processing time 49108, wait time 6450
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 46186, wait time 6013
+DPU processing time 47968, wait time 6392
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #119 finished!
+
+Feature: :Tx3 Rx4 R512 D6: Passed
+
+Test #120 start
+Configuration : :Tx3 Rx4 ADC512 ChpsEvt1 Chps6
+DPU processing time 16197, wait time 1148
+DPU processing time 15887, wait time 1130
+DPU processing time 15706, wait time 1351
+DPU processing time 15760, wait time 1335
+DPU processing time 15797, wait time 1348
+DPU processing time 18705, wait time 1501
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 15642, wait time 1133
+DPU processing time 15750, wait time 1139
+DPU processing time 15612, wait time 1335
+DPU processing time 15779, wait time 1324
+DPU processing time 15574, wait time 1489
+DPU processing time 17480, wait time 1318
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #120 finished!
+
+Configuration : :Tx3 Rx4 ADC512 ChpsEvt2 Chps6
+DPU processing time 31508, wait time 3311
+DPU processing time 31088, wait time 3723
+DPU processing time 33932, wait time 3602
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 31071, wait time 3308
+DPU processing time 31003, wait time 3856
+DPU processing time 32727, wait time 3763
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #121 finished!
+
+Configuration : :Tx3 Rx4 ADC512 ChpsEvt3 Chps6
+DPU processing time 46371, wait time 6034
+DPU processing time 48903, wait time 6441
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 45971, wait time 6002
+DPU processing time 47752, wait time 6400
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #122 finished!
+
+Feature: :Tx3 Rx4 R512 D6: Passed
+
+numTxAntennas = 3
+numRangeBins = 1024
+numChirpsPerFrame = 6
+
+Test #123 start
+Configuration : :Tx3 Rx4 ADC1022 ChpsEvt1 Chps6
+DPU processing time 28104, wait time 1605
+DPU processing time 27422, wait time 1593
+DPU processing time 27474, wait time 1821
+DPU processing time 27342, wait time 1811
+DPU processing time 27376, wait time 1821
+DPU processing time 32138, wait time 1826
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 27454, wait time 1593
+DPU processing time 27352, wait time 1593
+DPU processing time 27431, wait time 1818
+DPU processing time 27322, wait time 1795
+DPU processing time 27321, wait time 1796
+DPU processing time 30771, wait time 1795
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #123 finished!
+
+Configuration : :Tx3 Rx4 ADC1022 ChpsEvt2 Chps6
+DPU processing time 55041, wait time 5660
+DPU processing time 54547, wait time 6084
+DPU processing time 58877, wait time 6109
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 54466, wait time 5653
+DPU processing time 54465, wait time 6050
+DPU processing time 57740, wait time 6090
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #124 finished!
+
+Configuration : :Tx3 Rx4 ADC1022 ChpsEvt3 Chps6
+DPU processing time 81816, wait time 10257
+DPU processing time 85496, wait time 10664
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 81182, wait time 10231
+DPU processing time 84540, wait time 10606
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #125 finished!
+
+Feature: :Tx3 Rx4 R1024 D6: Passed
+
+Test #126 start
+Configuration : :Tx3 Rx4 ADC1024 ChpsEvt1 Chps6
+DPU processing time 28084, wait time 1615
+DPU processing time 27342, wait time 1591
+DPU processing time 27382, wait time 1837
+DPU processing time 27272, wait time 1805
+DPU processing time 27285, wait time 1810
+DPU processing time 32053, wait time 1823
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 27370, wait time 1593
+DPU processing time 27261, wait time 1602
+DPU processing time 27352, wait time 1817
+DPU processing time 27217, wait time 1788
+DPU processing time 27246, wait time 1801
+DPU processing time 30703, wait time 1795
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #126 finished!
+
+Configuration : :Tx3 Rx4 ADC1024 ChpsEvt2 Chps6
+DPU processing time 54873, wait time 5664
+DPU processing time 54370, wait time 6079
+DPU processing time 58721, wait time 6099
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 54320, wait time 5649
+DPU processing time 54300, wait time 6053
+DPU processing time 57585, wait time 6107
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #127 finished!
+
+Configuration : :Tx3 Rx4 ADC1024 ChpsEvt3 Chps6
+DPU processing time 81604, wait time 10251
+DPU processing time 85281, wait time 10669
+
+... DPU Finish, Check Cube data ....  : 
+
+Test PASSED!
+DPU processing time 80966, wait time 10239
+DPU processing time 84317, wait time 10621
+
+... DPU Finish, Check Calibration data ....  : 
+
+Test PASSED!
+Test #128 finished!
+
+Feature: :Tx3 Rx4 R1024 D6: Passed
+
+All 129 Tests finished!
+
+......TEST PASSES......
+Value read from Global variable (MCPI_Result): 0
+Test Failure Signature: 0
+Test Log Messages: 
+Feature tested: :Tx1 Rx4 R64 D4: Passed
+Feature tested: :Tx1 Rx4 R128 D4: Passed
+Feature tested: :Tx1 Rx4 R128 D4: Passed
+Feature tested: :Tx1 Rx4 R256 D4: Passed
+Feature tested: :Tx1 Rx4 R256 D4: Passed
+Feature tested: :Tx1 Rx4 R512 D4: Passed
+Feature tested: :Tx1 Rx4 R512 D4: Passed
+Feature tested: :Tx1 Rx4 R1024 D4: Passed
+Feature tested: :Tx1 Rx4 R1024 D4: Passed
+Feature tested: :Tx1 Rx2 R2048 D4: Passed
+Feature tested: :Tx1 Rx2 R2048 D4: Passed
+Feature tested: :Tx2 Rx4 R64 D4: Passed
+Feature tested: :Tx2 Rx4 R128 D4: Passed
+Feature tested: :Tx2 Rx4 R128 D4: Passed
+Feature tested: :Tx2 Rx4 R256 D4: Passed
+Feature tested: :Tx2 Rx4 R256 D4: Passed
+Feature tested: :Tx2 Rx4 R512 D4: Passed
+Feature tested: :Tx2 Rx4 R512 D4: Passed
+Feature tested: :Tx2 Rx4 R1024 D4: Passed
+Feature tested: :Tx2 Rx4 R1024 D4: Passed
+Feature tested: :Tx2 Rx2 R2048 D4: Passed
+Feature tested: :Tx2 Rx2 R2048 D4: Passed
+Feature tested: :Tx3 Rx4 R64 D6: Passed
+Feature tested: :Tx3 Rx4 R128 D6: Passed
+Feature tested: :Tx3 Rx4 R128 D6: Passed
+Feature tested: :Tx3 Rx4 R256 D6: Passed
+Feature tested: :Tx3 Rx4 R256 D6: Passed
+Feature tested: :Tx3 Rx4 R512 D6: Passed
+Feature tested: :Tx3 Rx4 R512 D6: Passed
+Feature tested: :Tx3 Rx4 R1024 D6: Passed
+Feature tested: :Tx3 Rx4 R1024 D6: Passed
+
+
+shutting down py4j gw server.
+
+
+**************************************************
+Terminating the debug session and Shutting down gateway.
+**************************************************
+
+**************************************************
+Test case execution completed
+**************************************************
+
+**************************************************
+Testcase Result : PASS
+**************************************************

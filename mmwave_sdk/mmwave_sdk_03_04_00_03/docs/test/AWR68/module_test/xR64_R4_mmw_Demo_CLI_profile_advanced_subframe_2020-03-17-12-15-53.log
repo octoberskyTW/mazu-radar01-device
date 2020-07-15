@@ -1,0 +1,433 @@
+pre script = /home/lte_phy/ti/mcpi_tf/mmwave_sdk_test/mcpitf_scripts/mmwave_sdk/setup.py
+
+
+cmd: python /home/lte_phy/ti/mcpi_tf/mmwave_sdk_test/mcpitf_scripts/mmwave_sdk/setup.py uda0227080_awr68
+eth008 Board details:
+IP address: 10.218.113.74
+
+Port: 17494
+
+connecting...
+Relay states 8->1 : 00010101
+1 off
+2 off
+Relay states 8->1 : 00010100
+1 on
+Relay states 8->1 : 00010101
+exit
+Disconnected
+Pre-Script returned: Success
+**************************************************
+Copying test case files from the Build server
+**************************************************
+call to copy_testcase_files:
+From: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/demo/xwr64xx/mmw/profiles 
+to: /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08
+
+Copying testcase binary file from http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/demo/xwr64xx/mmw/profiles/profile_advanced_subframe.cfg to /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08 using command: 
+wget -e robots=off --no-proxy -N -T 30 -t 2 -P /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08 http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/demo/xwr64xx/mmw/profiles/profile_advanced_subframe.cfg
+**************************************************
+Executing Testcase:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08/profile_advanced_subframe.cfg
+**************************************************
+Starting Capture Demo test script.
+
+
+cmd1: echo C5678vbn | sudo -S chmod o+rw /dev/awr68xx_cfg
+
+cmd1 ret_value = 0
+usb/uart port = /dev/awr68xx_cfg
+
+Send <CR> for CLI prompt.
+
+Send <cr> to check that demo is alive.
+
+Reply = mmwDemo:/>
+
+<cr> ACK'ed.
+
+Check version command output.
+
+version
+
+Platform                : xWR64xx
+
+mmWave SDK Version      : 03.04.00.02
+
+Device Info             : AWR68xx non-secure ES 02.00
+
+RF F/W Version          : 06.02.01.05.20.03.09
+
+RF F/W Patch            : 00.00.00.00.00.00.00
+
+mmWaveLink Version      : 01.02.05.25
+
+Lot number              : 3838737
+
+Wafer number            : 1572868
+
+Die coordinates in wafer: X = 12, Y = 0
+
+Done
+
+mmwDemo:/>
+Demo configuration file = /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr68xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-00-08_2020_03_17_03_00_08/profile_advanced_subframe.cfg
+
+line from config file: % Four subframes:                                           
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Profile                                                    0       1       2       3
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Carrier frequency     GHz                                  60     60      60      60
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Ramp Slope    MHz/us                                       250	150	    55	    30
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Num ADC Samples                                            128	256	    256	    512
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % ADC Sampling Rate Msps                                     9.2	12	    12.5	12.5
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % ADC Collection Time   us                                   13.91	21.33	20.48	40.96
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Extra ramp time required (start time) us                   2      3       3       3
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Chirp time (end time - start time)    us                   14	    22	    21	    41
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Chirp duration (end time) us                               16	    25	    24	    44
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Sweep BW (useful) MHz                                      3478.26 3200.00 1126.40 1228.80
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Total BW  MHz                                              4000	3750	1320	1320
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Max beat freq (80% of ADC sampling rate)  MHz              7.36	9.6	    10	    10
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Max distance (80%)    m                                    4.42	9.60	27.27	50.00
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Range resolution  m                                        0.043	0.047	0.133	0.122
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Range resolution (meter per 1D-FFT bin)   m/bin            0.043	0.047	0.133	0.122
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: %                                                                       
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Inter-chirp duration  us                                   7      7       7       7
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Number of chirp intervals in frame    -                    64     64      64      32
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Number of TX (TDM MIMO)                                    2      2       2       2
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Number of Tx elevation antennas                            0      0       0       0
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Number of RX channels -                                    4      4       4       4
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Max umambiguous relative velocity kmph                     97.83	70.31	72.58	44.12
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: %   mileph                                                   61.14	43.95	45.36	27.57
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Max extended relative velocity    kmph                     195.65	140.63	145.16	88.24
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: %   mileph                                                   122.28	87.89	90.73	55.15
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Frame time (total)    ms                                   1.472	2.048	1.984	1.632
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Frame time (active)   ms                                   1.024	1.6	    1.536	1.408
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Range FFT size    -                                        128    256     256     512
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Doppler FFT size  -                                        32     32      32      16
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Radar data memory required    KB                           136    272     272     272
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Velocity resolution   m/s                                  1.70	1.22	1.26	1.53
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Velocity resolution (m/s per 2D-FFT bin)  m/s/bin          1.70	1.22	1.26	1.53
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Velocity Maximum  m/s                                      27.17	19.53	20.16	12.25
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Extended Maximum Velocity m/s                              54.35	39.06	40.32	24.51
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % Maximum sweep accorss range bins  range bin                0.93	0.85	0.30	0.16
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: % 
+
+Comment. Expect 'Skipped' back.
+
+Data2 Read from serial port = Skipped
+
+
+Comment in profile and right ACK.
+
+line from config file: sensorStop                                                  
+
+Data2 Read from serial port = Ignored: Sensor is already stopped
+
+
+Stop reply.
+
+Send <cr> to check that demo is still alive.
+
+Reply = mmwDemo:/>
+
+<cr> ACK'ed.
+
+
+Test Ended. Closed port.
+
+Test passed.
+
+
+**************************************************
+Test case execution completed
+**************************************************
+
+**************************************************
+Testcase Result : PASS
+**************************************************

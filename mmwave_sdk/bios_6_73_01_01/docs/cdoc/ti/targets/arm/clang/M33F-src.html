@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><title>module ti.targets.arm.clang.M33F</title>
+<meta name="googlebot" content="noindex,nofollow">
+<link rel="stylesheet" type="text/css" href="../../../../src.css"/>
+</head>
+<body>
+<pre class=src>
+     1    <span class="comment">/*
+</span>     2    <span class="comment"> *  Copyright 2018 by Texas Instruments Incorporated.
+</span>     3    <span class="comment"> *
+</span>     4    <span class="comment"> */</span>
+     5    
+     6    <span class="comment">/*
+</span>     7    <span class="comment"> * Copyright (c) 2018, Texas Instruments Incorporated
+</span>     8    <span class="comment"> * All rights reserved.
+</span>     9    <span class="comment"> *
+</span>    10    <span class="comment"> * Redistribution and use in source and binary forms, with or without
+</span>    11    <span class="comment"> * modification, are permitted provided that the following conditions
+</span>    12    <span class="comment"> * are met:
+</span>    13    <span class="comment"> *
+</span>    14    <span class="comment"> * *  Redistributions of source code must retain the above copyright
+</span>    15    <span class="comment"> *    notice, this list of conditions and the following disclaimer.
+</span>    16    <span class="comment"> *
+</span>    17    <span class="comment"> * *  Redistributions in binary form must reproduce the above copyright
+</span>    18    <span class="comment"> *    notice, this list of conditions and the following disclaimer in the
+</span>    19    <span class="comment"> *    documentation and/or other materials provided with the distribution.
+</span>    20    <span class="comment"> *
+</span>    21    <span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of
+</span>    22    <span class="comment"> *    its contributors may be used to endorse or promote products derived
+</span>    23    <span class="comment"> *    from this software without specific prior written permission.
+</span>    24    <span class="comment"> *
+</span>    25    <span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+</span>    26    <span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+</span>    27    <span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+</span>    28    <span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+</span>    29    <span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+</span>    30    <span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+</span>    31    <span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+</span>    32    <span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+</span>    33    <span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+</span>    34    <span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+</span>    35    <span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</span>    36    <span class="comment"> */</span>
+    37    
+    38    <span class="xdoc">/*!
+</span>    39    <span class="xdoc"> *  ======== IM33.xdc ========
+</span>    40    <span class="xdoc"> *  Cortex M33 with floating point unit, little endian thumb2 (ELF)
+</span>    41    <span class="xdoc"> */</span>
+    42    <span class=key>metaonly</span> <span class=key>module</span> M33F <span class=key>inherits</span> ti.targets.arm.elf.IArm {
+    43        <span class=key>override</span> <span class=key>readonly</span> <span class=key>config</span> string name        = <span class="string">"M33F"</span>;
+    44        <span class=key>override</span> <span class=key>readonly</span> <span class=key>config</span> string suffix      = <span class="string">"m33f"</span>;
+    45        <span class=key>override</span> <span class=key>readonly</span> <span class=key>config</span> string isa         = <span class="string">"v8M"</span>;
+    46        <span class=key>override</span> <span class=key>readonly</span> <span class=key>config</span> string rts         = <span class="string">"ti.targets.arm.rtsarm"</span>;
+    47        <span class=key>override</span> <span class=key>config</span> string platform   = <span class="string">"ti.platforms.cortexM:MTL1_VSOC:1"</span>;
+    48        <span class=key>override</span> <span class=key>config</span> String stdInclude = <span class="string">"ti/targets/arm/clang/std.h"</span>;
+    49    
+    50        <span class=key>override</span> <span class=key>readonly</span> <span class=key>config</span> xdc.bld.ITarget.Model model = {
+    51            endian: <span class="string">"little"</span>,
+    52            codeModel: <span class="string">"thumb2"</span>,
+    53            shortEnums: <span class=key>true</span>
+    54        };
+    55    
+    56        <span class=key>override</span> <span class=key>readonly</span> <span class=key>config</span> xdc.bld.ITarget2.Command cc = {
+    57            cmd:  <span class="string">"tiarmclang -c"</span>,
+    58            opts: <span class="string">"-mcpu=cortex-m33 -mfloat-abi=hard -mfpu=fpv5-sp-d16"</span>
+    59        };
+    60    
+    61        <span class=key>override</span> <span class=key>readonly</span> <span class=key>config</span> xdc.bld.ITarget2.Command asm = {
+    62            cmd:  <span class="string">"tiarmclang -c -x assembler-with-cpp -mno-default-build-attributes"</span>,
+    63            opts: <span class="string">"-mcpu=cortex-m33 -mfloat-abi=hard -mfpu=fpv5-sp-d16"</span>
+    64        };
+    65    
+    66        <span class=key>override</span> <span class=key>readonly</span> <span class=key>config</span> xdc.bld.ITarget2.Command lnk = {
+    67            cmd:  <span class="string">"tiarmclang"</span>,
+    68            opts: <span class="string">"-mcpu=cortex-m33 -mfloat-abi=hard -mfpu=fpv5-sp-d16"</span>
+    69        };
+    70    
+    71        <span class="xdoc">/*!
+</span>    72    <span class="xdoc">     *  ======== ccOpts ========
+</span>    73    <span class="xdoc">     *  User configurable compiler options.
+</span>    74    <span class="xdoc">     */</span>
+    75        <span class=key>override</span> <span class=key>config</span> xdc.bld.ITarget2.Options ccOpts = {
+    76            prefix: <span class="string">""</span>,
+    77            suffix: <span class="string">""</span>
+    78        };
+    79    
+    80        <span class="xdoc">/*!
+</span>    81    <span class="xdoc">     *  ======== ccConfigOpts ========
+</span>    82    <span class="xdoc">     *  User configurable compiler options for the generated config C file.
+</span>    83    <span class="xdoc">     */</span>
+    84        <span class=key>override</span> <span class=key>config</span> xdc.bld.ITarget2.Options ccConfigOpts = {
+    85            prefix: <span class="string">"$(ccOpts.prefix)"</span>,
+    86            suffix: <span class="string">"$(ccOpts.suffix)"</span>
+    87        };
+    88    
+    89        <span class="xdoc">/*!
+</span>    90    <span class="xdoc">     *  ======== asmOpts ========
+</span>    91    <span class="xdoc">     *  User configurable assembler options.
+</span>    92    <span class="xdoc">     */</span>
+    93        <span class=key>override</span> <span class=key>config</span> xdc.bld.ITarget2.Options asmOpts = {
+    94            prefix: <span class="string">""</span>,
+    95            suffix: <span class="string">""</span>
+    96        };
+    97    
+    98        <span class="xdoc">/*!
+</span>    99    <span class="xdoc">     *  ======== lnkOpts ========
+</span>   100    <span class="xdoc">     *  Linker options
+</span>   101    <span class="xdoc">     */</span>
+   102        <span class=key>override</span> <span class=key>config</span> xdc.bld.ITarget2.Options lnkOpts = {
+   103            prefix: <span class="string">"-Wl,-q -Wl,-u,_c_int00"</span>,
+   104            suffix: <span class="string">"-Wl,-w -Wl,-c -Wl,-m,$(XDCCFGDIR)/$@.map -l $(rootDir)/lib/generic/libc.a"</span>
+   105        };
+   106    
+   107        <span class=key>override</span> <span class=key>readonly</span> <span class=key>config</span> xdc.bld.ITarget2.Command vers = {
+   108            cmd:  <span class="string">"tiarmclang"</span>,
+   109            opts: <span class="string">"--version"</span>
+   110        };
+   111    
+   112        <span class=key>override</span> <span class=key>config</span> string includeOpts = <span class="string">""</span>;
+   113    
+   114        <span class="comment">/*
+</span>   115    <span class="comment">     *  ======== profiles ========
+</span>   116    <span class="comment">     */</span>
+   117        <span class="comment">/*
+</span>   118    <span class="comment">     * The compiler option -gdwarf-3 needs to be passed to workaround a
+</span>   119    <span class="comment">     * known bug in TI LLVM compiler generation of debug information.
+</span>   120    <span class="comment">     * See JIRA CODEGEN-4536 for more info.
+</span>   121    <span class="comment">     */</span>
+   122        <span class=key>override</span> <span class=key>config</span> xdc.bld.ITarget.OptionSet profiles[string] = [
+   123            [<span class="string">"debug"</span>, {
+   124                compileOpts: {
+   125                    copts: <span class="string">"-gdwarf-3"</span>,
+   126                    defs:  <span class="string">"-D_DEBUG_=1"</span>,
+   127                },
+   128                linkOpts: <span class="string">"-gdwarf-3"</span>,
+   129            }],
+   130    
+   131            [<span class="string">"release"</span>, {
+   132                compileOpts: {
+   133                    copts: <span class="string">" -O2 "</span>,
+   134                },
+   135                linkOpts: <span class="string">" "</span>,
+   136            }],
+   137        ];
+   138    }
+   139    <span class="comment">/*
+</span>   140    <span class="comment"> *  @(#) ti.targets.arm.clang; 1, 0, 0,0; 7-20-2018 13:59:43; /db/ztree/library/trees/xdctargets/xdctargets-r09/src/ xlibrary
+</span>   141    <span class="comment">
+</span>   142    <span class="comment"> */</span>
+   143    
+</pre>
+</body></html>

@@ -1,0 +1,1210 @@
+eth008 Board details:
+IP address: 10.218.113.62
+
+Port: 17494
+
+connecting...
+Relay states 8->1 : 00010101
+5 off
+7 off
+6 off
+Relay states 8->1 : 00000101
+5 on
+Relay states 8->1 : 00010101
+exit
+Disconnected
+Pre-Script returned: Success
+**************************************************
+Testcase mods & parameters invoked:
+**************************************************
+Two core test case: None (this is not a two core testcase)
+
+**************************************************
+Copying test case files from the Build server
+**************************************************
+Testdata possible location 1: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/mmwave_sdk/packages/ti/datapath/dpc/dpu/aoaproc/testdata
+
+
+Testdata directory was not found on Testdata possible location 1
+
+
+Testdata possible location 2: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/datapath/dpc/dpu/aoaproc/test/testdata
+
+
+Testdata directory was not found on Testdata possible location 2
+
+Call to copy_testcase_binary:
+TCP: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/datapath/dpc/dpu/aoaproc/test; /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr18xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-08-16_2020_03_17_03_08_16
+
+Copying testcase binary file from http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/datapath/dpc/dpu/aoaproc/test/xwr18xx_aoaprocdsp_dss.xe674 to /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr18xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-08-16_2020_03_17_03_08_16 using command: 
+wget -e robots=off --no-proxy -N -T 30 -t 2 -P /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr18xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-08-16_2020_03_17_03_08_16 http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/datapath/dpc/dpu/aoaproc/test/xwr18xx_aoaprocdsp_dss.xe674
+**************************************************
+Executing Testcase:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr18xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-08-16_2020_03_17_03_08_16/xwr18xx_aoaprocdsp_dss.xe674
+**************************************************
+Checking if Py4J Gateway server has started...
+Py4J Gateway Server is Started
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/DEBUGSSM_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/CS_DAP_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/Cortex_R4_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/CSETB_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/IcePick_M_0
+amk: a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/C674X_0
+DSS test case opening debug session.
+
+cr4ctl = 0x0
+
+Loading binary to the DUT (no binary args updated):/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr18xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-08-16_2020_03_17_03_08_16/xwr18xx_aoaprocdsp_dss.xe674
+binary path = /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___awr18xx_sdk03.04.00_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-08-16_2020_03_17_03_08_16/xwr18xx_aoaprocdsp_dss.xe674
+
+total CCS time = 217
+
+
+**************************************************
+CIO Log captured for the testcase
+**************************************************
+...... Initialization ...... 
+aoa Proc DPU Test start ...... 
+
+...... 153 Tests to be run .......
+
+
+Test #0  start
+Test feature : :Tx1:Rx1:Chp16:D16:R16:bpm0:extVel0
+CFAR Det Peaks: 3 [11,0,2  4,6,8  1,-5,24]
+Check the AOA output :   PASS 
+
+Test #0 finished!
+
+Test #1  start
+Test feature : :Tx1:Rx1:Chp12:D16:R32:bpm0:extVel0
+CFAR Det Peaks: 4 [11,0,14  11,5,-13  2,-7,-20  28,-4,-23]
+Check the AOA output :   PASS 
+
+Test #1 finished!
+
+Test #2  start
+Test feature : :Tx1:Rx1:Chp12:D16:R64:bpm0:extVel0
+CFAR Det Peaks: 1 [27,3,-19]
+Check the AOA output :   PASS 
+
+Test #2 finished!
+
+Test #3  start
+Test feature : :Tx1:Rx1:Chp64:D64:R128:bpm0:extVel0
+CFAR Det Peaks: 3 [19,1,-13  126,27,12  113,-20,16]
+Check the AOA output :   PASS 
+
+Test #3 finished!
+
+Test #4  start
+Test feature : :Tx1:Rx1:Chp60:D64:R256:bpm0:extVel0
+CFAR Det Peaks: 1 [19,9,13]
+Check the AOA output :   PASS 
+
+Test #4 finished!
+
+Test #5  start
+Test feature : :Tx1:Rx1:Chp56:D64:R512:bpm0:extVel0
+CFAR Det Peaks: 2 [213,9,-26  285,-25,-20]
+Check the AOA output :   PASS 
+
+Test #5 finished!
+
+Test #6  start
+Test feature : :Tx1:Rx1:Chp256:D256:R64:bpm0:extVel0
+CFAR Det Peaks: 4 [56,2,22  5,70,-18  6,-104,16  60,-37,23]
+Check the AOA output :   PASS 
+
+Test #6 finished!
+
+Test #7  start
+Test feature : :Tx1:Rx1:Chp252:D256:R128:bpm0:extVel0
+CFAR Det Peaks: 5 [85,7,23  50,51,-9  75,112,-4  70,-86,10  10,-45,12]
+Check the AOA output :   PASS 
+
+Test #7 finished!
+
+Test #8  start
+Test feature : :Tx1:Rx1:Chp248:D256:R16:bpm0:extVel0
+CFAR Det Peaks: 1 [14,61,22]
+Check the AOA output :   PASS 
+
+Test #8 finished!
+
+Test #9  start
+Test feature : :Tx1:Rx2:Chp16:D16:R64:bpm0:extVel0
+CFAR Det Peaks: 4 [8,0,25  56,5,25  13,-8,-25  41,-3,1]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #9 finished!
+
+Test #10  start
+Test feature : :Tx1:Rx2:Chp12:D16:R32:bpm0:extVel0
+CFAR Det Peaks: 1 [21,0,19]
+Check the AOA output :   PASS 
+
+Test #10 finished!
+
+Test #11  start
+Test feature : :Tx1:Rx2:Chp12:D16:R256:bpm0:extVel0
+CFAR Det Peaks: 5 [1,0,-19  209,3,4  6,7,-2  44,-5,25  140,-3,25]
+Check the AOA output :   PASS 
+
+Test #11 finished!
+
+Test #12  start
+Test feature : :Tx1:Rx2:Chp12:D16:R128:bpm0:extVel0
+CFAR Det Peaks: 4 [105,1,13  29,5,-18  53,-8,-12  77,-4,0]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #12 finished!
+
+Test #13  start
+Test feature : :Tx1:Rx2:Chp12:D16:R1024:bpm0:extVel0
+CFAR Det Peaks: 3 [678,2,26  745,6,-22  294,-4,26]
+Check the AOA output :   PASS 
+
+Test #13 finished!
+
+Test #14  start
+Test feature : :Tx1:Rx2:Chp12:D16:R512:bpm0:extVel0
+CFAR Det Peaks: 2 [415,2,-9  372,-7,22]
+Check the AOA output :   PASS 
+
+Test #14 finished!
+
+Test #15  start
+Test feature : :Tx1:Rx2:Chp32:D32:R32:bpm0:extVel0
+CFAR Det Peaks: 1 [10,9,-12]
+Check the AOA output :   PASS 
+
+Test #15 finished!
+
+Test #16  start
+Test feature : :Tx1:Rx2:Chp32:D32:R512:bpm0:extVel0
+CFAR Det Peaks: 5 [114,2,-7  472,6,17  98,15,-22  180,-12,-7  434,-5,-24]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #16 finished!
+
+Test #17  start
+Test feature : :Tx1:Rx2:Chp28:D32:R128:bpm0:extVel0
+CFAR Det Peaks: 3 [12,2,12  125,14,-23  84,-8,-13]
+Check the AOA output :   PASS 
+
+Test #17 finished!
+
+Test #18  start
+Test feature : :Tx1:Rx2:Chp28:D32:R16:bpm0:extVel0
+CFAR Det Peaks: 4 [2,2,-3  4,9,-3  10,-15,25  15,-7,26]
+Check the AOA output :   PASS 
+
+Test #18 finished!
+
+Test #19  start
+Test feature : :Tx1:Rx2:Chp24:D32:R512:bpm0:extVel0
+CFAR Det Peaks: 5 [355,0,4  244,7,1  254,13,4  349,-12,-6  344,-7,8]
+Check the AOA output :   PASS 
+
+Test #19 finished!
+
+Test #20  start
+Test feature : :Tx1:Rx2:Chp20:D32:R64:bpm0:extVel0
+CFAR Det Peaks: 1 [53,5,1]
+Check the AOA output :   PASS 
+
+Test #20 finished!
+
+Test #21  start
+Test feature : :Tx1:Rx2:Chp64:D64:R128:bpm0:extVel0
+CFAR Det Peaks: 4 [87,6,-25  106,21,-19  18,-28,-24  45,-11,9]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #21 finished!
+
+Test #22  start
+Test feature : :Tx1:Rx2:Chp64:D64:R32:bpm0:extVel0
+CFAR Det Peaks: 4 [23,0,-22  8,23,-4  27,-29,-25  24,-11,-22]
+Check the AOA output :   PASS 
+
+Test #22 finished!
+
+Test #23  start
+Test feature : :Tx1:Rx2:Chp60:D64:R512:bpm0:extVel0
+CFAR Det Peaks: 4 [344,3,25  82,20,25  163,-27,-23  346,-16,14]
+Check the AOA output :   PASS 
+
+Test #23 finished!
+
+Test #24  start
+Test feature : :Tx1:Rx2:Chp60:D64:R128:bpm0:extVel0
+CFAR Det Peaks: 2 [105,4,-25  40,-26,-7]
+Check the AOA output :   PASS 
+
+Test #24 finished!
+
+Test #25  start
+Test feature : :Tx1:Rx2:Chp56:D64:R32:bpm0:extVel0
+CFAR Det Peaks: 4 [29,0,17  22,20,-22  10,-32,-7  21,-16,1]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #25 finished!
+
+Test #26  start
+Test feature : :Tx1:Rx2:Chp52:D64:R512:bpm0:extVel0
+CFAR Det Peaks: 5 [57,1,-16  466,13,22  264,27,3  320,-23,-20  417,-13,-22]
+Check the AOA output :   PASS 
+
+Test #26 finished!
+
+Test #27  start
+Test feature : :Tx1:Rx2:Chp128:D128:R64:bpm0:extVel0
+CFAR Det Peaks: 5 [7,12,-15  61,27,11  1,53,-20  43,-44,-13  30,-17,-25]
+Check the AOA output :   PASS 
+
+Test #27 finished!
+
+Test #28  start
+Test feature : :Tx1:Rx2:Chp128:D128:R16:bpm0:extVel0
+CFAR Det Peaks: 2 [9,7,-26  2,-34,25]
+Check the AOA output :   PASS 
+
+Test #28 finished!
+
+Test #29  start
+Test feature : :Tx1:Rx2:Chp124:D128:R256:bpm0:extVel0
+CFAR Det Peaks: 2 [237,0,-16  171,-35,20]
+Check the AOA output :   PASS 
+
+Test #29 finished!
+
+Test #30  start
+Test feature : :Tx1:Rx2:Chp124:D128:R64:bpm0:extVel0
+CFAR Det Peaks: 3 [39,15,-10  13,63,13  40,-35,19]
+Check the AOA output :   PASS 
+
+Test #30 finished!
+
+Test #31  start
+Test feature : :Tx1:Rx2:Chp120:D128:R32:bpm0:extVel0
+CFAR Det Peaks: 1 [14,50,-22]
+Check the AOA output :   PASS 
+
+Test #31 finished!
+
+Test #32  start
+Test feature : :Tx1:Rx2:Chp116:D128:R256:bpm0:extVel0
+CFAR Det Peaks: 5 [42,1,-24  228,27,8  218,58,-14  13,-39,3  119,-20,26]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #32 finished!
+
+Test #33  start
+Test feature : :Tx1:Rx2:Chp256:D256:R32:bpm0:extVel0
+CFAR Det Peaks: 2 [24,63,-18  19,-110,22]
+Check the AOA output :   PASS 
+
+Test #33 finished!
+
+Test #34  start
+Test feature : :Tx1:Rx2:Chp256:D256:R16:bpm0:extVel0
+CFAR Det Peaks: 3 [10,24,-9  1,107,-22  11,-58,12]
+Check the AOA output :   PASS 
+
+Test #34 finished!
+
+Test #35  start
+Test feature : :Tx1:Rx2:Chp252:D256:R128:bpm0:extVel0
+CFAR Det Peaks: 3 [27,12,-17  102,109,11  35,-78,20]
+Check the AOA output :   PASS 
+
+Test #35 finished!
+
+Test #36  start
+Test feature : :Tx1:Rx2:Chp252:D256:R64:bpm0:extVel0
+CFAR Det Peaks: 4 [31,4,24  42,82,25  60,-108,-26  58,-54,6]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #36 finished!
+
+Test #37  start
+Test feature : :Tx1:Rx2:Chp248:D256:R32:bpm0:extVel0
+CFAR Det Peaks: 4 [12,29,22  6,68,22  9,-111,0  28,-45,-22]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #37 finished!
+
+Test #38  start
+Test feature : :Tx1:Rx2:Chp244:D256:R16:bpm0:extVel0
+CFAR Det Peaks: 2 [14,22,-11  12,-78,25]
+Check the AOA output :   PASS 
+
+Test #38 finished!
+
+Test #39  start
+Test feature : :Tx1:Rx2:Chp512:D512:R16:bpm0:extVel0
+CFAR Det Peaks: 1 [15,190,10]
+Check the AOA output :   PASS 
+
+Test #39 finished!
+
+Test #40  start
+Test feature : :Tx1:Rx2:Chp512:D512:R64:bpm0:extVel0
+CFAR Det Peaks: 2 [11,99,19  50,-179,-4]
+Check the AOA output :   PASS 
+
+Test #40 finished!
+
+Test #41  start
+Test feature : :Tx1:Rx2:Chp508:D512:R64:bpm0:extVel0
+CFAR Det Peaks: 2 [23,85,0  58,-198,16]
+Check the AOA output :   PASS 
+
+Test #41 finished!
+
+Test #42  start
+Test feature : :Tx1:Rx2:Chp508:D512:R32:bpm0:extVel0
+CFAR Det Peaks: 3 [3,31,24  16,222,9  3,-139,-23]
+Check the AOA output :   PASS 
+
+Test #42 finished!
+
+Test #43  start
+Test feature : :Tx1:Rx2:Chp504:D512:R32:bpm0:extVel0
+CFAR Det Peaks: 4 [2,43,-10  11,135,-19  7,-228,4  13,-121,22]
+Check the AOA output :   PASS 
+
+Test #43 finished!
+
+Test #44  start
+Test feature : :Tx1:Rx2:Chp500:D512:R16:bpm0:extVel0
+CFAR Det Peaks: 3 [15,52,26  7,207,8  1,-87,10]
+Check the AOA output :   PASS 
+
+Test #44 finished!
+
+Test #45  start
+Test feature : :Tx1:Rx4:Chp16:D16:R128:bpm0:extVel0
+CFAR Det Peaks: 4 [104,0,23  3,4,23  74,-7,7  65,-3,-22]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #45 finished!
+
+Test #46  start
+Test feature : :Tx1:Rx4:Chp12:D16:R64:bpm0:extVel0
+CFAR Det Peaks: 4 [34,0,-25  9,4,14  13,-7,8  31,-4,-24]
+Check the AOA output :   PASS 
+
+Test #46 finished!
+
+Test #47  start
+Test feature : :Tx1:Rx4:Chp12:D16:R512:bpm0:extVel0
+CFAR Det Peaks: 5 [355,0,13  256,4,-17  248,7,-26  361,-7,-8  377,-3,13]
+Check the AOA output :   PASS 
+
+Test #47 finished!
+
+Test #48  start
+Test feature : :Tx1:Rx4:Chp12:D16:R256:bpm0:extVel0
+CFAR Det Peaks: 2 [42,2  246,-5]
+Check the AOA output :   PASS 
+
+Test #48 finished!
+
+Test #49  start
+Test feature : :Tx1:Rx4:Chp12:D16:R16:bpm0:extVel0
+CFAR Det Peaks: 4 [13,0,26  9,5,-22  11,-8,-19  2,-4,-26]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #49 finished!
+
+Test #50  start
+Test feature : :Tx1:Rx4:Chp12:D16:R1024:bpm0:extVel0
+CFAR Det Peaks: 4 [164,1,20  393,4,18  773,-8,-21  14,-4,0]
+Check the AOA output :   PASS 
+
+Test #50 finished!
+
+Test #51  start
+Test feature : :Tx1:Rx4:Chp32:D32:R64:bpm0:extVel0
+CFAR Det Peaks: 2 [62,0,16  15,-11,-2]
+Check the AOA output :   PASS 
+
+Test #51 finished!
+
+Test #52  start
+Test feature : :Tx1:Rx4:Chp32:D32:R1024:bpm0:extVel0
+CFAR Det Peaks: 4 [961,2,-23  124,10,9  309,-14,-5  260,-6,-22]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #52 finished!
+
+Test #53  start
+Test feature : :Tx1:Rx4:Chp28:D32:R256:bpm0:extVel0
+CFAR Det Peaks: 3 [226,1,-5  50,12,-18  98,-6,-3]
+Check the AOA output :   PASS 
+
+Test #53 finished!
+
+Test #54  start
+Test feature : :Tx1:Rx4:Chp28:D32:R32:bpm0:extVel0
+CFAR Det Peaks: 4 [13,2,-22  22,10,14  13,-14,6  27,-5,15]
+Check the AOA output :   PASS 
+
+Test #54 finished!
+
+Test #55  start
+Test feature : :Tx1:Rx4:Chp24:D32:R1024:bpm0:extVel0
+CFAR Det Peaks: 5 [912,0,-6  816,6,-25  1011,14,-21  428,-13,-21  142,-6,23]
+Check the AOA output :   PASS 
+
+Test #55 finished!
+
+Test #56  start
+Test feature : :Tx1:Rx4:Chp20:D32:R128:bpm0:extVel0
+CFAR Det Peaks: 2 [43,1  119,-12]
+Check the AOA output :   PASS 
+
+Test #56 finished!
+
+Test #57  start
+Test feature : :Tx1:Rx4:Chp64:D64:R128:bpm0:extVel0
+CFAR Det Peaks: 1 [9,25,24]
+Check the AOA output :   PASS 
+
+Test #57 finished!
+
+Test #58  start
+Test feature : :Tx1:Rx4:Chp64:D64:R32:bpm0:extVel0
+CFAR Det Peaks: 4 [30,2,9  8,20,-25  29,-28,-1  17,-15,-13]
+Check the AOA output :   PASS 
+
+Test #58 finished!
+
+Test #59  start
+Test feature : :Tx1:Rx4:Chp60:D64:R512:bpm0:extVel0
+CFAR Det Peaks: 2 [131,1,-22  485,-30,22]
+Check the AOA output :   PASS 
+
+Test #59 finished!
+
+Test #60  start
+Test feature : :Tx1:Rx4:Chp60:D64:R128:bpm0:extVel0
+CFAR Det Peaks: 1 [77,16,23]
+Check the AOA output :   PASS 
+
+Test #60 finished!
+
+Test #61  start
+Test feature : :Tx1:Rx4:Chp56:D64:R32:bpm0:extVel0
+CFAR Det Peaks: 2 [3,15,1  10,-20,-13]
+Check the AOA output :   PASS 
+
+Test #61 finished!
+
+Test #62  start
+Test feature : :Tx1:Rx4:Chp52:D64:R512:bpm0:extVel0
+CFAR Det Peaks: 4 [127,0,0  389,19,-26  1,-30,-16  149,-13,23]
+Check the AOA output :   PASS 
+
+Test #62 finished!
+
+Test #63  start
+Test feature : :Tx1:Rx4:Chp128:D128:R128:bpm0:extVel0
+CFAR Det Peaks: 4 [31,1,-3  49,36,-23  59,-58,-19  35,-20,4]
+Check the AOA output :   PASS 
+
+Test #63 finished!
+
+Test #64  start
+Test feature : :Tx1:Rx4:Chp128:D128:R32:bpm0:extVel0
+CFAR Det Peaks: 1 [24,46]
+Check the AOA output :   PASS 
+
+Test #64 finished!
+
+Test #65  start
+Test feature : :Tx1:Rx4:Chp124:D128:R16:bpm0:extVel0
+CFAR Det Peaks: 3 [9,1,-2  7,54,11  9,-43,-6]
+Check the AOA output :   PASS 
+
+Test #65 finished!
+
+Test #66  start
+Test feature : :Tx1:Rx4:Chp124:D128:R128:bpm0:extVel0
+CFAR Det Peaks: 4 [123,12,-20  72,45,-2  60,-53,-12  92,-28,-7]
+Check the AOA output :   PASS 
+
+Test #66 finished!
+
+Test #67  start
+Test feature : :Tx1:Rx4:Chp120:D128:R64:bpm0:extVel0
+CFAR Det Peaks: 4 [20,0,24  12,47,16  4,-50,26  15,-28,3]
+Check the AOA output :   PASS 
+
+Test #67 finished!
+
+Test #68  start
+Test feature : :Tx1:Rx4:Chp116:D128:R16:bpm0:extVel0
+CFAR Det Peaks: 3 [2,14,26  5,45,10  4,-31,2]
+Check the AOA output :   PASS 
+
+Test #68 finished!
+
+Test #69  start
+Test feature : :Tx1:Rx4:Chp256:D256:R32:bpm0:extVel0
+CFAR Det Peaks: 5 [1,24,-9  26,68,27  2,105,24  1,-96,-5  23,-40,22]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #69 finished!
+
+Test #70  start
+Test feature : :Tx1:Rx4:Chp256:D256:R16:bpm0:extVel0
+CFAR Det Peaks: 1 [3,23,7]
+Check the AOA output :   PASS 
+
+Test #70 finished!
+
+Test #71  start
+Test feature : :Tx1:Rx4:Chp252:D256:R128:bpm0:extVel0
+CFAR Det Peaks: 2 [28,54,0  27,-106,24]
+Check the AOA output :   PASS 
+
+Test #71 finished!
+
+Test #72  start
+Test feature : :Tx1:Rx4:Chp252:D256:R64:bpm0:extVel0
+CFAR Det Peaks: 1 [13,82]
+Check the AOA output :   PASS 
+
+Test #72 finished!
+
+Test #73  start
+Test feature : :Tx1:Rx4:Chp248:D256:R32:bpm0:extVel0
+CFAR Det Peaks: 4 [30,6,-18  8,87,-20  28,-107,-14  10,-64,-22]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #73 finished!
+
+Test #74  start
+Test feature : :Tx1:Rx4:Chp244:D256:R16:bpm0:extVel0
+CFAR Det Peaks: 3 [3,2,13  11,100,10  2,-46,-15]
+Check the AOA output :   PASS 
+
+Test #74 finished!
+
+Test #75  start
+Test feature : :Tx1:Rx4:Chp512:D512:R16:bpm0:extVel0
+CFAR Det Peaks: 1 [1,82,24]
+Check the AOA output :   PASS 
+
+Test #75 finished!
+
+Test #76  start
+Test feature : :Tx1:Rx4:Chp512:D512:R64:bpm0:extVel0
+CFAR Det Peaks: 5 [57,22,-25  14,117,1  49,236,-24  29,-203,14  20,-54,11]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #76 finished!
+
+Test #77  start
+Test feature : :Tx1:Rx4:Chp508:D512:R64:bpm0:extVel0
+CFAR Det Peaks: 4 [9,32,-19  20,131,22  41,-239,-22  14,-115,11]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #77 finished!
+
+Test #78  start
+Test feature : :Tx1:Rx4:Chp508:D512:R32:bpm0:extVel0
+CFAR Det Peaks: 3 [14,5,-15  22,224,-14  10,-110,13]
+Check the AOA output :   PASS 
+
+Test #78 finished!
+
+Test #79  start
+Test feature : :Tx1:Rx4:Chp504:D512:R32:bpm0:extVel0
+CFAR Det Peaks: 4 [2,51,-25  31,180,2  31,-226,-6  6,-99,-26]
+Check the AOA output :   PASS 
+
+Test #79 finished!
+
+Test #80  start
+Test feature : :Tx1:Rx4:Chp500:D512:R16:bpm0:extVel0
+CFAR Det Peaks: 2 [7,62  3,-232]
+Check the AOA output :   PASS 
+
+Test #80 finished!
+
+Test #81  start
+Test feature : :Tx2:Rx4:Chp16:D16:R128:bpm1:extVel0
+CFAR Det Peaks: 3 [39,2,2  5,7,0  108,-6,-25]
+Check the AOA output :   PASS 
+
+Test #81 finished!
+
+Test #82  start
+Test feature : :Tx2:Rx4:Chp12:D16:R32:bpm0:extVel1
+CFAR Det Peaks: 5 [15,1,23  8,3,-4  28,7,-24  22,-6,26  14,-3,-7]
+Check the AOA output :   PASS 
+
+Test #82 finished!
+
+Test #83  start
+Test feature : :Tx2:Rx4:Chp12:D16:R512:bpm1:extVel0
+CFAR Det Peaks: 2 [107,3,-13  193,-5,26]
+Check the AOA output :   PASS 
+
+Test #83 finished!
+
+Test #84  start
+Test feature : :Tx2:Rx4:Chp12:D16:R128:bpm0:extVel1
+CFAR Det Peaks: 2 [64,0,9  15,-7,22]
+Check the AOA output :   PASS 
+
+Test #84 finished!
+
+Test #85  start
+Test feature : :Tx2:Rx4:Chp12:D16:R32:bpm1:extVel0
+CFAR Det Peaks: 1 [20,5,2]
+Check the AOA output :   PASS 
+
+Test #85 finished!
+
+Test #86  start
+Test feature : :Tx2:Rx4:Chp12:D16:R512:bpm0:extVel1
+CFAR Det Peaks: 5 [9,1,-4  63,4,2  371,6,9  219,-6,-9  245,-3,0]
+Check the AOA output :   PASS 
+
+Test #86 finished!
+
+Test #87  start
+Test feature : :Tx2:Rx4:Chp32:D32:R64:bpm1:extVel0
+CFAR Det Peaks: 4 [8,2,11  6,8,18  11,-15,24  27,-5,23]
+Check the AOA output :   PASS 
+
+Test #87 finished!
+
+Test #88  start
+Test feature : :Tx2:Rx4:Chp32:D32:R16:bpm0:extVel0
+CFAR Det Peaks: 2 [1,1  1,-16]
+Check the AOA output :   PASS 
+
+Test #88 finished!
+
+Test #89  start
+Test feature : :Tx2:Rx4:Chp28:D32:R256:bpm1:extVel0
+CFAR Det Peaks: 1 [105,3,-25]
+Check the AOA output :   PASS 
+
+Test #89 finished!
+
+Test #90  start
+Test feature : :Tx2:Rx4:Chp28:D32:R64:bpm0:extVel1
+CFAR Det Peaks: 2 [16,0,24  36,-10,4]
+Check the AOA output :   PASS 
+
+Test #90 finished!
+
+Test #91  start
+Test feature : :Tx2:Rx4:Chp24:D32:R32:bpm1:extVel0
+CFAR Det Peaks: 4 [8,2,16  26,8,6  18,-16,4  25,-6,25]
+Check the AOA output :   PASS 
+
+Test #91 finished!
+
+Test #92  start
+Test feature : :Tx2:Rx4:Chp20:D32:R256:bpm0:extVel1
+CFAR Det Peaks: 3 [16,4,17  52,14,-22  114,-8,-12]
+Check the AOA output :   PASS 
+
+Test #92 finished!
+
+Test #93  start
+Test feature : :Tx2:Rx4:Chp64:D64:R32:bpm1:extVel0
+CFAR Det Peaks: 1 [17,28,-2]
+Check the AOA output :   PASS 
+
+Test #93 finished!
+
+Test #94  start
+Test feature : :Tx2:Rx4:Chp64:D64:R16:bpm0:extVel1
+CFAR Det Peaks: 4 [8,0,8  5,23,-26  7,-32,23  14,-14,-23]
+Check the AOA output :   PASS 
+
+Test #94 finished!
+
+Test #95  start
+Test feature : :Tx2:Rx4:Chp60:D64:R128:bpm1:extVel0
+CFAR Det Peaks: 5 [65,4,-24  96,13,-3  36,31,-18  79,-21,27  65,-9,23]
+Check the AOA output :   PASS 
+
+Test #95 finished!
+
+Test #96  start
+Test feature : :Tx2:Rx4:Chp60:D64:R64:bpm0:extVel0
+CFAR Det Peaks: 2 [46,11  52,-24]
+Check the AOA output :   PASS 
+
+Test #96 finished!
+
+Test #97  start
+Test feature : :Tx2:Rx4:Chp56:D64:R32:bpm1:extVel0
+CFAR Det Peaks: 3 [9,4,20  15,25,25  1,-16,-14]
+Check the AOA output :   PASS 
+
+Test #97 finished!
+
+Test #98  start
+Test feature : :Tx2:Rx4:Chp52:D64:R16:bpm0:extVel1
+CFAR Det Peaks: 2 [2,1,16  4,-23,23]
+Check the AOA output :   PASS 
+
+Test #98 finished!
+
+Test #99  start
+Test feature : :Tx2:Rx4:Chp128:D128:R16:bpm1:extVel0
+CFAR Det Peaks: 2 [10,15,-8  9,-58,22]
+Check the AOA output :   PASS 
+
+Test #99 finished!
+
+Test #100  start
+Test feature : :Tx2:Rx4:Chp128:D128:R64:bpm0:extVel1
+CFAR Det Peaks: 2 [16,17,-2  52,-63,-25]
+Check the AOA output :   PASS 
+
+Test #100 finished!
+
+Test #101  start
+Test feature : :Tx2:Rx4:Chp124:D128:R64:bpm1:extVel0
+CFAR Det Peaks: 5 [42,2,-14  49,25,9  20,54,19  62,-45,-25  59,-21,26]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #101 finished!
+
+Test #102  start
+Test feature : :Tx2:Rx4:Chp124:D128:R32:bpm0:extVel1
+CFAR Det Peaks: 2 [25,6,23  1,-41,-20]
+Check the AOA output :   PASS 
+
+Test #102 finished!
+
+Test #103  start
+Test feature : :Tx2:Rx4:Chp120:D128:R32:bpm1:extVel0
+CFAR Det Peaks: 4 [5,1,7  6,40,17  23,-54,-4  13,-27,-12]
+Check the AOA output :   PASS 
+
+Test #103 finished!
+
+Test #104  start
+Test feature : :Tx2:Rx4:Chp116:D128:R16:bpm0:extVel0
+CFAR Det Peaks: 1 [14,42]
+Check the AOA output :   PASS 
+
+Test #104 finished!
+
+Test #105  start
+Test feature : :Tx2:Rx4:Chp256:D256:R32:bpm1:extVel0
+CFAR Det Peaks: 1 [23,25,5]
+Check the AOA output :   PASS 
+
+Test #105 finished!
+
+Test #106  start
+Test feature : :Tx2:Rx4:Chp256:D256:R32:bpm0:extVel1
+CFAR Det Peaks: 3 [5,41,19  10,116,-23  25,-49,10]
+Check the AOA output :   PASS 
+
+Test #106 finished!
+
+Test #107  start
+Test feature : :Tx2:Rx4:Chp252:D256:R32:bpm1:extVel0
+CFAR Det Peaks: 3 [29,9,23  20,90,13  20,-58,-12]
+Check the AOA output :   PASS 
+
+Test #107 finished!
+
+Test #108  start
+Test feature : :Tx2:Rx4:Chp252:D256:R32:bpm0:extVel1
+CFAR Det Peaks: 3 [1,38,6  8,110,20  24,-82,-20]
+Check the AOA output :   PASS 
+
+Test #108 finished!
+
+Test #109  start
+Test feature : :Tx2:Rx4:Chp248:D256:R32:bpm1:extVel0
+CFAR Det Peaks: 3 [13,8,-25  27,127,25  11,-73,13]
+Check the AOA output :   PASS 
+
+Test #109 finished!
+
+Test #110  start
+Test feature : :Tx2:Rx4:Chp244:D256:R32:bpm0:extVel1
+CFAR Det Peaks: 5 [28,21,-6  2,68,-2  22,105,2  14,-80,24  16,-33,-19]
+Check the AOA output :   PASS 
+
+Test #110 finished!
+
+Test #111  start
+Test feature : :Tx2:Rx4:Chp512:D512:R16:bpm1:extVel0
+CFAR Det Peaks: 5 [7,50,26  7,146,19  2,250,8  15,-194,20  1,-77,-3]
+Check the AOA output :   PASS 
+
+Test #111 finished!
+
+Test #112  start
+Test feature : :Tx2:Rx4:Chp512:D512:R16:bpm0:extVel0
+CFAR Det Peaks: 2 [2,115  3,-147]
+Check the AOA output :   PASS 
+
+Test #112 finished!
+
+Test #113  start
+Test feature : :Tx2:Rx4:Chp508:D512:R16:bpm1:extVel0
+CFAR Det Peaks: 5 [13,2,-1  1,130,-25  7,238,-8  11,-186,22  4,-89,-21]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #113 finished!
+
+Test #114  start
+Test feature : :Tx2:Rx4:Chp508:D512:R16:bpm0:extVel1
+CFAR Det Peaks: 3 [12,23,-18  5,195,24  1,-96,-12]
+Check the AOA output :   PASS 
+
+Test #114 finished!
+
+Test #115  start
+Test feature : :Tx2:Rx4:Chp504:D512:R16:bpm1:extVel0
+CFAR Det Peaks: 4 [4,6,11  13,186,-12  2,-202,-19  6,-101,-24]
+Check the AOA output :   PASS 
+
+Test #115 finished!
+
+Test #116  start
+Test feature : :Tx2:Rx4:Chp500:D512:R16:bpm0:extVel1
+CFAR Det Peaks: 3 [3,61,-23  13,249,-26  5,-148,21]
+Check the AOA output :   PASS 
+
+Test #116 finished!
+
+Test #117  start
+Test feature : :Tx3:Rx4:Chp16:D16:R128:bpm0:extVel1
+CFAR Det Peaks: 3 [50,0,-10  73,6,-16  75,-5,-7]
+Check the AOA output :   PASS 
+
+Test #117 finished!
+
+Test #118  start
+Test feature : :Tx3:Rx4:Chp12:D16:R32:bpm0:extVel1
+CFAR Det Peaks: 2 [2,3,9  21,-7,8]
+Check the AOA output :   PASS 
+
+Test #118 finished!
+
+Test #119  start
+Test feature : :Tx3:Rx4:Chp12:D16:R512:bpm0:extVel1
+CFAR Det Peaks: 2 [98,1,15  401,-6,15]
+Check the AOA output :   PASS 
+
+Test #119 finished!
+
+Test #120  start
+Test feature : :Tx3:Rx4:Chp12:D16:R128:bpm0:extVel0
+CFAR Det Peaks: 2 [16,1  20,-5]
+Check the AOA output :   PASS 
+
+Test #120 finished!
+
+Test #121  start
+Test feature : :Tx3:Rx4:Chp12:D16:R32:bpm0:extVel0
+CFAR Det Peaks: 4 [6,0,13  27,4,-13  15,-8,-16  24,-3,-26]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #121 finished!
+
+Test #122  start
+Test feature : :Tx3:Rx4:Chp12:D16:R512:bpm0:extVel1
+CFAR Det Peaks: 2 [362,2,-9  400,-7,0]
+Check the AOA output :   PASS 
+
+Test #122 finished!
+
+Test #123  start
+Test feature : :Tx3:Rx4:Chp32:D32:R128:bpm0:extVel1
+CFAR Det Peaks: 5 [120,2,-24  88,8,-22  19,13,7  50,-12,-22  56,-6,4]
+Check the AOA output :   PASS 
+
+Test #123 finished!
+
+Test #124  start
+Test feature : :Tx3:Rx4:Chp32:D32:R32:bpm0:extVel1
+CFAR Det Peaks: 1 [13,0,-5]
+Check the AOA output :   PASS 
+
+Test #124 finished!
+
+Test #125  start
+Test feature : :Tx3:Rx4:Chp28:D32:R16:bpm0:extVel1
+CFAR Det Peaks: 2 [8,2,25  15,-11,2]
+Check the AOA output :   PASS 
+
+Test #125 finished!
+
+Test #126  start
+Test feature : :Tx3:Rx4:Chp28:D32:R128:bpm0:extVel1
+CFAR Det Peaks: 2 [49,2,16  24,-16,24]
+Check the AOA output :   PASS 
+
+Test #126 finished!
+
+Test #127  start
+Test feature : :Tx3:Rx4:Chp24:D32:R64:bpm0:extVel1
+CFAR Det Peaks: 2 [2,2,0  19,-12,25]
+Check the AOA output :   PASS 
+
+Test #127 finished!
+
+Test #128  start
+Test feature : :Tx3:Rx4:Chp20:D32:R16:bpm0:extVel0
+CFAR Det Peaks: 1 [1,14]
+Check the AOA output :   PASS 
+
+Test #128 finished!
+
+Test #129  start
+Test feature : :Tx3:Rx4:Chp64:D64:R32:bpm0:extVel0
+CFAR Det Peaks: 5 [5,6,22  18,13,17  18,25,15  21,-20,17  18,-11,-24]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #129 finished!
+
+Test #130  start
+Test feature : :Tx3:Rx4:Chp64:D64:R16:bpm0:extVel1
+CFAR Det Peaks: 3 [12,0,-10  1,28,9  2,-13,22]
+Check the AOA output :   PASS 
+
+Test #130 finished!
+
+Test #131  start
+Test feature : :Tx3:Rx4:Chp60:D64:R128:bpm0:extVel1
+CFAR Det Peaks: 5 [122,0,-26  99,13,-10  65,28,25  1,-23,-13  59,-11,-13]
+Check the AOA output :   PASS 
+
+Test #131 finished!
+
+Test #132  start
+Test feature : :Tx3:Rx4:Chp60:D64:R64:bpm0:extVel1
+CFAR Det Peaks: 2 [1,3,13  19,-28,-23]
+Check the AOA output :   PASS 
+
+Test #132 finished!
+
+Test #133  start
+Test feature : :Tx3:Rx4:Chp56:D64:R32:bpm0:extVel1
+CFAR Det Peaks: 3 [14,0,19  22,26,26  10,-14,24]
+Check the AOA output :   PASS 
+
+Test #133 finished!
+
+Test #134  start
+Test feature : :Tx3:Rx4:Chp52:D64:R16:bpm0:extVel1
+CFAR Det Peaks: 3 [14,4,-6  7,31,19  11,-20,-18]
+Check the AOA output :   PASS 
+
+Test #134 finished!
+
+Test #135  start
+Test feature : :Tx3:Rx4:Chp128:D128:R16:bpm0:extVel1
+CFAR Det Peaks: 5 [1,10,5  15,25,11  1,52,-22  2,-44,9  5,-24,9]
+Check the AOA output :   PASS 
+
+Test #135 finished!
+
+Test #136  start
+Test feature : :Tx3:Rx4:Chp128:D128:R64:bpm0:extVel0
+CFAR Det Peaks: 1 [10,58]
+Check the AOA output :   PASS 
+
+Test #136 finished!
+
+Test #137  start
+Test feature : :Tx3:Rx4:Chp124:D128:R64:bpm0:extVel0
+CFAR Det Peaks: 4 [41,1,6  40,43,0  9,-64,21  21,-23,-9]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #137 finished!
+
+Test #138  start
+Test feature : :Tx3:Rx4:Chp124:D128:R32:bpm0:extVel1
+CFAR Det Peaks: 3 [13,12,-7  5,49,1  31,-43,22]
+Check the AOA output :   PASS 
+
+Test #138 finished!
+
+Test #139  start
+Test feature : :Tx3:Rx4:Chp120:D128:R32:bpm0:extVel1
+CFAR Det Peaks: 3 [23,14,-24  11,54,-24  6,-38,-10]
+Check the AOA output :   PASS 
+
+Test #139 finished!
+
+Test #140  start
+Test feature : :Tx3:Rx4:Chp116:D128:R16:bpm0:extVel0
+CFAR Det Peaks: 4 [14,2,15  7,45,26  9,-61,-7  1,-21,-26]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #140 finished!
+
+Test #141  start
+Test feature : :Tx3:Rx4:Chp256:D256:R32:bpm0:extVel1
+CFAR Det Peaks: 1 [25,43,-24]
+Check the AOA output :   PASS 
+
+Test #141 finished!
+
+Test #142  start
+Test feature : :Tx3:Rx4:Chp256:D256:R32:bpm0:extVel1
+CFAR Det Peaks: 2 [27,27,-5  30,-99,-25]
+Check the AOA output :   PASS 
+
+Test #142 finished!
+
+Test #143  start
+Test feature : :Tx3:Rx4:Chp252:D256:R32:bpm0:extVel1
+CFAR Det Peaks: 2 [31,61,5  9,-91,-2]
+Check the AOA output :   PASS 
+
+Test #143 finished!
+
+Test #144  start
+Test feature : :Tx3:Rx4:Chp252:D256:R32:bpm0:extVel0
+CFAR Det Peaks: 2 [29,23  16,-75]
+Check the AOA output :   PASS 
+
+Test #144 finished!
+
+Test #145  start
+Test feature : :Tx3:Rx4:Chp248:D256:R32:bpm0:extVel0
+CFAR Det Peaks: 5 [25,1,13  18,56,25  13,116,14  15,-91,4  16,-33,0]
+Check the AOA output :   PASS 
+
+Check the AOA output with min/max angle sets :   PASS 
+
+Test #145 finished!
+
+Test #146  start
+Test feature : :Tx3:Rx4:Chp244:D256:R32:bpm0:extVel1
+CFAR Det Peaks: 2 [8,27,25  2,-112,-25]
+Check the AOA output :   PASS 
+
+Test #146 finished!
+
+Test #147  start
+Test feature : :Tx3:Rx4:Chp340:D512:R16:bpm0:extVel1
+CFAR Det Peaks: 4 [2,61,-11  1,191,7  10,-212,-16  11,-106,5]
+Check the AOA output :   PASS 
+
+Test #147 finished!
+
+Test #148  start
+Test feature : :Tx3:Rx4:Chp340:D512:R16:bpm0:extVel1
+CFAR Det Peaks: 3 [15,74,-3  4,172,18  15,-150,-26]
+Check the AOA output :   PASS 
+
+Test #148 finished!
+
+Test #149  start
+Test feature : :Tx3:Rx4:Chp336:D512:R16:bpm0:extVel1
+CFAR Det Peaks: 3 [2,28,-20  1,198,-5  15,-164,22]
+Check the AOA output :   PASS 
+
+Test #149 finished!
+
+Test #150  start
+Test feature : :Tx3:Rx4:Chp336:D512:R16:bpm0:extVel1
+CFAR Det Peaks: 5 [5,3,9  12,109,-18  1,237,-3  7,-160,-26  2,-64,25]
+Check the AOA output :   PASS 
+
+Test #150 finished!
+
+Test #151  start
+Test feature : :Tx3:Rx4:Chp332:D512:R16:bpm0:extVel1
+CFAR Det Peaks: 3 [5,55,-20  14,216,-24  4,-169,-25]
+Check the AOA output :   PASS 
+
+Test #151 finished!
+
+Test #152  start
+Test feature : :Tx3:Rx4:Chp332:D512:R16:bpm0:extVel0
+CFAR Det Peaks: 2 [3,53  13,-216]
+Check the AOA output :   PASS 
+
+Test #152 finished!
+
+----------------------------------------
+
+All Tests PASSED!
+Feature: AOA_DPU: Passed
+Test Finished
+Value read from Global variable (MCPI_Result): 0
+Test Failure Signature: 0
+Test Log Messages: 
+Feature tested: AOA_DPU: Passed
+
+
+shutting down py4j gw server.
+
+
+**************************************************
+Terminating the debug session and Shutting down gateway.
+**************************************************
+
+**************************************************
+Test case execution completed
+**************************************************
+
+**************************************************
+Testcase Result : PASS
+**************************************************

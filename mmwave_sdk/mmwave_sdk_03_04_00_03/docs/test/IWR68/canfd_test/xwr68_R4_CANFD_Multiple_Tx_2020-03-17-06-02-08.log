@@ -1,0 +1,100 @@
+mss in binary >>> xwr68xx_canfd_mss.xer4f
+eth008 Board details:
+IP address: 10.218.113.66
+Port: 17494
+
+connecting...
+Relay states 8->1 : 00010000
+1 off
+2 off
+3 off
+4 off
+5 off
+6 off
+7 off
+8 off
+Relay states 8->1 : 00000000
+5 on
+Relay states 8->1 : 00010000
+exit
+Disconnected
+Pre-Script returned: Success
+**************************************************
+Copying test case files from the Build server
+**************************************************Call to copy_testcase_binary:
+TCP: http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/xwr68xx; /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49
+
+Copying testcase binary file from http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/xwr68xx/xwr68xx_canfd_mss.xer4f to /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49 using command: 
+wget -e robots=off --no-proxy -N -T 30 -t 2 -P /home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49 http://gtjenkins.itg.ti.com/nightly_builds/mmwave_sdk-dev/261-2020-03-16_19-52-08/artifacts/test/mmwave_sdk/packages/ti/drivers/canfd/test/xwr68xx/xwr68xx_canfd_mss.xer4f
+**************************************************
+Executing Testcase:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49/xwr68xx_canfd_mss.xer4f
+**************************************************
+Loading R4, load params, run async.
+
+/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/config/iwr68_v9.ccxml
+Checking if Py4J Gateway server has started...
+Py4J Gateway Server is Started
+a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/DEBUGSSM_0
+a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/CS_DAP_0
+a path in cpuList is Texas Instruments XDS110 USB Debug Probe_0/Cortex_R4_0
+Loading binary to the DUT:/home/lte_phy/ti/mcpi_tf/mcpi_testframework_1_12_00_01/test/temp/mmWave_SDK___xwr68xx_sdk03.04.00_CANFD_Test_Plan___mmwave-sdk-03-04-00-2020-03-17-05-52-49_2020_03_17_03_52_49/xwr68xx_canfd_mss.xer4f
+
+**************************************************
+ Parameters found in the Binary arguments : 
+{'testSelection(32)': '3'}
+**************************************************
+Reading address of symbol: testSelection
+Address of symbol obtained: 0x80078f8
+Write value 3 to address 0x80078f8 
+Value updated successfully
+Done Loading R4, load params, run async.
+
+1584439357.225303 /dev/pcan32 > BUS STATE=ACTIVE   [Rx:0 Tx:0]
+1584439379.469477 /dev/pcan32 > 000000c1 .e... [a1 1a ff ff c1 1c b1 1b]
+/dev/pcan32 > [packets=1 calls=2 bytes=8 seq_err=0]
+received frames: 11584439379.489274 /dev/pcan32 > BUS STATE=ACTIVE   [Rx:0 Tx:0]
+1584439379.489777 /dev/pcan32 > 000000c2 .e... [a1 1a ff ff c1 1c b1 1b]
+/dev/pcan32 > [packets=1 calls=2 bytes=8 seq_err=0]
+received frames: 11584439379.517275 /dev/pcan32 > BUS STATE=ACTIVE   [Rx:0 Tx:0]
+1584439379.517783 /dev/pcan32 > 000000c5 .e... [a1 1a ff ff c1 1c b1 1b]
+/dev/pcan32 > [packets=1 calls=2 bytes=8 seq_err=0]
+received frames: 11584439379.549181 /dev/pcan32 > BUS STATE=ACTIVE   [Rx:0 Tx:0]
+1584439379.549837 /dev/pcan32 > 000000c2 .e... [a1 1a ff ff c1 1c b1 1b]
+/dev/pcan32 > [packets=1 calls=2 bytes=8 seq_err=0]
+received frames: 11584439379.577156 /dev/pcan32 > BUS STATE=ACTIVE   [Rx:0 Tx:0]
+1584439379.577808 /dev/pcan32 > 000000c5 .e... [a1 1a ff ff c1 1c b1 1b]
+/dev/pcan32 > [packets=1 calls=2 bytes=8 seq_err=0]
+received frames: 11584439379.605282 /dev/pcan32 > BUS STATE=ACTIVE   [Rx:0 Tx:0]
+1584439379.605788 /dev/pcan32 > 000000c3 .e... [a1 1a ff ff c1 1c b1 1b]
+/dev/pcan32 > [packets=1 calls=2 bytes=8 seq_err=0]
+received frames: 11584439379.633153 /dev/pcan32 > BUS STATE=ACTIVE   [Rx:0 Tx:0]
+1584439379.633818 /dev/pcan32 > 000000c1 .e... [a1 1a ff ff c1 1c b1 1b]
+/dev/pcan32 > [packets=1 calls=2 bytes=8 seq_err=0]
+received frames: 11584439379.661162 /dev/pcan32 > BUS STATE=ACTIVE   [Rx:0 Tx:0]
+1584439379.661780 /dev/pcan32 > 000000c4 .e... [a1 1a ff ff c1 1c b1 1b]
+/dev/pcan32 > [packets=1 calls=2 bytes=8 seq_err=0]
+received frames: 11584439379.689152 /dev/pcan32 > BUS STATE=ACTIVE   [Rx:0 Tx:0]
+1584439379.689780 /dev/pcan32 > 000000c2 .e... [a1 1a ff ff c1 1c b1 1b]
+/dev/pcan32 > [packets=1 calls=2 bytes=8 seq_err=0]
+received frames: 11584439379.717281 /dev/pcan32 > BUS STATE=ACTIVE   [Rx:0 Tx:0]
+1584439379.717782 /dev/pcan32 > 000000c5 .e... [a1 1a ff ff c1 1c b1 1b]
+/dev/pcan32 > [packets=1 calls=2 bytes=8 seq_err=0]
+received frames: 1
+**************************************************
+a1 1a ff ff c1 1c b1 1b was successfully read 10 times
+
+**************************************************
+shutting down py4j gw server.
+
+
+**************************************************
+Terminating the debug session and Shutting down gateway.
+**************************************************
+
+**************************************************
+Test case execution completed
+**************************************************
+
+**************************************************
+Testcase Result : PASS
+**************************************************

@@ -1,0 +1,456 @@
+/*
+ *  Copyright (c) 2017-2018, Texas Instruments Incorporated
+ *  All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *
+ *  *  Redistributions of source code must retain the above copyright
+ *     notice, this list of conditions and the following disclaimer.
+ *
+ *  *  Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *
+ *  *  Neither the name of Texas Instruments Incorporated nor the names of
+ *     its contributors may be used to endorse or promote products derived
+ *     from this software without specific prior written permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ *  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ *  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ *  PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ *  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *  EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ *  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ *  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ *  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+/*
+ * ======== Cache_asm_gnu.asm ========
+ */
+
+#include <ti/sysbios/family/arm/v8a/CacheMacros.h>
+
+        .global ti_sysbios_family_arm_v8a_Cache_disableL1D__I
+        .global ti_sysbios_family_arm_v8a_Cache_disableL1P__I
+        .global ti_sysbios_family_arm_v8a_Cache_enableL1D__I
+        .global ti_sysbios_family_arm_v8a_Cache_enableL1P__I
+        .global ti_sysbios_family_arm_v8a_Cache_enableSmp__I
+        .global ti_sysbios_family_arm_v8a_Cache_invL1d__I
+        .global ti_sysbios_family_arm_v8a_Cache_invL1p__I
+        .global ti_sysbios_family_arm_v8a_Cache_invL1pAll__E
+        .global ti_sysbios_family_arm_v8a_Cache_wb__E
+        .global ti_sysbios_family_arm_v8a_Cache_wbInv__E
+        .global ti_sysbios_family_arm_v8a_Cache_wbAll__E
+        .global ti_sysbios_family_arm_v8a_Cache_wbInvAll__E
+        .global ti_sysbios_family_arm_v8a_Cache_wait__E
+        .global ti_sysbios_family_arm_v8a_Cache_getEnabled__E
+        .global ti_sysbios_family_arm_v8a_Cache_getCacheLevelInfo__I
+
+        .align  2
+
+/*
+ * ======== Cache_disableL1D ========
+ * To disable the L1 data cache, first clear the C bit to 0 in
+ * SCTLR_EL1 register, then writeback invalidate the whole L1 data
+ * cache.
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_disableL1D__I
+        .func ti_sysbios_family_arm_v8a_Cache_disableL1D__I
+
+ti_sysbios_family_arm_v8a_Cache_disableL1D__I:
+        stp     x0, x30, [sp, #-16]!
+        mrs     x0, sctlr_el1            /* read SCTLR_EL1 */
+        bic     x0, x0, #0x0004          /* clear C bit */
+        msr     sctlr_el1, x0            /* DCache disabled */ 
+        ldr     x0, =ti_sysbios_family_arm_v8a_Cache_wbInvAll__E
+        blr     x0                       /* push out all of L1D */ 
+        ldp     x0, x30, [sp], #16
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_disableL1P ========
+ * To disable the L1 instruction cache, first set the I bit to 0 in SCTLR
+ * register, then invalidate the whole instruction cache.
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_disableL1P__I
+        .func ti_sysbios_family_arm_v8a_Cache_disableL1P__I
+
+ti_sysbios_family_arm_v8a_Cache_disableL1P__I:
+        mrs     x0, sctlr_el1            /* read SCTLR_EL1 */
+        bic     x0, x0, #0x1000          /* clear I bit */
+        msr     sctlr_el1, x0            /* ICache disabled */
+        ic      iallu                    /* invalidate all ICache */
+        dsb     sy
+        isb
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_enableL1D ========
+ * To enable the L1 data cache set the C bit to 1 in the SCTLR register.
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_enableL1D__I
+        .func ti_sysbios_family_arm_v8a_Cache_enableL1D__I
+
+ti_sysbios_family_arm_v8a_Cache_enableL1D__I:
+        dmb     sy                       /* ensure all pending memory */
+                                         /* ...operations such as pending */
+                                         /* ...stores/writes have completed */
+        mrs     x0, sctlr_el1            /* read SCTLR_EL1 */
+        orr     x0, x0, #0x0004          /* set C bit */
+        msr     sctlr_el1, x0            /* DCache enabled */
+        isb 
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_enableL1P ========
+ * To enable the L1 instruction cache set the I bit to 1 in the SCTLR register.
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_enableL1P__I
+        .func ti_sysbios_family_arm_v8a_Cache_enableL1P__I
+
+ti_sysbios_family_arm_v8a_Cache_enableL1P__I:
+        mrs     x0, sctlr_el1            /* read SCTLR_EL1 */
+        orr     x0, x0, #0x1000          /* set I bit */
+        msr     sctlr_el1, x0            /* ICache enabled */
+        isb
+        ret 
+        .endfunc
+
+
+/*
+ * ======== Cache_enableSmp ========
+ * Set CPUECTLR_EL1.SMPEN bit.
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_enableSmp__I
+        .func ti_sysbios_family_arm_v8a_Cache_enableSmp__I
+
+ti_sysbios_family_arm_v8a_Cache_enableSmp__I:
+        mrs     x0, S3_1_C15_C2_1        /* read CPUECTLR_EL1 */
+        orr     x0, x0, #0x40            /* set SMPEN bit */
+        msr     S3_1_C15_C2_1, x0        /* write CPUECTLR_EL1 */
+        isb
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_invL1d ========
+ * Invalidates a range of MVA (modified virtual addresses) in the L1 data cache
+ *     Cache_invL1d(Ptr blockPtr, SizeT byteCnt, Bool wait)
+ *
+ *       x0 - contains blockPtr
+ *       x1 - contains byteCnt
+ *       x2 - contains wait (ignored)
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_invL1d__I
+        .func ti_sysbios_family_arm_v8a_Cache_invL1d__I
+
+ti_sysbios_family_arm_v8a_Cache_invL1d__I:
+        add     x1, x0, x1               /* calculate last address */
+        DCACHE_LINE_SIZE x3, x4
+        sub     x4, x3, #1
+        bic     x0, x0, x4               /* align blockPtr to cache line */
+1:
+        dc      ivac, x0                 /* invalidate single entry in DCache */
+        add     x0, x0, x3               /* increment address by cache line
+                                            size */
+        cmp     x0, x1                   /* compare to last address */
+        blo     1b                       /* loop if > 0 */
+        dsb     sy
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_invL1p ========
+ * Invalidates a range of modified virtual addresses in L1 instruction cache
+ *     Cache_invL1p(Ptr blockPtr, SizeT byteCnt, Bool wait)
+ *
+ *       r0 - contains blockPtr
+ *       r1 - contains byteCnt
+ *       r2 - contains wait (ignored)
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_invL1p__I
+        .func ti_sysbios_family_arm_v8a_Cache_invL1p__I
+
+ti_sysbios_family_arm_v8a_Cache_invL1p__I:
+        add     x1, x0, x1               /* calculate last address */
+        ICACHE_LINE_SIZE x3, x4
+        sub     x4, x3, #1
+        bic     x0, x0, x4               /* align blockPtr to cache line */
+1:
+        ic      ivau, x0                 /* invalidate single entry in ICache */
+        add     x0, x0, x3               /* increment address by cache line
+                                            size */
+        cmp     x0, x1                   /* compare to last address */
+        blo     1b                       /* loop if > 0 */
+        dsb     sy
+        isb
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_invL1pAll ========
+ * Invalidates all entries in the instruction cache
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_invL1pAll__E
+        .func ti_sysbios_family_arm_v8a_Cache_invL1pAll__E
+
+ti_sysbios_family_arm_v8a_Cache_invL1pAll__E:
+        ic      iallu                    /* invalidate all ICache */
+        dsb     sy
+        isb
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_wb ========
+ * Writes back the range of MVA in data cache. First, wait on any previous cache
+ * operation.
+ *
+ *     Cache_wb(Ptr blockPtr, SizeT byteCnt, Type type, Bool wait)
+ *
+ *       r0 - contains blockPtr
+ *       r1 - contains byteCnt
+ *       r2 - contains bit mask of cache type (unused)
+ *       r3 - contains wait (ignored)
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_wb__E
+        .func ti_sysbios_family_arm_v8a_Cache_wb__E
+
+ti_sysbios_family_arm_v8a_Cache_wb__E:
+        add     x1, x0, x1               /* calculate last address */
+        DCACHE_LINE_SIZE x3, x4
+        sub     x4, x3, #1
+        bic     x0, x0, x4               /* align blockPtr to cache line */
+1:
+        dc      cvac, x0                 /* clean single entry in DCache to
+                                            PoC */
+        add     x0, x0, x3               /* increment address by cache line
+                                            size */
+        cmp     x0, x1                   /* compare to last address */
+        blo     1b                       /* loop if > 0 */
+        dsb     sy
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_wbInv ========
+ * Writes back and invalidates the range of MVA in data cache.
+ * First, wait on any previous cache operation.
+ *
+ *     Cache_wbInv(Ptr blockPtr, SizeT byteCnt, Type type, Bool wait)
+ *
+ *       r0 - contains blockPtr
+ *       r1 - contains byteCnt
+ *       r2 - contains bitmask of cache type (unused)
+ *       r3 - contains wait (ignored)
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_wbInv__E
+        .func ti_sysbios_family_arm_v8a_Cache_wbInv__E
+
+ti_sysbios_family_arm_v8a_Cache_wbInv__E:
+        add     x1, x0, x1               /* calculate last address */
+        DCACHE_LINE_SIZE x3, x4
+        sub     x4, x3, #1
+        bic     x0, x0, x4               /* align blockPtr to cache line */
+1:
+        dc      civac, x0                /* clean and invalidate single entry
+                                            in DCache to PoC */
+        add     x0, x0, x3               /* increment address by cache line
+                                            size */
+        cmp     x0, x1                   /* compare to last address */
+        blo     1b                       /* loop if > 0 */
+        dsb     sy
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_wait ========
+ * Wait for the 'Drain write buffer' to complete
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_wait__E
+        .func ti_sysbios_family_arm_v8a_Cache_wait__E
+
+ti_sysbios_family_arm_v8a_Cache_wait__E:
+        dsb     sy
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_wbAll ========
+ * Write back all of L1 data cache
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_wbAll__E
+        .func ti_sysbios_family_arm_v8a_Cache_wbAll__E
+
+ti_sysbios_family_arm_v8a_Cache_wbAll__E:
+        mrs     x0, clidr_el1
+        and     w3, w0, #0x07000000     /* Get 2 x Level of Coherence */
+        lsr     w3, w3, #23
+        cbz     w3, 5f
+        mov     w10, #0                 /* w10 = 2 x cache level */
+        mov     w8, #1                  /* w8 = Constant 0b1 */
+1:
+        add     w2, w10, w10, lsr #1    /* Caclulate 3x cache level */
+        lsr     w1, w0, w2              /* Extract cache type for this level */
+        and     w1, w1, #0x7
+        cmp     w1, #2
+        blt     4f                      /* No data or unified cache */
+        msr     csselr_el1, x10         /* Select this cache level */
+        isb                             /* Synchronize change of csselr */
+        mrs     x1, ccsidr_el1          /* Read ccsidr */
+        and     w2, w1, #7              /* w2 = log2(linelen)-4 */
+        add     w2, w2, #4              /* w2 = log2(linelen) */
+        ubfx    w4, w1, #3, #10         /* w4 = max way number, right aligned */
+        clz     w5, w4                  /* w5 = 32-log2(ways), bit position of
+                                           way in dc operand */
+        lsl     w9, w4, w5              /* w9 = max way number, aligned to
+                                           position in DC operand */
+        lsl     w16, w8, w5             /* w16 = amount to decrement way number
+                                           per iteration */
+2:
+        ubfx    w7, w1, #13, #15        /* w7 = max set number, right aligned */
+        lsl     w7, w7, w2              /* w7 = max set number, aligned to
+                                           position in DC operand */
+        lsl     w17, w8, w2             /* w17 = amount to decrement set number
+                                           per iteration */
+3:
+        orr     w11, w10, w9            /* w11 = combine way num & cache ...*/
+        orr     w11, w11, w7            /* ... num and set num for DC operand */
+        dc      csw, x11                /* Do data cache clean by set and way */
+        subs    w7, w7, w17             /* Decrement set number */
+        bge     3b
+        subs    x9, x9, x16             /* Decrement way number */
+        bge     2b
+4:
+        add     w10, w10, #2            /* Increment 2 x cache level */
+        cmp     w3, w10
+        dsb     sy                      /* Ensure completion of previous cache
+                                           maintenance operation */
+        bgt     1b
+5:
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_wbInvAll ========
+ * Write back and invalidate entire data cache
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_wbInvAll__E
+        .func ti_sysbios_family_arm_v8a_Cache_wbInvAll__E
+
+ti_sysbios_family_arm_v8a_Cache_wbInvAll__E:
+        mrs     x0, clidr_el1
+        and     w3, w0, #0x07000000     /* Get 2 x Level of Coherence */
+        lsr     w3, w3, #23
+        cbz     w3, 5f
+        mov     w10, #0                 /* w10 = 2 x cache level */
+        mov     w8, #1                  /* w8 = Constant 0b1 */
+1:
+        add     w2, w10, w10, lsr #1    /* Caclulate 3x cache level */
+        lsr     w1, w0, w2              /* Extract cache type for this level */
+        and     w1, w1, #0x7
+        cmp     w1, #2
+        blt     4f                      /* No data or unified cache */
+        msr     csselr_el1, x10         /* Select this cache level */
+        isb                             /* Synchronize change of csselr */
+        mrs     x1, ccsidr_el1          /* Read ccsidr */
+        and     w2, w1, #7              /* w2 = log2(linelen)-4 */
+        add     w2, w2, #4              /* w2 = log2(linelen) */
+        ubfx    w4, w1, #3, #10         /* w4 = max way number, right aligned */
+        clz     w5, w4                  /* w5 = 32-log2(ways), bit position of
+                                           way in dc operand */
+        lsl     w9, w4, w5              /* w9 = max way number, aligned to
+                                           position in DC operand */
+        lsl     w16, w8, w5             /* w16 = amount to decrement way number
+                                           per iteration */
+2:
+        ubfx    w7, w1, #13, #15        /* w7 = max set number, right aligned */
+        lsl     w7, w7, w2              /* w7 = max set number, aligned to
+                                           position in DC operand */
+        lsl     w17, w8, w2             /* w17 = amount to decrement set number
+                                           per iteration */
+3:
+        orr     w11, w10, w9            /* w11 = combine way num & cache ...*/
+        orr     w11, w11, w7            /* ... num and set num for DC operand */
+        dc      cisw, x11               /* Do data cache clean and invalidate
+                                           by set and way */
+        subs    w7, w7, w17             /* Decrement set number */
+        bge     3b
+        subs    x9, x9, x16             /* Decrement way number */
+        bge     2b
+4:
+        add     w10, w10, #2            /* Increment 2 x cache level */
+        cmp     w3, w10
+        dsb     sy                      /* Ensure completion of previous cache
+                                           maintenance operation */
+        bgt     1b
+5:
+        ret
+        .endfunc
+
+
+/*
+ * ======== Cache_getEnabled ========
+ * Determine the mask of enabled caches
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_getEnabled__E
+        .func ti_sysbios_family_arm_v8a_Cache_getEnabled__E
+
+ti_sysbios_family_arm_v8a_Cache_getEnabled__E:
+        mov     x0, #0
+        mrs     x1, sctlr_el1            /* read SCTLR_EL1 */
+
+        /* Check if program cache enabled */
+        tst     x1, #0x1000              /* test I bit for program cache */
+        beq     1f
+        mov     x0, #5                   /* if I bit is set, program caches */
+                                         /* are enabled */
+1:
+        /* Check if data cache enabled */
+        tst     x1, #0x0004              /* test C bit for data cache */
+        beq     2f
+        add     x0, x0, #0xa             /* if C bit is set, L1D and unified */
+                                         /* L2 cache is enabled */
+2:
+        /* Check if all caches enabled */
+        cmp     x0, #0xf
+        bne     3f
+        mov     x0, #0x7fff
+3:
+        ret
+        .endfunc
+
+/*
+ * ======== Cache_getLevelInfo ========
+ */
+        .section .text.ti_sysbios_family_arm_v8a_Cache_getCacheLevelInfo__I
+        .func ti_sysbios_family_arm_v8a_Cache_getCacheLevelInfo__I
+
+ti_sysbios_family_arm_v8a_Cache_getCacheLevelInfo__I:
+        msr     csselr_el1, x0          /* Select cache level */
+        isb                             /* Synchronize change of csselr */
+        mrs     x0, ccsidr_el1          /* Read and return ccsidr */
+        ret
+        .endfunc
+
+        .end
